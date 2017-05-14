@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">日租房流动人口信息采集APP</string>
+    <!--云平台注册的appid-->
+    <string name="tencent_bugly_id">ad234c62a6</string>
+    <!--网络请求提示语-->
+    <string name="tip_service_exception">连接服务器异常!</string>
+    <string name="tip_network_unconnect">网络断开,请检查网络!</string>
+    <string name="tip_socket_timeout">网络连接超时!</string>
+    <string name="tip_unknown_error">发生未知错误(%1$s)!</string>
+    <string name="tip_request_failed">请求数据失败!</string>
+    <string name="warming_doubleclick_logout">再次点击退出程序</string> <!-- 两次点击退出 -->
+    <string name="net_error">网络访问错误，请稍后再试</string>
+    <string name="empty">暂无数据</string>
+    <string name="loading">加载中,请稍后...</string>
+    <string name="reload">重新尝试</string>
+    <string name="no_net">网络不可用,请检查你的网络</string>
+    <!-- 所有Module名称 -->
+    <string name="module_register">入住登记</string>
+    <string name="module_check_out">退房</string>
+    <!--login模块-->
+    <string name="tip_appname">日租房流动人口信息采集APP</string>
+    <string name="hint_username">用户名</string>
+    <string name="hint_password">密码</string>
+    <string name="txt_login">登录</string>
+
+    <string name="action_submit">提交</string>
+</resources>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\me.yokeyword\fragmentation\0.7.9\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="03fd4f78f7069dc8787a297966c3423f51efd124">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\me.yokeyword-fragmentation-0.7.9_ee4b984fb50655ed7a8798b3b1495bf929d4c830.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.tencent.bugly\crashreport_upgrade\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5743268f3a177e4256453dfec5607ae0896b6f29">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.tencent.bugly-crashreport_upgrade-1.3.0_621284970caea8ff92c1b9b55aff0c0f5c92bcf5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.2.1\d6f54d76edfbe779a50a8636b10fd3f555d8f780\butterknife-annotations-8.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d6f54d76edfbe779a50a8636b10fd3f555d8f780">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.2.1_6530ed4492c039feb8759382d5b87e8d74717dad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.didikee\uitoast\0.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="cb99ccc32c8827d263c521e53ece909e00ec99ed">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.didikee-uitoast-0.1.0_f347a50a03a2cf8097da6eda8a63310f034387fe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.1_532ad6f67866a0877f54bdb1b2aeb9efb1b17378.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.dagger\dagger\2.0.2\de8416eda7b2fd7c25836b140c39e1cbf10542f6\dagger-2.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="de8416eda7b2fd7c25836b140c39e1cbf10542f6">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\dagger-2.0.2_8947057dc5f4ce720e3251d864584c5a25ee4945.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.8.0\5a11f020cce2d11eb71ba916700600e18c4547e7\okhttp-3.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\okhttp-3.8.0_33bf805d1981bef7597a6907c10bb939ca43c5d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.3.0\9e09011e9767bb76b5e27c9b8223476b93b14631\converter-gson-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9e09011e9767bb76b5e27c9b8223476b93b14631">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\converter-gson-2.3.0_553680e635ae731332198bb4f76e9def80b56aa3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ca5e58104f56f918f0fb3a5b1b371ab599ae56b2">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.jakewharton-butterknife-8.2.1_15e98b98a0e331be1edbbbcaed10e7aac1a9ab38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.1_25d5ca9f204b3082f80bf714ad23beebda21993a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\okio-1.13.0_f63c7ab08dbed3c34e0fe0b9b1a691240ffa1bb7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d4c4b83de2f6412072d2a29b1b7a5b03edaad5ff">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\io.reactivex-rxandroid-1.1.0_4452ae253b4d6111ed4edc87354ac7eeac7c2648.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.1_50a3c966c05207ae2ec3a16514169a5cbb3dbf32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\gson-2.7_2e85dbf641c4a16c73925139bd4ff50ebb0450dd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-analyzer\1.3\c5399b18a672f7973c8a9b9d6b731a3a36e590cc\leakcanary-analyzer-1.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c5399b18a672f7973c8a9b9d6b731a3a36e590cc">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\leakcanary-analyzer-1.3_ba89375cab49ca20c49552e2a0972df338206a91.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.jakewharton.rxbinding\rxbinding\0.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ffc09f4e5bdebe068e5101f587dadc42b60fbfe4">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.jakewharton.rxbinding-rxbinding-0.4.0_6f64abd8cca55e65ccf55be8b5e0e7f3913cfeb9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.github.bumptech.glide\okhttp3-integration\1.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="07a1832fdb6b44c0f4ec761ac3de02bfd3508269">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.github.bumptech.glide-okhttp3-integration-1.4.0_769cfbf082ff392005cdddb31630691ec0f5e730.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\glide-3.7.0_1f3ddf859a86296da03fddcf50d19f29d652df81.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.makeramen\roundedimageview\2.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="814fc0c3ec69a944add398217d90077301501a74">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.makeramen-roundedimageview-2.2.1_b15ee350024af2f4524513588c8a2c23b72beece.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.3.0\af000bec2036a2a9d07197c4b03b8966bfc60b03\rxjava-1.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="af000bec2036a2a9d07197c4b03b8966bfc60b03">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\rxjava-1.3.0_07a75d7443549d05d9106a49b0497bd04cd04ea9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.0_b02262ab31b2fe50dddc4887f0e1a93f844bab42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.1_a70998036e6d7f152252f1589aa121687b98e7f5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\javax.inject-1_273da2ba53aedc2691b5c6c4485ebe7b12b6e634.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\adapter-rxjava\2.3.0\43e4ac24adc40a24c51b2d2a71a2483ef1b0ce9a\adapter-rxjava-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43e4ac24adc40a24c51b2d2a71a2483ef1b0ce9a">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\adapter-rxjava-2.3.0_d5955ab47add8086cb4a2d5a8f22934b604ae638.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.1.1_38ae25c39770d30e26a74709f14f9239ae289e0f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.1_ae4e516eb6811420425d4ac79918baee2c8a38bf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.greenrobot\greendao-api\3.2.0\c6d610abe1d75d758431c9234917a349abc0a0ac\greendao-api-3.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c6d610abe1d75d758431c9234917a349abc0a0ac">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\greendao-api-3.2.0_bcb0f0d31e328b5ad99ce3d5063ea26fb25ba869.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f4e7adebf49e683db82fb6efac2caaf3d768b8d4">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.squareup.leakcanary-leakcanary-android-1.3_83c9b9dd30fd905c2f8e4d5262b55e326847deea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.0_fd9bca913df764474001d63861eac01596baee34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.1_8dfb7ffb235abc24cf2a5e1614b342811a6dd6f7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.0_cde12fb1339259155063cd85334bf45d330d970e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\libs\CVR-100B.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dde33f7e1364eefbd230ff90c087d2fe0c871241">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\CVR-100B_812c9fcbf0fc2514ee19a4b84a19c89e64364149.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\org.greenrobot\greendao\3.2.0\e70040568b2929b8e5869ad1ffca8e4386dc53bc\greendao-3.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e70040568b2929b8e5869ad1ffca8e4386dc53bc">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\greendao-3.2.0_a584c16f448569ed72551d6057e0354366b3f6ad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.github.CymChad\BaseRecyclerViewAdapterHelper\2.8.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bdb93a350e5fd23c514238a66dbd18b801d50837">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.github.CymChad-BaseRecyclerViewAdapterHelper-2.8.0_f9e687ee96e2ca8fbe4db6a97568d81a532bdf01.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.haha\haha\1.1\b7b2e61ee1ad2d1ac6ae3122de9c940fb0d0e635\haha-1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b7b2e61ee1ad2d1ac6ae3122de9c940fb0d0e635">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\haha-1.1_9ac8f5f28e6e98d439b65504875c6168c04653bb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\workspace\svn\IDCardReader\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.1_4f766961cc51b3a37054fd24d93c3e003f3c5b8a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-watcher\1.3\632482a61ad24b7ec864072945d221369f9a606\leakcanary-watcher-1.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0632482a61ad24b7ec864072945d221369f9a606">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\leakcanary-watcher-1.3_846c5f07ba85ee25c438724ac68b7355bbd7d802.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.3.0\bcacde6a8ccedcc56c127403d26b76072fe6214d\retrofit-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bcacde6a8ccedcc56c127403d26b76072fe6214d">
+        <dex dex="E:\workspace\svn\IDCardReader\app\build\intermediates\pre-dexed\debug\retrofit-2.3.0_098b09b6a11593dc20fc4b42f55a6f8fd8090285.jar" />
+    </item>
+
+</items>

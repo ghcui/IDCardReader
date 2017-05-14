@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_launcher.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\__leak_canary_icon.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.squareup.leakcanary\\leakcanary-android\\1.3\\res\\drawable-xxxhdpi\\__leak_canary_icon.png"
+    }
+]

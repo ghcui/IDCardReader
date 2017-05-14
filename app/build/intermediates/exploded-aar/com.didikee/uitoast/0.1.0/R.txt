@@ -1,0 +1,7 @@
+int anim toast_fade_enter 0x7f020000
+int anim toast_fade_exit 0x7f020001
+int color colorPrimaryDark 0x7f030000
+int color colorToastBackgroundColor 0x7f030001
+int color colorToastTextColor 0x7f030002
+int string app_name 0x7f040000
+int style AnimationToast 0x7f050000

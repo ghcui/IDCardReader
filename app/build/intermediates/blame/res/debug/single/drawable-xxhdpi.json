@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\__leak_canary_icon.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.squareup.leakcanary\\leakcanary-android\\1.3\\res\\drawable-xxhdpi\\__leak_canary_icon.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_wifi_off.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\ic_wifi_off.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_wrong.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\ic_wrong.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_image_loading.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\ic_image_loading.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\loading_progress.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\loading_progress.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_warm.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\ic_warm.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\password.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\password.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\account.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\account.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_empty_picture.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\ic_empty_picture.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\del_normal.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\del_normal.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\del_pressed.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\del_pressed.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_success.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\ic_success.png"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\no_content_tip.png",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\drawable-xxhdpi\\no_content_tip.png"
+    }
+]

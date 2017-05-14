@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\workspace\svn\IDCardReader\app\libs"><file name="armeabi/libwltdecode.so" path="E:\workspace\svn\IDCardReader\app\libs\armeabi\libwltdecode.so"/><file name="CVR-100B.jar" path="E:\workspace\svn\IDCardReader\app\libs\CVR-100B.jar"/></source></dataSet><dataSet config="debug"><source path="E:\workspace\svn\IDCardReader\app\src\debug\jniLibs"/></dataSet></merger>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Modules>
+    <Module>
+        <id>1</id>
+        <name>用户信息</name>
+        <className>com.yunqi.cardreader.ui.activity.UserInfoActivity</className>
+        <icon>home_user_info</icon>
+    </Module>
+
+    <Module>
+        <id>2</id>
+        <name>修改密码</name>
+        <className>com.yunqi.cardreader.ui.activity.ChangePwdActivity</className>
+        <icon>home_change_pwd</icon>
+    </Module>
+
+    <Module>
+        <id>3</id>
+        <name>已发数据</name>
+        <className>com.yunqi.cardreader.ui.activity.SendedActivity</className>
+        <icon>home_sended</icon>
+    </Module>
+
+    <Module>
+        <id>4</id>
+        <name>待发数据</name>
+        <className>com.yunqi.cardreader.ui.activity.WillSendActivity</className>
+        <icon>home_will_send</icon>
+    </Module>
+
+</Modules>

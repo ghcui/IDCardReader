@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\h_fragment_enter.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\h_fragment_enter.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\v_fragment_pop_exit.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\v_fragment_pop_exit.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\toast_fade_enter.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.didikee\\uitoast\\0.1.0\\res\\anim\\toast_fade_enter.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\no_anim.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\no_anim.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\bottom_in.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\anim\\bottom_in.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\toast_fade_exit.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.didikee\\uitoast\\0.1.0\\res\\anim\\toast_fade_exit.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\v_fragment_pop_enter.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\v_fragment_pop_enter.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\bottom_out.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\anim\\bottom_out.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\pop_exit_no_anim.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\pop_exit_no_anim.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\h_fragment_pop_exit.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\h_fragment_pop_exit.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_out.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\anim\\push_bottom_out.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\v_fragment_exit.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\v_fragment_exit.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\v_fragment_enter.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\v_fragment_enter.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\h_fragment_exit.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\h_fragment_exit.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\h_fragment_pop_enter.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\me.yokeyword\\fragmentation\\0.7.9\\res\\anim\\h_fragment_pop_enter.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\workspace\\svn\\IDCardReader\\app\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_in.xml",
+        "source": "E:\\workspace\\svn\\IDCardReader\\app\\src\\main\\res\\anim\\push_bottom_in.xml"
+    }
+]
