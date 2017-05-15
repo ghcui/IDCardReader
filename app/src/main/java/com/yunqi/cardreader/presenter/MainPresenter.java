@@ -66,7 +66,7 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
                 .subscribe(new Observer<List<Module>>() {
                     @Override
                     public void onNext(List<Module> modules) {
-
+                        mView.showContent(modules);
                     }
 
                     @Override

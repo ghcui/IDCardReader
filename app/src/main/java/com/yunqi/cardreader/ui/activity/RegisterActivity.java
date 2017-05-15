@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.idcard.hs.Lua.BlueTool;
 import com.idcard.hs.Lua.BlueToolListenr;
@@ -16,11 +18,12 @@ import com.yunqi.cardreader.R;
 import com.yunqi.cardreader.base.BaseActivity;
 import com.yunqi.cardreader.presenter.RegisterPresenter;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
+import com.yunqi.cardreader.util.TimeUtil;
+import com.yunqi.cardreader.util.ToastUtil;
 
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import rx.functions.Action1;
 
 /**
@@ -31,18 +34,32 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
-    @BindView(R.id.btn_search)
-    Button btnSearch;
-    @BindView(R.id.btn_connect)
-    Button btnConnect;
-    @BindView(R.id.btn_readCard)
+    @BindView(R.id.txt_room_number)
+    TextView txtRoomNumber;
+    @BindView(R.id.txt_bed_number)
+    TextView txtBedNumber;
+    @BindView(R.id.txt_name)
+    TextView txtName;
+    @BindView(R.id.txt_sex)
+    TextView txtSex;
+    @BindView(R.id.txt_nation)
+    TextView txtNation;
+    @BindView(R.id.txt_birthday)
+    TextView txtBirthday;
+    @BindView(R.id.txt_certificates_type)
+    TextView txtCertificatesType;
+    @BindView(R.id.txt_certificates_code)
+    TextView txtCertificatesCode;
+    @BindView(R.id.txt_address)
+    TextView txtAddress;
+    @BindView(R.id.txt_check_time)
+    TextView txtCheckTime;
+    @BindView(R.id.img_certificates)
+    ImageView imgCertificates;
+    @BindView(R.id.img_personal)
+    ImageView imgPersonal;
+    @BindView(R.id.btn_read_card)
     Button btnReadCard;
-    @BindView(R.id.btn_disconnect)
-    Button btnDisconnect;
-    @BindView(R.id.btn_sleep)
-    Button btnSleep;
-    @BindView(R.id.btn_awake)
-    Button btnAwake;
     BlueTool ble;
 
     @Override
@@ -69,9 +86,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(ble!=null){
-            ble.disconnect();
-        }
+        disconnect();
     }
 
     private void initData() {
@@ -79,72 +94,81 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     }
 
     private void setWidgetListener() {
-        RxView.clicks(btnSearch)
-                .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-                        findBlueDevices();
-                    }
-                });
-        RxView.clicks(btnConnect)
-                .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-
-                    }
-                });
         RxView.clicks(btnReadCard)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
+                        mPresenter.readCarder(ble);
                     }
                 });
-        RxView.clicks(btnDisconnect)
-                .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-                    }
-                });
-        RxView.clicks(btnSleep)
-                .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-                    }
-                });
-        RxView.clicks(btnAwake)
-                .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-                    }
-                });
+
     }
 
-    private void findBlueDevices() {
-        ble.setListenr(new BlueToolListenr() {
-            @Override
-            public void findForDevice(String device) {
-                Log.d(TAG,"findForDevice:device"+device);
-                if(!TextUtils.isEmpty(device)){
-                    ble.connect(device);
-                }
+    @Override
+    public void showContent(Info info) {
+        resetData();
+        if(!TextUtils.isEmpty(info.getName())){
+            txtName.setText(info.getName());
+        }
+        if(!TextUtils.isEmpty(info.getSex())){
+            String sex = info.getIdNo().substring(16, 17);
+            if(Integer.parseInt(sex)%2==0){
+                sex = "0";
+                txtSex.setText("女");
+            }else{
+                txtSex.setText("男");
+                sex = "1";
             }
+            info.setSex(sex);
+        }
+        if(!TextUtils.isEmpty(info.getName())){
+            txtNation.setText(info.getNationlity());
+        }
+        if(!TextUtils.isEmpty(info.getBirthdate())){
+            txtBirthday.setText(info.getBirthdate());
+        }
+        if(!TextUtils.isEmpty(info.getIdNo())){
+            txtCertificatesCode.setText(info.getIdNo());
+        }
+        if(!TextUtils.isEmpty(info.getIdNo())){
+            txtAddress.setText(info.getAddress());
+        }
+        txtCheckTime.setText(TimeUtil.format(TimeUtil.getSysTime(),"yyyy-mm-dd hh:mm"));
+        if(info.getBmp()!=null){
+            imgCertificates.setImageBitmap(info.getBmp());
+        }
+        disconnect();
+    }
 
-            @Override
-            public void BluetoothForState(Boolean isConnect) {
-                Log.d(TAG,"BluetoothForState:isConnect"+isConnect);
-                if(isConnect){
-                    Info info=ble.read();
-                    Log.d(TAG,"info:"+info);
-                }
-            }
-        });
-        ble.scanf();
+    private void disconnect(){
+        if (ble != null) {
+            ble.disconnect();
+        }
+    }
+
+    @Override
+    public void onError() {
+        ToastUtil.showErrorToast(this,"读卡失败，请再试一次!");
+        disconnect();
+        resetData();
+    }
+    @Override
+    public void onLoading() {
+        btnReadCard.setClickable(false);
+        btnReadCard.setText("正在读卡...");
+    }
+
+    private void resetData(){
+        btnReadCard.setClickable(true);
+        btnReadCard.setText("开始读卡");
+        txtName.setText("");
+        txtSex.setText("");
+        txtNation.setText("");
+        txtBirthday.setText("");
+        txtCertificatesCode.setText("");
+        txtAddress.setText("");
+        imgCertificates.setImageResource(R.drawable.ic_launcher);
     }
 }
 

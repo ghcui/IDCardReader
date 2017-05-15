@@ -22,6 +22,21 @@
     <string name="hint_username">用户名</string>
     <string name="hint_password">密码</string>
     <string name="txt_login">登录</string>
-
+    <!--入住登记模块-->
     <string name="action_submit">提交</string>
+    <string name="hint_select">请选择</string>
+    <string name="title_room_number">客房号：</string>
+    <string name="title_bed_number">床位号：</string>
+    <string name="title_name">姓名：</string>
+    <string name="title_sex">性别：</string>
+    <string name="title_nation">民族：</string>
+    <string name="title_birthday">出生：</string>
+    <string name="title_certificates_type">证件类型：</string>
+    <string name="txt_certificates_type">身份证</string>
+    <string name="title_certificates_code">证件号：</string>
+    <string name="title_address">住址：</string>
+    <string name="title_check_time">入住时间：</string>
+    <string name="title_certificates_img">证件照片</string>
+    <string name="title_personal_img">人员照片</string>
+    <string name="txt_read_card">开始读卡</string>
 </resources>
