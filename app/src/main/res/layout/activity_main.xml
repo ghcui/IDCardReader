@@ -1,45 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_bg_color"
+    android:orientation="vertical">
 
-    <GridView
-        android:id="@+id/grid_module"
+    <RelativeLayout
+        android:id="@+id/rlayout_logo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/llayout_bottom"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white"
-        android:numColumns="2"
-        android:scrollbars="none" />
+        android:layout_height="250dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xxxxl" />
+    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/llayout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="150dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
 
+        <GridView
+            android:background="@color/border_line"
+            android:id="@+id/grid_module"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2"
+            android:horizontalSpacing="1px"
+            android:verticalSpacing="1px"
+            android:scrollbars="none" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/border_line"/>
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:layout_marginRight="18dp"
-            android:layout_weight="1"
-            android:text="@string/module_register" />
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:background="#a8cc24"
+            android:text="@string/module_register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xxl" />
 
         <Button
             android:id="@+id/btn_check_out"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:layout_marginRight="18dp"
-            android:layout_weight="1"
-            android:text="@string/module_check_out" />
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="#a8cc24"
+            android:text="@string/module_check_out"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xxl" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

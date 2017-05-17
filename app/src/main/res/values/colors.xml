@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0079d0</color>
-    <color name="colorPrimaryDark">#0079d0</color>
+    <color name="colorPrimary">#008bd0</color>
+    <color name="colorPrimaryDark">#008bd0</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
@@ -9,8 +9,10 @@
     <color name="green">#00ff00</color>
     <color name="blue">#0000ff</color>
     <color name="yellow">#ff9900</color>
-    <color name="gray">#FFF0F0F0</color>
-    <color name="border_line">#797979</color>
+    <color name="gray">#A9A9A9</color>
+    <color name="border_line">#aa797979</color>
+
+    <color name="main_bg_color">#b7def7</color>
 
     <color name="btn_color">#2e75b6</color>
     <color name="login_bg_color">#0079d0</color>

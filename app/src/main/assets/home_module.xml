@@ -16,15 +16,15 @@
 
     <Module>
         <id>3</id>
-        <name>已发数据</name>
-        <className>com.yunqi.cardreader.ui.activity.SendedActivity</className>
+        <name>待发数据</name>
+        <className>com.yunqi.cardreader.ui.activity.WillSendctivity</className>
         <icon>home_sended</icon>
     </Module>
 
     <Module>
         <id>4</id>
-        <name>待发数据</name>
-        <className>com.yunqi.cardreader.ui.activity.WillSendActivity</className>
+        <name>关于</name>
+        <className>com.yunqi.cardreader.ui.activity.AboutActivity</className>
         <icon>home_will_send</icon>
     </Module>
 

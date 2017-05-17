@@ -10,10 +10,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.idcard.hs.Lua.BlueTool;
 import com.idcard.hs.Lua.BlueToolListenr;
 import com.idcard.hs.Lua.Info;
 import com.jakewharton.rxbinding.view.RxView;
+import com.luck.picture.lib.model.FunctionConfig;
+import com.luck.picture.lib.model.PictureConfig;
+import com.yalantis.ucrop.entity.LocalMedia;
 import com.yunqi.cardreader.R;
 import com.yunqi.cardreader.base.BaseActivity;
 import com.yunqi.cardreader.presenter.RegisterPresenter;
@@ -21,6 +26,7 @@ import com.yunqi.cardreader.presenter.contract.RegisterContract;
 import com.yunqi.cardreader.util.TimeUtil;
 import com.yunqi.cardreader.util.ToastUtil;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -60,7 +66,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     ImageView imgPersonal;
     @BindView(R.id.btn_read_card)
     Button btnReadCard;
-    BlueTool ble;
+    private BlueTool ble;
+    private String selectImg;
 
     @Override
     protected void initInject() {
@@ -100,6 +107,14 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
                     @Override
                     public void call(Void aVoid) {
                         mPresenter.readCarder(ble);
+                    }
+                });
+        RxView.clicks(imgPersonal)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        open3rdCamera();
                     }
                 });
 
@@ -146,6 +161,43 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
             ble.disconnect();
         }
     }
+
+    private void open3rdCamera(){
+//        int selector = R.drawable.select_cb;
+        FunctionConfig config = new FunctionConfig();
+        config.setThemeStyle(R.style.AppTheme);
+        config.setEnablePixelCompress(true);
+        config.setEnableQualityCompress(true);
+        config.setMaxSelectNum(1);
+        config.setCheckNumMode(true);
+        config.setCompressQuality(100);
+        config.setImageSpanCount(3);
+        config.setEnablePreview(true);
+//        config.setSelectMedia(selectMedia);
+//        config.setCheckedBoxDrawable(selector);
+        // 先初始化参数配置，在启动相册
+        PictureConfig.init(config);
+        PictureConfig.getPictureConfig().openPhoto(this, resultCallback);
+    }
+    /**
+     * 图片回调方法0
+     */
+    private PictureConfig.OnSelectResultCallback resultCallback = new PictureConfig.OnSelectResultCallback() {
+        @Override
+        public void onSelectSuccess(List<LocalMedia> resultList) {
+            if (resultList != null&&resultList.size()>0) {
+                selectImg=resultList.get(0).getPath();
+                if(!TextUtils.isEmpty(selectImg)){
+                    Glide.with(mContext)
+                            .load(selectImg)
+                            .asBitmap().centerCrop()
+                            .placeholder(R.color.color_f6)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(imgPersonal);
+                }
+            }
+        }
+    };
 
     @Override
     public void onError() {

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="1_CVR-100B">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/jniLibs/CVR-100B.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -2,6 +2,7 @@ package com.yunqi.cardreader.di.component;
 
 import android.app.Activity;
 
+import com.yunqi.cardreader.ui.activity.AboutActivity;
 import com.yunqi.cardreader.ui.activity.LoginActivity;
 import com.yunqi.cardreader.di.ActivityScope;
 import com.yunqi.cardreader.di.module.ActivityModule;
@@ -26,4 +27,6 @@ public interface ActivityComponent {
     void inject(LoginActivity activity);
 
     void inject(RegisterActivity activity);
+
+    void inject(AboutActivity activity);
 }

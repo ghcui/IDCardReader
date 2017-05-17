@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">日租房流动人口信息采集APP</string>
+    <string name="app_name">日租房流动人口信息采集系统</string>
     <!--云平台注册的appid-->
     <string name="tencent_bugly_id">ad234c62a6</string>
     <!--网络请求提示语-->
@@ -15,6 +15,10 @@
     <string name="reload">重新尝试</string>
     <string name="no_net">网络不可用,请检查你的网络</string>
     <!-- 所有Module名称 -->
+    <string name="module_user_info">用户信息</string>
+    <string name="module_change_pwd">修改密码</string>
+    <string name="module_will_send">待发数据</string>
+    <string name="module_about">关于</string>
     <string name="module_register">入住登记</string>
     <string name="module_check_out">退房</string>
     <!--login模块-->
@@ -39,4 +43,8 @@
     <string name="title_certificates_img">证件照片</string>
     <string name="title_personal_img">人员照片</string>
     <string name="txt_read_card">开始读卡</string>
+    <!--关于模块-->
+    <string name="txt_version">版本信息</string>
+    <string name="txt_updata">检测升级</string>
+    <string name="txt_logout">注销登录</string>
 </resources>

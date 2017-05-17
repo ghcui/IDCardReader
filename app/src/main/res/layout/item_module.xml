@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="120dp"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingTop="22dp">
+    android:background="@color/white"
+    android:paddingTop="20dp">
 
     <ImageView
         android:id="@+id/icon"
@@ -16,13 +17,14 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_below="@+id/icon"
         android:layout_marginTop="5dp"
         android:ellipsize="marquee"
         android:gravity="center_horizontal"
         android:maxLines="1"
         android:text="用户信息"
-        android:textSize="@dimen/text_size_l" />
+        android:textSize="@dimen/text_size_xxl" />
 </RelativeLayout>
 
 

@@ -87,5 +87,8 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'com.didikee:uitoast:0.1.0'
     compile files('libs/CVR-100B.jar')
-    compile files('jniLibs/CVR-100B.jar')
+    compile(name: 'picture-release', ext: 'aar')
+    compile 'com.commit451:PhotoView:1.2.4'
+    compile(name: 'ucrop-release', ext: 'aar')
+    compile 'cn.finalteam:galleryfinal:1.4.6'
 }
