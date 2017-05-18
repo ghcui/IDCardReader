@@ -1,7 +1,12 @@
 package com.yunqi.cardreader.model.http;
 import com.yunqi.cardreader.model.bean.User;
+import com.yunqi.cardreader.model.bean.CLientInfo;
+import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
+import com.yunqi.cardreader.model.response.BaseHttpRsp;
+import com.yunqi.cardreader.model.response.CommonHttpRsp;
 
 
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -21,6 +26,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("users/login")
     Observable<CommonHttpRsp<User>> doLogin(@Field("account") String account, @Field("password") String password);
-
-
+    /**
+     * 提交用户信息
+     *
+     * @param request
+     * @return
+     */
+    @POST("action/add")
+    Observable<BaseHttpRsp> submitInfo(@Body ClientInfoAddRequest request);
 }

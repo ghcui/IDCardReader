@@ -2,7 +2,7 @@ package com.yunqi.cardreader.util;
 
 
 
-import com.yunqi.cardreader.model.http.CommonHttpRsp;
+import com.yunqi.cardreader.model.response.CommonHttpRsp;
 
 import rx.Observable;
 import rx.Subscriber;

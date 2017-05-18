@@ -1,20 +1,17 @@
 package com.yunqi.cardreader.presenter;
 
 
-import com.yunqi.cardreader.app.App;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
+import android.util.Log;
+
 import com.yunqi.cardreader.base.RxPresenter;
-import com.yunqi.cardreader.model.bean.User;
-import com.yunqi.cardreader.model.db.GreenDaoHelper;
-import com.yunqi.cardreader.model.http.CommonHttpRsp;
-import com.yunqi.cardreader.model.http.RetrofitHelper;
 import com.yunqi.cardreader.presenter.contract.AboutContract;
-import com.yunqi.cardreader.presenter.contract.LoginContract;
-import com.yunqi.cardreader.rx.ExSubscriber;
-import com.yunqi.cardreader.util.RxUtil;
 
 import javax.inject.Inject;
 
-import rx.Subscription;
 
 /**
  * @author ghcui
@@ -25,8 +22,24 @@ public class AboutPresenter extends RxPresenter<AboutContract.View> implements A
 
     @Inject
     public AboutPresenter() {
+
     }
 
 
-
+    @Override
+    public void getVersion(Context context) {
+        String versionName = "";
+        try {
+            // ---get the package info---
+            PackageManager pm = context.getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            versionName = pi.versionName;
+            if(TextUtils.isEmpty(versionName)){
+                versionName="";
+            }
+        } catch (Exception e) {
+            Log.e("VersionInfo", "Exception", e);
+        }
+        mView.showVersion(versionName);
+    }
 }

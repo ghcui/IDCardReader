@@ -19,4 +19,6 @@
 
     <color name="txt_color1">#333333</color>
     <color name="txt_color2">#898989</color>
+    <drawable name="white">#ffffff</drawable>
+    <drawable name="gray">#A9A9A9</drawable>
 </resources>

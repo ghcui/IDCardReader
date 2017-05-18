@@ -8,18 +8,19 @@ import com.idcard.hs.Lua.BlueTool;
 import com.idcard.hs.Lua.BlueToolListenr;
 import com.idcard.hs.Lua.Info;
 import com.yunqi.cardreader.base.RxPresenter;
-import com.yunqi.cardreader.model.bean.Module;
-import com.yunqi.cardreader.parser.IModuleParse;
-import com.yunqi.cardreader.parser.ModuleParse;
+import com.yunqi.cardreader.model.db.GreenDaoHelper;
+import com.yunqi.cardreader.model.http.RetrofitHelper;
+import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
+import com.yunqi.cardreader.model.response.BaseHttpRsp;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
-
-import java.util.List;
+import com.yunqi.cardreader.rx.BaseSubscriber;
+import com.yunqi.cardreader.util.RxUtil;
 
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.Observer;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -30,9 +31,12 @@ import rx.schedulers.Schedulers;
  */
 public class RegisterPresenter extends RxPresenter<RegisterContract.View> implements RegisterContract.Presenter {
 
-
+    private RetrofitHelper mRetrofitHelper;
+    private GreenDaoHelper greenDaoHelper;
     @Inject
-    public RegisterPresenter() {
+    public RegisterPresenter(RetrofitHelper retrofitHelper, GreenDaoHelper greenDaoHelper) {
+        this.mRetrofitHelper = retrofitHelper;
+        this.greenDaoHelper = greenDaoHelper;
     }
 
 
@@ -65,8 +69,8 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
                                 if (TextUtils.isEmpty(info.getIdNo())) {
                                     subscriber.onError(new Throwable("info's content is null"));
                                 } else {
-                                    subscriber.onNext(info);
                                     subscriber.onCompleted();
+                                    subscriber.onNext(info);
                                 }
                             }
                         }
@@ -84,20 +88,43 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
 
                     @Override
                     public void onCompleted() {
-
+                        mView.cancelLoading(RegisterContract.REQUST_CODE_READCARD);
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        mView.onError();
+                        mView.showError("读卡失败，请再试一次!",RegisterContract.REQUST_CODE_READCARD);
                     }
 
                     @Override
                     public void onStart() {
-                        mView.onLoading();
+                        mView.showLoading(RegisterContract.REQUST_CODE_READCARD);
                     }
                 });
+    }
+
+    @Override
+    public void submitInfo(ClientInfoAddRequest request) {
+        Subscription rxSubscription = mRetrofitHelper.submitInfo(request)
+                .compose(RxUtil.<BaseHttpRsp>rxSchedulerHelper())
+                .subscribe(new BaseSubscriber(mView) {
+                    @Override
+                    protected void onSuccess() {
+                        mView.onSuccess();
+                    }
+
+                    @Override
+                    protected void onFailure(int errorCode, String msg) {
+                        mView.showError(msg,RegisterContract.REQUST_CODE_SUBMIT);
+                    }
+                });
+        addSubscrebe(rxSubscription);
+    }
+
+    @Override
+    public void saveLocal(ClientInfoAddRequest request) {
+
     }
 
 

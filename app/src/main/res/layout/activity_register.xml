@@ -3,19 +3,22 @@
     android:id="@+id/layout_login_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <include layout="@layout/view_toolbar" />
 
     <ScrollView
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp">
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:background="@drawable/common_corners_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -353,7 +356,7 @@
                         android:gravity="center"
                         android:text="@string/title_certificates_img"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/text_size_xxxxxl" />
+                        android:textSize="@dimen/text_size_xxxl" />
 
                     <ImageView
                         android:id="@+id/img_certificates"
@@ -375,7 +378,7 @@
                         android:gravity="center"
                         android:text="@string/title_personal_img"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/text_size_xxxxxl" />
+                        android:textSize="@dimen/text_size_xxxl" />
 
                     <ImageView
                         android:id="@+id/img_personal"
@@ -385,18 +388,18 @@
                         android:src="@drawable/ic_launcher" />
                 </LinearLayout>
             </LinearLayout>
-            <Button
-                android:layout_marginTop="10dp"
-                android:id="@+id/btn_read_card"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_below="@+id/layout_password"
-                android:background="@drawable/btn_bg_style1"
-                android:text="@string/txt_read_card"
-                android:textColor="#fff"
-                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
-
+    <Button
+        android:id="@+id/btn_confirm_upload"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/txt_confirm_upload"
+        android:background="@drawable/common_btn_selector"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_xxxxl"
+        android:layout_marginRight="8dp"/>
 
 </LinearLayout>

@@ -14,9 +14,9 @@ import android.widget.ImageView;
 
 
 import com.yunqi.cardreader.R;
+import com.yunqi.cardreader.base.NetActivity;
 import com.yunqi.cardreader.model.bean.User;
 import com.jakewharton.rxbinding.view.RxView;
-import com.yunqi.cardreader.base.BaseActivity;
 import com.yunqi.cardreader.constants.Constants;
 import com.yunqi.cardreader.presenter.LoginPresenter;
 import com.yunqi.cardreader.presenter.contract.LoginContract;
@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import rx.functions.Action1;
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
+public class LoginActivity extends NetActivity<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.edit_account)
     EditText editAccount;
     @BindView(R.id.edit_password)
@@ -166,29 +166,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         finish();
     }
 
-
-
-
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }
-
-    @Override
-    public void showLoading(int requestCode) {
-
-    }
-
-    @Override
-    public void cancelLoading(int requestCode) {
-
-    }
-
-    @Override
-    public void showError(String msg, int requestCode) {
-
     }
 }
 

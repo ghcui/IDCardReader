@@ -27,7 +27,7 @@
     <string name="hint_password">密码</string>
     <string name="txt_login">登录</string>
     <!--入住登记模块-->
-    <string name="action_submit">提交</string>
+    <string name="action_submit">发送</string>
     <string name="hint_select">请选择</string>
     <string name="title_room_number">客房号：</string>
     <string name="title_bed_number">床位号：</string>
@@ -42,7 +42,11 @@
     <string name="title_check_time">入住时间：</string>
     <string name="title_certificates_img">证件照片</string>
     <string name="title_personal_img">人员照片</string>
-    <string name="txt_read_card">开始读卡</string>
+    <string name="txt_confirm_upload">确认上传</string>
+    <string name="warming_no_info">没有读取到用户信息</string>
+    <string name="warming_no_room">没有选择客房</string>
+    <string name="warming_no_bed">没有选择床位</string>
+    <string name="warming_no_time">没有选择入住时间</string>
     <!--关于模块-->
     <string name="txt_version">版本信息</string>
     <string name="txt_updata">检测升级</string>

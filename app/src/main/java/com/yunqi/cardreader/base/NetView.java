@@ -6,6 +6,8 @@ package com.yunqi.cardreader.base;
  */
 public interface NetView extends BaseView{
 
+    boolean checkNetwork ();
+
     void showLoading(int requestCode);
 
     void cancelLoading(int requestCode);

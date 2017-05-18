@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
@@ -309,36 +310,16 @@ public class NetworkUtil
      * Description: 不管是wifi，有线还是移动网络。
      * <p>
      * @date 2014年3月17日 
-     * @author jamesqiao10065075
-     * @param cm 连接管理器实例
      * @return 有任意一个连接就返回true，其他情况返回false。
      */
-    public static boolean isNetworkAvailable(ConnectivityManager cm)
+    public static boolean isNetworkAvailable(Context context)
     {
-        if (null == cm)
-        {
-            Log.w(LOG_TAG, "ConnectivityManager is null. NetWork Unavailabel");
-            return false;
-        }
-        else
-        {
-            // 获取所有网络
-            NetworkInfo[] info = cm.getAllNetworkInfo();
-            if (info != null)
-            {
-                for (int i = 0; i < info.length; i++)
-                {
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED)
-                    {
-                        // 只要有一个可用，就返回true
-                        Log.i(LOG_TAG, "NetWork Available");
-                        return true;
-                    }
-                }
-            }
-        }
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        return false;
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
     }
 
     /**

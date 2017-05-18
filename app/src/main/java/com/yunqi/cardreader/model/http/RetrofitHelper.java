@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 
 import com.yunqi.cardreader.constants.Constants;
 import com.yunqi.cardreader.model.bean.User;
+import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
+import com.yunqi.cardreader.model.response.*;
 import com.yunqi.cardreader.util.NetworkUtil;
 
 import java.io.File;
@@ -46,6 +48,38 @@ public class RetrofitHelper {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         File cacheFile = new File(Constants.PATH_CACHE);
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
+        Interceptor networkInterceptor = new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request().newBuilder()
+                        .addHeader("Content-Type", "application/json")
+                        .build();
+                ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+                boolean isNetworkConnect = NetworkUtil.isNetworkAvailable(connectivityManager);
+                if (!isNetworkConnect) {
+                    request = request.newBuilder()
+                            .cacheControl(CacheControl.FORCE_CACHE)
+                            .build();
+                }
+                Response response = chain.proceed(request);
+                if (isNetworkConnect) {
+                    int maxAge = 0;
+                    //有网络时，不缓存，最大保存时长为0
+                    response.newBuilder()
+                            .header("Cache-Control", "public, max-age=" + maxAge)
+                            .removeHeader("Pragma")
+                            .build();
+                } else {
+                    //无网络时，设置超时为4周
+                    int maxStale = 60 * 60 * 24 * 28;
+                    response.newBuilder()
+                            .header("Cache-Control", "public,only-if-cached, max-stale=" + maxStale)
+                            .removeHeader("Pragma")
+                            .build();
+                }
+                return response;
+            }
+        };
         Interceptor cacheInterceptor = new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
@@ -79,7 +113,6 @@ public class RetrofitHelper {
             }
         };
         builder.addNetworkInterceptor(cacheInterceptor);
-        builder.addInterceptor(cacheInterceptor);
         builder.cache(cache);
         builder.connectTimeout(10, TimeUnit.SECONDS);
         builder.readTimeout(20, TimeUnit.SECONDS);
@@ -103,5 +136,8 @@ public class RetrofitHelper {
 
     public Observable<CommonHttpRsp<User>> doLogin(String username, String password) {
         return apiService.doLogin(username, password);
+    }
+    public Observable<BaseHttpRsp> submitInfo(ClientInfoAddRequest request) {
+        return apiService.submitInfo(request);
     }
 }

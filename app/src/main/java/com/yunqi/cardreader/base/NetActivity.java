@@ -11,15 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.yunqi.cardreader.R;
 import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.di.component.ActivityComponent;
 import com.yunqi.cardreader.di.component.DaggerActivityComponent;
 import com.yunqi.cardreader.di.module.ActivityModule;
+import com.yunqi.cardreader.util.NetworkUtil;
 import com.yunqi.cardreader.util.ToastUtil;
-
-import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -31,7 +29,7 @@ import me.yokeyword.fragmentation.SupportActivity;
  * Created by codeest on 2016/8/2.
  * MVP activity基类
  */
-public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements BaseView{
+public abstract class NetActivity<T extends BasePresenter> extends SupportActivity implements NetView{
     protected String TAG = getClass().getName();
     @Inject
     protected T mPresenter;
@@ -61,7 +59,31 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         this.finish();
     }
 
+    @Override
+    public boolean checkNetwork() {
+        boolean isNetworkAvailable= NetworkUtil.isNetworkAvailable(this);
+        if(!isNetworkAvailable){
+            ToastUtil.showNoticeToast(this,getString(R.string.no_net));
+        }
+        return isNetworkAvailable;
+    }
 
+
+
+    @Override
+    public void showLoading(int requestCode) {
+
+    }
+
+    @Override
+    public void cancelLoading(int requestCode) {
+
+    }
+
+    @Override
+    public void showError(String msg, int requestCode) {
+
+    }
 
     private void init() {
         mUnBinder = ButterKnife.bind(this);

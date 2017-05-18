@@ -1,14 +1,21 @@
 package com.yunqi.cardreader.ui.activity;
 
 
+import android.content.Intent;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
+import com.tencent.bugly.beta.Beta;
 import com.yunqi.cardreader.R;
+import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.BaseActivity;
+import com.yunqi.cardreader.constants.Constants;
 import com.yunqi.cardreader.presenter.AboutPresenter;
 import com.yunqi.cardreader.presenter.contract.AboutContract;
+import com.yunqi.cardreader.util.PrefrenceUtils;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 public class AboutActivity extends BaseActivity<AboutPresenter> implements AboutContract.View {
@@ -16,6 +23,8 @@ public class AboutActivity extends BaseActivity<AboutPresenter> implements About
 
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
+    @BindView(R.id.txt_version)
+    TextView txtVersion;
 
     @Override
     protected void initInject() {
@@ -30,16 +39,27 @@ public class AboutActivity extends BaseActivity<AboutPresenter> implements About
     @Override
     protected void initEventAndData() {
         setToolBar(toolBar, getString(R.string.module_about));
-        initData();
-        setWidgetListener();
+        mPresenter.getVersion(this);
+    }
+    @OnClick(R.id.btn_logout)
+    public void onLogout() {
+        App.getInstance().killAllActivities();
+        PrefrenceUtils.getInstance(this).saveLoginStatus(Constants.STATUS_UNLOGIN);
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 注意本行的FLAG设置
+        startActivity(intent);
+        finish();
     }
 
-    private void initData() {
+    @OnClick(R.id.rlayout_updata)
+    public void onUpdate() {
+        Beta.checkUpgrade();
     }
 
-    private void setWidgetListener(){
 
+    @Override
+    public void showVersion(String versionName) {
+        txtVersion.setText("V"+versionName);
     }
-
 }
 

@@ -3,9 +3,8 @@ package com.yunqi.cardreader.rx;
 
 import android.text.TextUtils;
 
-import com.yunqi.cardreader.base.BaseView;
 import com.yunqi.cardreader.base.NetView;
-import com.yunqi.cardreader.model.http.BaseHttpRsp;
+import com.yunqi.cardreader.model.response.BaseHttpRsp;
 
 /**
  * @author ghcui

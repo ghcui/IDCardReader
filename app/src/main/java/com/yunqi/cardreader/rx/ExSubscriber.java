@@ -36,6 +36,9 @@ public abstract class ExSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onStart() {
+        if (view.checkNetwork()) {
+            return;
+        }
         this.view.showLoading(requestCode);
     }
 
