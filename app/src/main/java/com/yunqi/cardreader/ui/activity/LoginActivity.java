@@ -12,7 +12,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 
 import com.yunqi.cardreader.R;
@@ -101,18 +100,18 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
                     }
                 });
         RxView.clicks(imgView)
-                .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
                         if(isViewPwd){
-                            editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         }
                         else {
-                            editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
+                            editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         }
                         isViewPwd=!isViewPwd;
-
+                        //设置光标位置
+                        editPassword.setSelection(editPassword.getText().length());
                     }
                 });
         RxView.clicks(layoutLoginBg)
@@ -145,8 +144,13 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
     }
 
     @OnClick(R.id.checkbox)
-    public void onBgClick() {
-        hideSoftInput();
+    public void onAutoLogin() {
+
+    }
+    @OnClick(R.id.txt_forgot_pwd)
+    public void onForgotPwd() {
+        Intent intent=new Intent(this,ChangePwdActivity.class);
+        startActivity(intent);
     }
 
     private void hideSoftInput() {

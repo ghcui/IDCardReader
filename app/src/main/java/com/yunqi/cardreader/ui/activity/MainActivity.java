@@ -37,10 +37,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @BindView(R.id.grid_module)
     GridView gridModule;
-    @BindView(R.id.btn_register)
-    Button btnRegister;
-    @BindView(R.id.btn_check_out)
-    Button btnCheckOut;
 
     private List<Module> moduleList = new ArrayList<>();
 
@@ -80,22 +76,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     private void setWigetListener() {
-        RxView.clicks(btnRegister)
-                .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-                        Intent intent=new Intent(MainActivity.this,RegisterActivity.class);
-                        startActivity(intent);
-                    }
-                });
-        RxView.clicks(btnCheckOut)
-                .throttleFirst(1, TimeUnit.SECONDS)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-                    }
-                });
+
     }
 
 
@@ -141,13 +122,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         this.moduleList = moduleList;
         ModuleAdapter adapter = new ModuleAdapter(this, moduleList);
         gridModule.setAdapter(adapter);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }
 

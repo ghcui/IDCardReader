@@ -2,6 +2,7 @@ package com.yunqi.cardreader.ui.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -33,6 +34,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.functions.Action1;
 
 /**
@@ -67,8 +70,14 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     ImageView imgCertificates;
     @BindView(R.id.img_personal)
     ImageView imgPersonal;
+    @BindView(R.id.img_del)
+    ImageView imgDel;
     @BindView(R.id.btn_confirm_upload)
     Button btnConfirmUpload;
+    @BindView(R.id.img_certificates_default)
+    ImageView imgCertificatesDefault;
+    @BindView(R.id.img_personal_default)
+    ImageView imgPersonalDefault;
     private BlueTool ble;
     private String selectImg;
     private ClientInfoAddRequest request;
@@ -87,30 +96,29 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
 
     @Override
     protected void initEventAndData() {
-        setToolBar(toolBar, getString(R.string.module_register), getString(R.string.action_submit), new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (request == null) {
-                    ToastUtil.showNoticeToast(RegisterActivity.this,getString(R.string.warming_no_info));
-                    return;
-                }
-                if (TextUtils.isEmpty(request.roomNo)) {
-                    ToastUtil.showNoticeToast(RegisterActivity.this,getString(R.string.warming_no_room));
-                    return;
-                }
-                if (TextUtils.isEmpty(request.bedNo)) {
-                    ToastUtil.showNoticeToast(RegisterActivity.this,getString(R.string.warming_no_bed));
-                    return;
-                }
-                if (TextUtils.isEmpty(request.time)) {
-                    ToastUtil.showNoticeToast(RegisterActivity.this,getString(R.string.warming_no_time));
-                    return;
-                }
-                mPresenter.submitInfo(request);
-            }
-        });
+        setToolBar(toolBar, getString(R.string.module_register));
         initData();
         setWidgetListener();
+    }
+
+    private void summitInfo() {
+        if (request == null) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_info));
+            return;
+        }
+        if (TextUtils.isEmpty(request.roomNo)) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room));
+            return;
+        }
+        if (TextUtils.isEmpty(request.bedNo)) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_bed));
+            return;
+        }
+        if (TextUtils.isEmpty(request.time)) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_time));
+            return;
+        }
+        mPresenter.submitInfo(request);
     }
 
     @Override
@@ -129,22 +137,29 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        mPresenter.readCarder(ble);
+                        summitInfo();
                     }
                 });
-        RxView.clicks(imgPersonal)
+        RxView.clicks(imgDel)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        open3rdCamera();
+                        imgPersonal.setVisibility(View.INVISIBLE);
+                        imgDel.setVisibility(View.GONE);
                     }
                 });
 
     }
 
+    @OnClick(R.id.rlayout_personal)
+    public void onPersonalClick() {
+        open3rdCamera();
+    }
+
     @Override
     public void showContent(Info info) {
+        resetData();
         if (!TextUtils.isEmpty(info.getName())) {
             txtName.setText(info.getName());
         }
@@ -168,11 +183,13 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         if (!TextUtils.isEmpty(info.getIdNo())) {
             txtCertificatesCode.setText(info.getIdNo());
         }
+        txtCertificatesType.setText(getText(R.string.txt_certificates_type));
         if (!TextUtils.isEmpty(info.getIdNo())) {
             txtAddress.setText(info.getAddress());
         }
         txtCheckTime.setText(TimeUtil.format(TimeUtil.getSysTime(), "yyyy-mm-dd hh:mm"));
         if (info.getBmp() != null) {
+            imgCertificates.setVisibility(View.VISIBLE);
             imgCertificates.setImageBitmap(info.getBmp());
         }
         request = new ClientInfoAddRequest();
@@ -239,6 +256,8 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             if (resultList != null && resultList.size() > 0) {
                 selectImg = resultList.get(0).getPath();
                 if (!TextUtils.isEmpty(selectImg)) {
+                    imgPersonal.setVisibility(View.VISIBLE);
+                    imgDel.setVisibility(View.VISIBLE);
                     Glide.with(mContext)
                             .load(selectImg)
                             .asBitmap().centerCrop()
@@ -259,25 +278,28 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
 
     @Override
     public void cancelLoading(int requestCode) {
-        resetData();
+
     }
 
     @Override
     public void showLoading(int requestCode) {
-        btnConfirmUpload.setClickable(false);
-        btnConfirmUpload.setText("正在读卡...");
     }
 
     private void resetData() {
         btnConfirmUpload.setClickable(true);
-        btnConfirmUpload.setText("开始读卡");
         txtName.setText("");
         txtSex.setText("");
         txtNation.setText("");
         txtBirthday.setText("");
         txtCertificatesCode.setText("");
+        txtCertificatesType.setText("");
         txtAddress.setText("");
-        imgCertificates.setImageResource(R.drawable.ic_launcher);
+        imgCertificates.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.img_readcard)
+    public void onReadcard() {
+        mPresenter.readCarder(ble);
     }
 
     @Override

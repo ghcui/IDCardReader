@@ -114,7 +114,6 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
     }
     private void setWidgetListener(){
         RxView.clicks(imgDelUname)
-                .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
@@ -122,7 +121,6 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
                     }
                 });
         RxView.clicks(imgView)
-                .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
@@ -133,11 +131,12 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
                             editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         }
                         isViewNewPwd=!isViewNewPwd;
+                        //设置光标位置
+                        editPassword.setSelection(editPassword.getText().length());
 
                     }
                 });
         RxView.clicks(imgViewOldPwd)
-                .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
@@ -148,11 +147,11 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
                             editOldPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         }
                         isViewOldPwd=!isViewOldPwd;
-
+                        //设置光标位置
+                        editOldPassword.setSelection(editOldPassword.getText().length());
                     }
                 });
         RxView.clicks(imgViewConfirmPdw)
-                .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
@@ -162,6 +161,8 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
                         else {
                             editConfirmPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         }
+                        //设置光标位置
+                        editConfirmPassword.setSelection(editConfirmPassword.getText().length());
                         isViewConfirmPwd=!isViewConfirmPwd;
 
                     }

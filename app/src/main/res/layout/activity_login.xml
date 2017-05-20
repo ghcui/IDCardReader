@@ -88,7 +88,7 @@
                 android:maxLines="1"
                 android:textSize="@dimen/text_size_xl"
                 android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/icon_account" />
+                android:layout_toRightOf="@+id/icon_account" />
         </RelativeLayout>
 
         <RelativeLayout

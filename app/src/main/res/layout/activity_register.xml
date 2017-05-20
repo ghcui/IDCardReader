@@ -8,13 +8,14 @@
 
     <include layout="@layout/view_toolbar" />
 
+
     <ScrollView
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:background="@drawable/common_corners_bg">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/common_corners_bg"
+        android:padding="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -220,6 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -245,6 +247,20 @@
                     android:text="@string/txt_certificates_type"
                     android:textColor="@color/txt_color2"
                     android:textSize="@dimen/text_size_l" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_readcard"
+                        android:layout_width="50dp"
+                        android:layout_height="22dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/icon_readcard" />
+                </RelativeLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -356,14 +372,30 @@
                         android:gravity="center"
                         android:text="@string/title_certificates_img"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/text_size_xxxl" />
+                        android:textSize="@dimen/text_size_xxl" />
 
-                    <ImageView
-                        android:id="@+id/img_certificates"
+                    <RelativeLayout
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:padding="1dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_launcher" />
+                        android:background="@drawable/photo_bg">
+
+                        <ImageView
+                            android:id="@+id/img_certificates_default"
+                            android:layout_width="35dp"
+                            android:layout_height="28dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/photo_default" />
+
+                        <ImageView
+                            android:id="@+id/img_certificates"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -378,28 +410,53 @@
                         android:gravity="center"
                         android:text="@string/title_personal_img"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/text_size_xxxl" />
+                        android:textSize="@dimen/text_size_xxl" />
 
-                    <ImageView
-                        android:id="@+id/img_personal"
+                    <RelativeLayout
+                        android:id="@+id/rlayout_personal"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:padding="1dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_launcher" />
+                        android:background="@drawable/photo_bg">
+
+                        <ImageView
+                            android:id="@+id/img_personal_default"
+                            android:layout_width="35dp"
+                            android:layout_height="28dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/photo_default" />
+                        <ImageView
+                            android:id="@+id/img_personal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible"
+                            />
+                        <ImageView
+                            android:id="@+id/img_del"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_alignRight="@+id/img_personal"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/delete_photo"
+                            android:visibility="gone"
+                            />
+                    </RelativeLayout>
+
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
     <Button
         android:id="@+id/btn_confirm_upload"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginLeft="8dp"
-        android:text="@string/txt_confirm_upload"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/common_btn_selector"
+        android:text="@string/txt_confirm_upload"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/text_size_xxxxl"
-        android:layout_marginRight="8dp"/>
-
+        android:textSize="@dimen/text_size_xxxxl" />
 </LinearLayout>

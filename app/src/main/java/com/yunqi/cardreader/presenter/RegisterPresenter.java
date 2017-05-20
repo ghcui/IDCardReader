@@ -69,8 +69,8 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
                                 if (TextUtils.isEmpty(info.getIdNo())) {
                                     subscriber.onError(new Throwable("info's content is null"));
                                 } else {
-                                    subscriber.onCompleted();
                                     subscriber.onNext(info);
+                                    subscriber.onCompleted();
                                 }
                             }
                         }

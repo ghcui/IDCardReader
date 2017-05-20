@@ -18,14 +18,28 @@
         <id>3</id>
         <name>待发数据</name>
         <className>com.yunqi.cardreader.ui.activity.WillSendctivity</className>
-        <icon>home_sended</icon>
+        <icon>home_will_send</icon>
     </Module>
 
     <Module>
         <id>4</id>
+        <name>入住登记</name>
+        <className>com.yunqi.cardreader.ui.activity.RegisterActivity</className>
+        <icon>home_register</icon>
+    </Module>
+
+    <Module>
+        <id>5</id>
+        <name>退房</name>
+        <className>com.yunqi.cardreader.ui.activity.CheckOutActivity</className>
+        <icon>home_check_out</icon>
+    </Module>
+
+    <Module>
+        <id>6</id>
         <name>关于</name>
         <className>com.yunqi.cardreader.ui.activity.AboutActivity</className>
-        <icon>home_will_send</icon>
+        <icon>home_about</icon>
     </Module>
 
 </Modules>

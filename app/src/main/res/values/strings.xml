@@ -17,6 +17,7 @@
     <!-- 所有Module名称 -->
     <string name="module_user_info">用户信息</string>
     <string name="module_change_pwd">修改密码</string>
+    <string name="module_sended">已发数据</string>
     <string name="module_will_send">待发数据</string>
     <string name="module_about">关于</string>
     <string name="module_register">入住登记</string>
