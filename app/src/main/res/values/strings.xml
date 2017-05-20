@@ -21,11 +21,23 @@
     <string name="module_about">关于</string>
     <string name="module_register">入住登记</string>
     <string name="module_check_out">退房</string>
-    <!--login模块-->
+    <!--login和修改密码模块-->
     <string name="tip_appname">日租房流动人口信息采集APP</string>
-    <string name="hint_username">用户名</string>
-    <string name="hint_password">密码</string>
+    <string name="hint_username">账号</string>
+    <string name="hint_pwd">密码</string>
+    <string name="hint_old_password">旧密码</string>
+    <string name="hint_new_password">新密码</string>
+    <string name="hint_confirm_password">确认新密码</string>
     <string name="txt_login">登录</string>
+    <string name="tip_auto_login">自动登录</string>
+    <string name="txt_forget_pdw">忘记密码</string>
+    <string name="txt_confirm_change">确认修改</string>
+    <string name="warming_empty_account">请输入账号</string>
+    <string name="warming_empty_old_pwd">请输入旧密码</string>
+    <string name="warming_empty_new_pwd">请输入新密码</string>
+    <string name="warming_old_same_with_new">新密码不能与旧密码相同</string>
+    <string name="warming_twice_no_same">两次密码输入不一致</string>
+    <string name="password_successfully_modified">修改密码成功！</string>
     <!--入住登记模块-->
     <string name="action_submit">发送</string>
     <string name="hint_select">请选择</string>

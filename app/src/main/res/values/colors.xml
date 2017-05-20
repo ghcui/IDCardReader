@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008bd0</color>
-    <color name="colorPrimaryDark">#008bd0</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#0083c4</color>
+    <color name="colorPrimaryDark">#0083c4</color>
+    <color name="colorAccent">#0083c4</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="red">#ff0000</color>
@@ -10,7 +10,7 @@
     <color name="blue">#0000ff</color>
     <color name="yellow">#ff9900</color>
     <color name="gray">#A9A9A9</color>
-    <color name="border_line">#aa797979</color>
+    <color name="border_line">#77797979</color>
 
     <color name="main_bg_color">#b7def7</color>
 
@@ -19,6 +19,7 @@
 
     <color name="txt_color1">#333333</color>
     <color name="txt_color2">#898989</color>
+    <color name="txt_color3">#0079d0</color>
     <drawable name="white">#ffffff</drawable>
     <drawable name="gray">#A9A9A9</drawable>
 </resources>

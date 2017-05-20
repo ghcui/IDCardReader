@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 
 import com.yunqi.cardreader.constants.Constants;
 import com.yunqi.cardreader.model.bean.User;
+import com.yunqi.cardreader.model.request.ChangePwdRequest;
 import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.model.response.*;
 import com.yunqi.cardreader.util.NetworkUtil;
@@ -55,7 +56,7 @@ public class RetrofitHelper {
                         .addHeader("Content-Type", "application/json")
                         .build();
                 ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-                boolean isNetworkConnect = NetworkUtil.isNetworkAvailable(connectivityManager);
+                boolean isNetworkConnect = NetworkUtil.isNetworkAvailable(mContext);
                 if (!isNetworkConnect) {
                     request = request.newBuilder()
                             .cacheControl(CacheControl.FORCE_CACHE)
@@ -86,8 +87,7 @@ public class RetrofitHelper {
                 Request request = chain.request().newBuilder()
                         .addHeader("Content-Type", "application/json")
                         .build();
-                ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-                boolean isNetworkConnect = NetworkUtil.isNetworkAvailable(connectivityManager);
+                boolean isNetworkConnect = NetworkUtil.isNetworkAvailable(mContext);
                 if (!isNetworkConnect) {
                     request = request.newBuilder()
                             .cacheControl(CacheControl.FORCE_CACHE)
@@ -112,7 +112,8 @@ public class RetrofitHelper {
                 return response;
             }
         };
-        builder.addNetworkInterceptor(cacheInterceptor);
+        builder.addNetworkInterceptor(networkInterceptor);
+        builder.addInterceptor(cacheInterceptor);
         builder.cache(cache);
         builder.connectTimeout(10, TimeUnit.SECONDS);
         builder.readTimeout(20, TimeUnit.SECONDS);
@@ -139,5 +140,8 @@ public class RetrofitHelper {
     }
     public Observable<BaseHttpRsp> submitInfo(ClientInfoAddRequest request) {
         return apiService.submitInfo(request);
+    }
+    public Observable<BaseHttpRsp> changePwd(ChangePwdRequest request) {
+        return apiService.changePwd(request);
     }
 }

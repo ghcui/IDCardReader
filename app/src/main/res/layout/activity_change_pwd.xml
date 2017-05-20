@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_change_pwd_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/view_toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/rlayout_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llayout_change_pwd"
+        android:layout_below="@+id/tool_bar">
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="11dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo_change_pwd" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llayout_change_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_change_pwd"
+        android:layout_margin="10dp"
+        android:background="@drawable/common_bg"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rlayout_version"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/icon_account"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/account" />
+
+            <ImageView
+                android:id="@+id/img_del_uname"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/image_delete"
+                android:visibility="invisible" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/border_line" />
+
+            <EditText
+                android:id="@+id/edit_account"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/img_del_uname"
+                android:layout_toRightOf="@+id/icon_account"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_username"
+                android:imeOptions="actionNext"
+                android:inputType=""
+                android:maxLines="1"
+                android:textSize="@dimen/text_size_xl" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_old_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/icon_old_password"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/password" />
+
+            <ImageView
+                android:id="@+id/img_view_old_pwd"
+                android:layout_width="26dp"
+                android:layout_height="22dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/view_pwd" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/border_line" />
+
+            <EditText
+                android:id="@+id/edit_old_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/img_view_old_pwd"
+                android:layout_toRightOf="@+id/icon_old_password"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_old_password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textSize="@dimen/text_size_xl" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/icon_password"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/password" />
+
+            <ImageView
+                android:id="@+id/img_view"
+                android:layout_width="26dp"
+                android:layout_height="22dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/view_pwd" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/border_line" />
+
+            <EditText
+                android:id="@+id/edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/img_view"
+                android:layout_toRightOf="@+id/icon_password"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_new_password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textSize="@dimen/text_size_xl" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/icon_confirm_password"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/confirm_password" />
+
+            <ImageView
+                android:id="@+id/img_view_confirm_pdw"
+                android:layout_width="26dp"
+                android:layout_height="22dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/view_pwd" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/border_line" />
+
+            <EditText
+                android:id="@+id/edit_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@+id/icon_confirm_password"
+                android:gravity="center_vertical"
+                android:layout_toLeftOf="@+id/img_view_confirm_pdw"
+                android:hint="@string/hint_confirm_password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textSize="@dimen/text_size_xl" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_change_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/common_btn_selector"
+        android:text="@string/txt_confirm_change"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_xxl" />
+</RelativeLayout>
+
+

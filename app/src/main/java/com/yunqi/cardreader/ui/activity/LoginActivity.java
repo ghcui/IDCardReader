@@ -3,6 +3,7 @@ package com.yunqi.cardreader.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.yunqi.cardreader.R;
@@ -26,6 +28,7 @@ import com.yunqi.cardreader.util.ToastUtil;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import rx.functions.Action1;
 
 public class LoginActivity extends NetActivity<LoginPresenter> implements LoginContract.View {
@@ -37,13 +40,15 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
     Button btnLogin;
     @BindView(R.id.img_del_uname)
     ImageView imgDelUname;
-    @BindView(R.id.img_del_pwd)
-    ImageView imgDelPwd;
+    @BindView(R.id.img_view)
+    ImageView imgView;
     @BindView(R.id.layout_login_bg)
     ViewGroup layoutLoginBg;
 
+
     private String loginname;
     private String password;
+    private boolean isViewPwd=false;
 
 
 
@@ -63,7 +68,6 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
         password = PrefrenceUtils.getInstance(this).getPassword();
         if(!TextUtils.isEmpty(loginname)&&!TextUtils.isEmpty(password)){
             imgDelUname.setVisibility(View.VISIBLE);
-            imgDelPwd.setVisibility(View.VISIBLE);
             editAccount.setText(loginname);
             editAccount.setSelection(loginname.length());
             editPassword.setText(password);
@@ -93,14 +97,22 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
                     @Override
                     public void call(Void aVoid) {
                         editAccount.setText("");
+                        editPassword.setText("");
                     }
                 });
-        RxView.clicks(imgDelPwd)
+        RxView.clicks(imgView)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        editPassword.setText("");
+                        if(isViewPwd){
+                            editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        }
+                        else {
+                            editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
+                        }
+                        isViewPwd=!isViewPwd;
+
                     }
                 });
         RxView.clicks(layoutLoginBg)
@@ -130,24 +142,11 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
                 }
             }
         });
-        editPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+    }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().equals("")) {
-                    imgDelPwd.setVisibility(View.INVISIBLE);
-                } else {
-                    imgDelPwd.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+    @OnClick(R.id.checkbox)
+    public void onBgClick() {
+        hideSoftInput();
     }
 
     private void hideSoftInput() {

@@ -5,7 +5,6 @@ import com.idcard.hs.Lua.Info;
 import com.yunqi.cardreader.base.BasePresenter;
 import com.yunqi.cardreader.base.BaseView;
 import com.yunqi.cardreader.base.NetView;
-import com.yunqi.cardreader.model.bean.CLientInfo;
 import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 
 /**
