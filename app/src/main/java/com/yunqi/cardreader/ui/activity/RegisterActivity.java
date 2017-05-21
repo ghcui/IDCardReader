@@ -24,8 +24,9 @@ import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.presenter.RegisterPresenter;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
 import com.yunqi.cardreader.util.FileUtil;
-import com.yunqi.cardreader.util.TimeUtil;
 import com.yunqi.cardreader.util.ToastUtil;
+
+import org.feezu.liuli.timeselector.TimeSelector;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -34,7 +35,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.functions.Action1;
 
@@ -187,7 +187,6 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         if (!TextUtils.isEmpty(info.getIdNo())) {
             txtAddress.setText(info.getAddress());
         }
-        txtCheckTime.setText(TimeUtil.format(TimeUtil.getSysTime(), "yyyy-mm-dd hh:mm"));
         if (info.getBmp() != null) {
             imgCertificates.setVisibility(View.VISIBLE);
             imgCertificates.setImageBitmap(info.getBmp());
@@ -268,6 +267,19 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             }
         }
     };
+
+    @OnClick(R.id.llayout_check_time)
+    public void onSelectCheckTime() {
+        TimeSelector timeSelector = new TimeSelector(this, new TimeSelector.ResultHandler() {
+            @Override
+            public void handle(String time) {
+                RegisterActivity.this.time=time;
+                txtCheckTime.setText(time);
+            }
+        }, "2015-11-22 17:34", "2017-12-1 15:20");
+//        timeSelector.disScrollUnit(TimeSelector.SCROLLTYPE.HOUR, TimeSelector.SCROLLTYPE.MINUTE);
+        timeSelector.show();
+    }
 
     @Override
     public void showError(String msg, int requestCode) {

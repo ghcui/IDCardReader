@@ -22,6 +22,7 @@ public class Constants {
     public static final String LOGIN_NAME = "LoginName";
     public static final String PASSWORD = "Password";
     public static final String LOGIN_STATUS = "Login_Status";
+    public static final String AUTO_LOGO = "Auto_Login";
 
     public static final int STATUS_UNLOGIN = 0;
 

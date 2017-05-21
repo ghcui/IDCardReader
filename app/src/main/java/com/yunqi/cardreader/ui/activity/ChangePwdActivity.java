@@ -125,9 +125,11 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
                     @Override
                     public void call(Void aVoid) {
                         if(isViewNewPwd){
+                            imgView.setImageResource(R.drawable.unview_password);
                             editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         }
                         else {
+                            imgView.setImageResource(R.drawable.view_pwd);
                             editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         }
                         isViewNewPwd=!isViewNewPwd;
@@ -141,9 +143,11 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
                     @Override
                     public void call(Void aVoid) {
                         if(isViewOldPwd){
+                            imgViewOldPwd.setImageResource(R.drawable.unview_password);
                             editOldPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         }
                         else {
+                            imgViewOldPwd.setImageResource(R.drawable.view_pwd);
                             editOldPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         }
                         isViewOldPwd=!isViewOldPwd;
@@ -156,9 +160,11 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
                     @Override
                     public void call(Void aVoid) {
                         if(isViewConfirmPwd){
+                            imgViewConfirmPdw.setImageResource(R.drawable.unview_password);
                             editConfirmPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         }
                         else {
+                            imgViewConfirmPdw.setImageResource(R.drawable.view_pwd);
                             editConfirmPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         }
                         //设置光标位置

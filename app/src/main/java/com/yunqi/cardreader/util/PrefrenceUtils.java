@@ -51,8 +51,15 @@ public class PrefrenceUtils {
         mSharedPreferences.edit().putInt(Constants.LOGIN_STATUS, status).apply();
         mSharedPreferences.edit().commit();
     }
-    public int getLoginStatus() {
-        return mSharedPreferences.getInt(Constants.LOGIN_STATUS, Constants.STATUS_UNLOGIN);
+
+
+    public boolean isAutoLogin() {
+        return mSharedPreferences.getBoolean(Constants.AUTO_LOGO, false);
+    }
+
+    public void setAutoLogin(boolean isAutoLogin) {
+         mSharedPreferences.edit().putBoolean(Constants.AUTO_LOGO, isAutoLogin).apply();;
+        mSharedPreferences.edit().commit();
     }
 
 

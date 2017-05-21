@@ -4,11 +4,13 @@ import android.app.Activity;
 
 import com.yunqi.cardreader.ui.activity.AboutActivity;
 import com.yunqi.cardreader.ui.activity.ChangePwdActivity;
+import com.yunqi.cardreader.ui.activity.CheckOutActivity;
 import com.yunqi.cardreader.ui.activity.LoginActivity;
 import com.yunqi.cardreader.di.ActivityScope;
 import com.yunqi.cardreader.di.module.ActivityModule;
 import com.yunqi.cardreader.ui.activity.MainActivity;
 import com.yunqi.cardreader.ui.activity.RegisterActivity;
+import com.yunqi.cardreader.ui.activity.SplashActivity;
 
 
 import dagger.Component;
@@ -22,6 +24,7 @@ import dagger.Component;
 public interface ActivityComponent {
 
     Activity getActivity();
+    void inject(SplashActivity activity);
 
     void inject(MainActivity activity);
 
@@ -32,4 +35,6 @@ public interface ActivityComponent {
     void inject(AboutActivity activity);
 
     void inject(ChangePwdActivity activity);
+
+    void inject(CheckOutActivity activity);
 }

@@ -41,6 +41,8 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
     ImageView imgDelUname;
     @BindView(R.id.img_view)
     ImageView imgView;
+    @BindView(R.id.checkbox)
+    ImageView imgAuto;
     @BindView(R.id.layout_login_bg)
     ViewGroup layoutLoginBg;
 
@@ -72,6 +74,13 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
             editPassword.setText(password);
             editPassword.setSelection(password.length());
         }
+        if(PrefrenceUtils.getInstance(this).isAutoLogin()){
+            imgAuto.setImageResource(R.drawable.check_selected);
+        }
+        else{
+            imgAuto.setImageResource(R.drawable.check_unselect);
+        }
+
         setWidgetListener();
     }
 
@@ -104,9 +113,11 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
                     @Override
                     public void call(Void aVoid) {
                         if(isViewPwd){
+                            imgView.setImageResource(R.drawable.unview_password);
                             editPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         }
                         else {
+                            imgView.setImageResource(R.drawable.view_pwd);
                             editPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                         }
                         isViewPwd=!isViewPwd;
@@ -145,7 +156,14 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
 
     @OnClick(R.id.checkbox)
     public void onAutoLogin() {
-
+        boolean isAutoLogin=PrefrenceUtils.getInstance(this).isAutoLogin();
+        if(isAutoLogin){
+            imgAuto.setImageResource(R.drawable.check_unselect);
+        }
+        else{
+            imgAuto.setImageResource(R.drawable.check_selected);
+        }
+        PrefrenceUtils.getInstance(this).setAutoLogin(!isAutoLogin);
     }
     @OnClick(R.id.txt_forgot_pwd)
     public void onForgotPwd() {

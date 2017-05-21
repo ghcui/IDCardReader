@@ -39,7 +39,7 @@
     <string name="warming_old_same_with_new">新密码不能与旧密码相同</string>
     <string name="warming_twice_no_same">两次密码输入不一致</string>
     <string name="password_successfully_modified">修改密码成功！</string>
-    <!--入住登记模块-->
+    <!--入住登记和退房模块-->
     <string name="action_submit">发送</string>
     <string name="hint_select">请选择</string>
     <string name="title_room_number">客房号：</string>
@@ -53,9 +53,11 @@
     <string name="title_certificates_code">证件号：</string>
     <string name="title_address">住址：</string>
     <string name="title_check_time">入住时间：</string>
+    <string name="title_check_out_time">退房时间：</string>
     <string name="title_certificates_img">证件照片</string>
     <string name="title_personal_img">人员照片</string>
     <string name="txt_confirm_upload">确认上传</string>
+    <string name="txt_check_out">确认退房</string>
     <string name="warming_no_info">没有读取到用户信息</string>
     <string name="warming_no_room">没有选择客房</string>
     <string name="warming_no_bed">没有选择床位</string>

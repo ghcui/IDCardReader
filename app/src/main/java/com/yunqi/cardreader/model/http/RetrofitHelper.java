@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import com.yunqi.cardreader.constants.Constants;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
+import com.yunqi.cardreader.model.request.CheckOutRequest;
 import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.model.response.*;
 import com.yunqi.cardreader.util.NetworkUtil;
@@ -143,5 +144,8 @@ public class RetrofitHelper {
     }
     public Observable<BaseHttpRsp> changePwd(ChangePwdRequest request) {
         return apiService.changePwd(request);
+    }
+    public Observable<BaseHttpRsp> checkOut(CheckOutRequest request) {
+        return apiService.checkOut(request);
     }
 }

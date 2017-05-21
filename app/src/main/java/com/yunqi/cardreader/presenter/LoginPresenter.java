@@ -41,7 +41,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                     @Override
                     protected void onSuccess(User user) {
                         App.getInstance().saveUserInfo(user);
-                        greenDaoHelper.addUser(user);
+//                        greenDaoHelper.addUser(user);
                         mView.jump2Main(user);
                     }
                 });

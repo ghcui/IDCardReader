@@ -1,6 +1,7 @@
 package com.yunqi.cardreader.model.http;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
+import com.yunqi.cardreader.model.request.CheckOutRequest;
 import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.model.response.BaseHttpRsp;
 import com.yunqi.cardreader.model.response.CommonHttpRsp;
@@ -42,5 +43,13 @@ public interface ApiService {
      */
     @POST("action/add")
     Observable<BaseHttpRsp> changePwd(@Body ChangePwdRequest request);
+    /**
+     * 退房
+     *
+     * @param request
+     * @return
+     */
+    @POST("action/add")
+    Observable<BaseHttpRsp> checkOut(@Body CheckOutRequest request);
 
 }

@@ -35,14 +35,32 @@
 
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/common_btn_selector2"
+        android:text="@string/txt_login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_xxl" />
+
     <LinearLayout
         android:id="@+id/llayout_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_login"
-        android:layout_margin="10dp"
         android:background="@drawable/common_bg"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/btn_login"
+        android:layout_alignEnd="@+id/btn_login">
 
         <RelativeLayout
             android:id="@+id/rlayout_version"
@@ -111,7 +129,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/view_pwd" />
+                android:src="@drawable/unview_password" />
 
             <View
                 android:id="@+id/view"
@@ -143,11 +161,11 @@
 
             <ImageView
                 android:id="@+id/checkbox"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
-                android:src="@drawable/password" />
+                android:src="@drawable/check_unselect" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -172,20 +190,6 @@
 
         </RelativeLayout>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/common_btn_selector2"
-        android:text="@string/txt_login"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_xxl" />
 </RelativeLayout>
 
 
