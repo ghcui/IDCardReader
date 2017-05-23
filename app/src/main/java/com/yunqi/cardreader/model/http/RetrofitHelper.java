@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 
 import com.yunqi.cardreader.constants.Constants;
+import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
 import com.yunqi.cardreader.model.request.CheckOutRequest;
@@ -13,6 +14,7 @@ import com.yunqi.cardreader.util.NetworkUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
@@ -147,5 +149,9 @@ public class RetrofitHelper {
     }
     public Observable<BaseHttpRsp> checkOut(CheckOutRequest request) {
         return apiService.checkOut(request);
+    }
+
+    public Observable<CommonHttpRsp<List<Room>>> getRoomList(String uid, String police_station_id, int page) {
+        return apiService.getRoomList(uid, police_station_id,page, PAGE_SIZE);
     }
 }

@@ -23,6 +23,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
@@ -35,6 +36,7 @@ public abstract class NetActivity<T extends BasePresenter> extends SupportActivi
     protected T mPresenter;
     protected Activity mContext;
     private Unbinder mUnBinder;
+    protected SweetAlertDialog loadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,12 +74,21 @@ public abstract class NetActivity<T extends BasePresenter> extends SupportActivi
 
     @Override
     public void showLoading(int requestCode) {
+       this.showLoading("加载中");
+    }
 
+    protected void showLoading(String msg){
+        loadingDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                .setTitleText(msg);
+        loadingDialog.show();
+        loadingDialog.setCancelable(false);
     }
 
     @Override
     public void cancelLoading(int requestCode) {
-
+        if(loadingDialog!=null){
+            loadingDialog.dismiss();
+        }
     }
 
     @Override

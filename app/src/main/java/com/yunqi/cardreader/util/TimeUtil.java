@@ -405,5 +405,20 @@ public final class TimeUtil {
         return formatTime(afterformat, time);
     }
 
+    public static String getCurrentTime(String format) {
+        Date date=new Date();
+        return format(date, format);
+    }
+
+    public static String getNextYear(String format){
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, 1);
+        Date y = c.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
+        String time = sdf.format(y);
+        return time;
+    }
+
 
 }

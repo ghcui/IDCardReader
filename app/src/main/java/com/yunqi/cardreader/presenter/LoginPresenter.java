@@ -4,7 +4,6 @@ package com.yunqi.cardreader.presenter;
 import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.RxPresenter;
 import com.yunqi.cardreader.model.bean.User;
-import com.yunqi.cardreader.model.db.GreenDaoHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
 import com.yunqi.cardreader.model.response.CommonHttpRsp;
 import com.yunqi.cardreader.presenter.contract.LoginContract;
@@ -24,12 +23,10 @@ import rx.Subscription;
 public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract.Presenter {
 
     private RetrofitHelper mRetrofitHelper;
-    private GreenDaoHelper greenDaoHelper;
 
     @Inject
-    public LoginPresenter(RetrofitHelper retrofitHelper, GreenDaoHelper greenDaoHelper) {
+    public LoginPresenter(RetrofitHelper retrofitHelper) {
         this.mRetrofitHelper = retrofitHelper;
-        this.greenDaoHelper = greenDaoHelper;
     }
 
     @Override

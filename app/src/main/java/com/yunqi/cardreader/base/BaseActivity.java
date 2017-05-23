@@ -17,9 +17,7 @@ import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.di.component.ActivityComponent;
 import com.yunqi.cardreader.di.component.DaggerActivityComponent;
 import com.yunqi.cardreader.di.module.ActivityModule;
-import com.yunqi.cardreader.util.ToastUtil;
 
-import java.io.IOException;
 
 import javax.inject.Inject;
 

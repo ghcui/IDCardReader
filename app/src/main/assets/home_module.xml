@@ -2,8 +2,8 @@
 <Modules>
     <Module>
         <id>1</id>
-        <name>用户信息</name>
-        <className>com.yunqi.cardreader.ui.activity.UserInfoActivity</className>
+        <name>房间列表</name>
+        <className>com.yunqi.cardreader.ui.activity.RoomListActivity</className>
         <icon>home_user_info</icon>
     </Module>
 
@@ -17,7 +17,7 @@
     <Module>
         <id>3</id>
         <name>待发数据</name>
-        <className>com.yunqi.cardreader.ui.activity.WillSendctivity</className>
+        <className>com.yunqi.cardreader.ui.activity.WillSendActivity</className>
         <icon>home_will_send</icon>
     </Module>
 

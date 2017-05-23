@@ -10,7 +10,9 @@ import com.yunqi.cardreader.di.ActivityScope;
 import com.yunqi.cardreader.di.module.ActivityModule;
 import com.yunqi.cardreader.ui.activity.MainActivity;
 import com.yunqi.cardreader.ui.activity.RegisterActivity;
+import com.yunqi.cardreader.ui.activity.RoomListActivity;
 import com.yunqi.cardreader.ui.activity.SplashActivity;
+import com.yunqi.cardreader.ui.activity.WillSendActivity;
 
 
 import dagger.Component;
@@ -37,4 +39,8 @@ public interface ActivityComponent {
     void inject(ChangePwdActivity activity);
 
     void inject(CheckOutActivity activity);
+
+    void inject(WillSendActivity activity);
+
+    void inject(RoomListActivity activity);
 }

@@ -8,7 +8,6 @@ import com.idcard.hs.Lua.BlueTool;
 import com.idcard.hs.Lua.BlueToolListenr;
 import com.idcard.hs.Lua.Info;
 import com.yunqi.cardreader.base.RxPresenter;
-import com.yunqi.cardreader.model.db.GreenDaoHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
 import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.model.response.BaseHttpRsp;
@@ -32,17 +31,15 @@ import rx.schedulers.Schedulers;
 public class RegisterPresenter extends RxPresenter<RegisterContract.View> implements RegisterContract.Presenter {
 
     private RetrofitHelper mRetrofitHelper;
-    private GreenDaoHelper greenDaoHelper;
     @Inject
-    public RegisterPresenter(RetrofitHelper retrofitHelper, GreenDaoHelper greenDaoHelper) {
+    public RegisterPresenter(RetrofitHelper retrofitHelper) {
         this.mRetrofitHelper = retrofitHelper;
-        this.greenDaoHelper = greenDaoHelper;
     }
 
 
     @Override
     public void readCarder(final BlueTool ble) {
-
+        mView.showLoading(RegisterContract.REQUST_CODE_READCARD);
         Observable.create(new Observable.OnSubscribe<Info>() {
             @Override
             public void call(final Subscriber<? super Info> subscriber) {
@@ -94,12 +91,13 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
+                        mView.cancelLoading(RegisterContract.REQUST_CODE_READCARD);
                         mView.showError("读卡失败，请再试一次!",RegisterContract.REQUST_CODE_READCARD);
                     }
 
                     @Override
                     public void onStart() {
-                        mView.showLoading(RegisterContract.REQUST_CODE_READCARD);
+
                     }
                 });
     }
@@ -116,6 +114,7 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
 
                     @Override
                     protected void onFailure(int errorCode, String msg) {
+                        mView.cancelLoading(RegisterContract.REQUST_CODE_READCARD);
                         mView.showError(msg,RegisterContract.REQUST_CODE_SUBMIT);
                     }
                 });

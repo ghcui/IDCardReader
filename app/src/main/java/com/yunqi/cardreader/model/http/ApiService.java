@@ -1,4 +1,5 @@
 package com.yunqi.cardreader.model.http;
+import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
 import com.yunqi.cardreader.model.request.CheckOutRequest;
@@ -7,10 +8,14 @@ import com.yunqi.cardreader.model.response.BaseHttpRsp;
 import com.yunqi.cardreader.model.response.CommonHttpRsp;
 
 
+import java.util.List;
+
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -20,12 +25,12 @@ import rx.Observable;
 public interface ApiService {
 
     //测试环境
-    String BASE_URL = "http://60.174.196.102:3080/api/";
+    String BASE_URL = "http://121.40.117.145:8080/index.php/api/";
     /**
      * 登录接口
      */
     @FormUrlEncoded
-    @POST("users/login")
+    @POST("app_user/login")
     Observable<CommonHttpRsp<User>> doLogin(@Field("account") String account, @Field("password") String password);
     /**
      * 提交用户信息
@@ -33,7 +38,7 @@ public interface ApiService {
      * @param request
      * @return
      */
-    @POST("action/add")
+    @POST("room_orders/addOrder")
     Observable<BaseHttpRsp> submitInfo(@Body ClientInfoAddRequest request);
     /**
      * 修改密码
@@ -51,5 +56,11 @@ public interface ApiService {
      */
     @POST("action/add")
     Observable<BaseHttpRsp> checkOut(@Body CheckOutRequest request);
+
+    /**
+     * 房间列表查询
+     */
+    @GET("room/query")
+    Observable<CommonHttpRsp<List<Room>>> getRoomList(@Query("uid") String uid,@Query("police_station_id") String police_station_id,@Query("page") int page, @Query("size") int size);
 
 }

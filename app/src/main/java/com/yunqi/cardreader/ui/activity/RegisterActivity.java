@@ -24,6 +24,7 @@ import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.presenter.RegisterPresenter;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
 import com.yunqi.cardreader.util.FileUtil;
+import com.yunqi.cardreader.util.TimeUtil;
 import com.yunqi.cardreader.util.ToastUtil;
 
 import org.feezu.liuli.timeselector.TimeSelector;
@@ -276,7 +277,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
                 RegisterActivity.this.time=time;
                 txtCheckTime.setText(time);
             }
-        }, "2015-11-22 17:34", "2017-12-1 15:20");
+        }, TimeUtil.getCurrentTime("yyyy-MM-dd HH:mm"), TimeUtil.getNextYear("yyyy-MM-dd HH:mm"));
 //        timeSelector.disScrollUnit(TimeSelector.SCROLLTYPE.HOUR, TimeSelector.SCROLLTYPE.MINUTE);
         timeSelector.show();
     }
@@ -287,16 +288,6 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         disconnect();
         resetData();
     }
-
-    @Override
-    public void cancelLoading(int requestCode) {
-
-    }
-
-    @Override
-    public void showLoading(int requestCode) {
-    }
-
     private void resetData() {
         btnConfirmUpload.setClickable(true);
         txtName.setText("");
@@ -321,6 +312,16 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             mPresenter.saveLocal(request);
         }
         return isNetworkAvailable;
+    }
+
+    @Override
+    public void showLoading(int requestCode) {
+        if(requestCode==RegisterContract.REQUST_CODE_READCARD){
+            super.showLoading("正在读卡...");
+        }
+        else if(requestCode==RegisterContract.REQUST_CODE_SUBMIT){
+            super.showLoading("正在提交...");
+        }
     }
 }
 

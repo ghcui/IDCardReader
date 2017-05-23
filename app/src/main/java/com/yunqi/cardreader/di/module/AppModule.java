@@ -2,7 +2,6 @@ package com.yunqi.cardreader.di.module;
 
 import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.di.ContextLife;
-import com.yunqi.cardreader.model.db.GreenDaoHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
 
 import javax.inject.Singleton;
@@ -33,10 +32,4 @@ public class AppModule {
     public RetrofitHelper provideRetrofitHelper(){
         return new RetrofitHelper(application);
     }
-    @Provides
-    @Singleton
-    public GreenDaoHelper provideGreenDaoHelper(){
-        return new GreenDaoHelper(application);
-    }
-
 }

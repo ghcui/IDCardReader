@@ -38,7 +38,12 @@ public class SplashActivity extends NetActivity<SplashPresenter> implements Spla
             mPresenter.copyAssets(this,"wltlib", Environment.getExternalStorageDirectory() + "/wltlib");
         }
         else{
-            checkAutoLogin();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    checkAutoLogin();
+                }
+            },1000);
         }
     }
     private void checkAutoLogin(){

@@ -84,6 +84,11 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
         setWidgetListener();
     }
 
+    @Override
+    public void showLoading(int requestCode) {
+        super.showLoading(requestCode);
+    }
+
     private void setWidgetListener(){
         RxView.clicks(btnLogin)
                 .throttleFirst(1, TimeUnit.SECONDS)

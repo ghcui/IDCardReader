@@ -2,19 +2,11 @@ package com.yunqi.cardreader.presenter;
 
 
 import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
 
-import com.idcard.hs.Lua.BlueToolListenr;
-import com.idcard.hs.Lua.Info;
-import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.RxPresenter;
 import com.yunqi.cardreader.model.bean.User;
-import com.yunqi.cardreader.model.db.GreenDaoHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
 import com.yunqi.cardreader.model.response.CommonHttpRsp;
-import com.yunqi.cardreader.presenter.contract.LoginContract;
-import com.yunqi.cardreader.presenter.contract.RegisterContract;
 import com.yunqi.cardreader.presenter.contract.SplashContract;
 import com.yunqi.cardreader.rx.ExSubscriber;
 import com.yunqi.cardreader.util.FileUtil;
