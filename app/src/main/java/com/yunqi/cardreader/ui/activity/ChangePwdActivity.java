@@ -111,6 +111,7 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
     @Override
     public void onSuccess() {
         ToastUtil.showHookToast(this,getString(R.string.password_successfully_modified));
+        finish();
     }
     private void setWidgetListener(){
         RxView.clicks(imgDelUname)
