@@ -93,7 +93,7 @@ public abstract class NetActivity<T extends BasePresenter> extends SupportActivi
 
     @Override
     public void showError(String msg, int requestCode) {
-
+        ToastUtil.showErrorToast(this,msg);
     }
 
     private void init() {

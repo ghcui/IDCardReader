@@ -86,7 +86,7 @@ public class LoginActivity extends NetActivity<LoginPresenter> implements LoginC
 
     @Override
     public void showLoading(int requestCode) {
-        super.showLoading(requestCode);
+        super.showLoading("正在登陆...");
     }
 
     private void setWidgetListener(){

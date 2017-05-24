@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import com.yunqi.cardreader.base.BaseView;
 import com.yunqi.cardreader.base.NetView;
+import com.yunqi.cardreader.presenter.contract.RegisterContract;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
@@ -36,7 +37,7 @@ public abstract class ExSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onStart() {
-        if (view.checkNetwork()) {
+        if (!view.checkNetwork()) {
             return;
         }
         this.view.showLoading(requestCode);

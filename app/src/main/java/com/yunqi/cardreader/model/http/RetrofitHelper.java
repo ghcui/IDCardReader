@@ -35,7 +35,7 @@ import rx.Observable;
 public class RetrofitHelper {
     private OkHttpClient okHttpClient = null;
     private ApiService apiService = null;
-    private static final int PAGE_SIZE = 20;
+    public static final int PAGE_SIZE = 20;
     private Context mContext;
 
     public RetrofitHelper(Context context) {

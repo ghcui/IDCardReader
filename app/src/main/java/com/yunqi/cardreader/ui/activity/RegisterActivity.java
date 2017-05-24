@@ -1,12 +1,16 @@
 package com.yunqi.cardreader.ui.activity;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,9 +24,11 @@ import com.luck.picture.lib.model.PictureConfig;
 import com.yalantis.ucrop.entity.LocalMedia;
 import com.yunqi.cardreader.R;
 import com.yunqi.cardreader.base.NetActivity;
+import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.presenter.RegisterPresenter;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
+import com.yunqi.cardreader.ui.view.SexSelectPopWindow;
 import com.yunqi.cardreader.util.FileUtil;
 import com.yunqi.cardreader.util.TimeUtil;
 import com.yunqi.cardreader.util.ToastUtil;
@@ -47,26 +53,30 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
 
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
-    @BindView(R.id.txt_room_number)
-    TextView txtRoomNumber;
-    @BindView(R.id.txt_bed_number)
-    TextView txtBedNumber;
-    @BindView(R.id.txt_name)
-    TextView txtName;
+    @BindView(R.id.txt_room_no)
+    TextView txtRoomNo;
+    @BindView(R.id.edit_room_number)
+    EditText editRoomNumber;
+    @BindView(R.id.edit_name)
+    EditText editName;
+    @BindView(R.id.edit_person_number)
+    EditText editPersonNumber;
     @BindView(R.id.txt_sex)
     TextView txtSex;
-    @BindView(R.id.txt_nation)
-    TextView txtNation;
-    @BindView(R.id.txt_birthday)
-    TextView txtBirthday;
-    @BindView(R.id.txt_certificates_type)
-    TextView txtCertificatesType;
-    @BindView(R.id.txt_certificates_code)
-    TextView txtCertificatesCode;
-    @BindView(R.id.txt_address)
-    TextView txtAddress;
+    @BindView(R.id.edit_nation)
+    EditText editNation;
+    @BindView(R.id.edit_birthday)
+    EditText editBirthday;
+    @BindView(R.id.edit_certificates_type)
+    EditText editCertificatesType;
+    @BindView(R.id.edit_certificates_code)
+    EditText editCertificatesCode;
+    @BindView(R.id.edit_address)
+    EditText editAddress;
     @BindView(R.id.txt_check_time)
     TextView txtCheckTime;
+    @BindView(R.id.edit_from)
+    EditText editFrom;
     @BindView(R.id.img_certificates)
     ImageView imgCertificates;
     @BindView(R.id.img_personal)
@@ -82,8 +92,12 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     private BlueTool ble;
     private String selectImg;
     private ClientInfoAddRequest request;
-
     private String time;
+    private String cardUrl;
+    private String personUrl;
+    private boolean isConnect=false;
+    private Bitmap bitmapCard;
+    private SexSelectPopWindow popWindow;
 
     @Override
     protected void initInject() {
@@ -97,28 +111,77 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
 
     @Override
     protected void initEventAndData() {
-        setToolBar(toolBar, getString(R.string.module_register));
         initData();
+        setToolBar(toolBar, getString(R.string.module_register), "连接设备", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isConnect){
+                    disconnect();
+                }
+                mPresenter.connectBle(ble);
+            }
+        });
         setWidgetListener();
     }
 
+
+
     private void summitInfo() {
-        if (request == null) {
-            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_info));
+
+        if (TextUtils.isEmpty(request.room_code)) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room_code));
             return;
         }
-        if (TextUtils.isEmpty(request.roomNo)) {
-            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room));
+        try{
+            request.room_number=Integer.parseInt(editRoomNumber.getText().toString());
+        }
+        catch (NumberFormatException e){
+            e.printStackTrace();
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room_num));
             return;
         }
-        if (TextUtils.isEmpty(request.bedNo)) {
-            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_bed));
+        if (request.room_number<=0) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room_num));
             return;
         }
-        if (TextUtils.isEmpty(request.time)) {
-            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_time));
+        request.custom_name = editName.getText().toString();
+        if (TextUtils.isEmpty(request.custom_name)) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room_code));
             return;
         }
+        try{
+            request.retinue=Integer.parseInt(editPersonNumber.getText().toString());
+        }
+        catch (NumberFormatException e){
+            e.printStackTrace();
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_person_num));
+            return;
+        }
+        if (request.retinue<0) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_person_num));
+            return;
+        }
+        request.custom_sex =txtSex.getText().toString();
+        if (TextUtils.isEmpty(request.custom_sex)) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_custom_sex));
+            return;
+        }
+        request.custom_nation=editNation.getText().toString();
+        if (TextUtils.isEmpty(request.custom_nation)) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_custom_nation));
+            return;
+        }
+        request.custom_id_card=editCertificatesCode.getText().toString();
+        if (TextUtils.isEmpty(request.custom_id_card)) {
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_certificates_code));
+            return;
+        }
+        request.custom_birth_date=editBirthday.getText().toString();
+        request.custom_residence=editAddress.getText().toString();
+        request.user_from=editFrom.getText().toString();
+        request.sign_time=time;
+        request.card_photo_url=cardUrl;
+        request.user_photo_url=personUrl;
         mPresenter.submitInfo(request);
     }
 
@@ -127,8 +190,8 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         super.onDestroy();
         disconnect();
     }
-
     private void initData() {
+        request = new ClientInfoAddRequest();
         ble = new BlueTool(RegisterActivity.this, BluetoothAdapter.getDefaultAdapter());
     }
 
@@ -138,6 +201,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
+
                         summitInfo();
                     }
                 });
@@ -158,11 +222,18 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         open3rdCamera();
     }
 
+    @OnClick(R.id.txt_room_no)
+    public void onSelectRoom() {
+        Intent intent=new Intent(this,RoomListActivity.class);
+        intent.putExtra("from",1);
+        startActivityForResult(intent,1);
+    }
+
     @Override
     public void showContent(Info info) {
         resetData();
         if (!TextUtils.isEmpty(info.getName())) {
-            txtName.setText(info.getName());
+            editName.setText(info.getName());
         }
         if (!TextUtils.isEmpty(info.getSex())) {
             String sex = info.getIdNo().substring(16, 17);
@@ -176,44 +247,49 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             info.setSex(sex);
         }
         if (!TextUtils.isEmpty(info.getName())) {
-            txtNation.setText(info.getNationlity());
+            editNation.setText(info.getNationlity());
         }
         if (!TextUtils.isEmpty(info.getBirthdate())) {
-            txtBirthday.setText(info.getBirthdate());
+            editBirthday.setText(info.getBirthdate());
         }
         if (!TextUtils.isEmpty(info.getIdNo())) {
-            txtCertificatesCode.setText(info.getIdNo());
+            editCertificatesCode.setText(info.getIdNo());
         }
-        txtCertificatesType.setText(getText(R.string.txt_certificates_type));
+        editCertificatesType.setText(getText(R.string.txt_certificates_type));
         if (!TextUtils.isEmpty(info.getIdNo())) {
-            txtAddress.setText(info.getAddress());
+            editAddress.setText(info.getAddress());
         }
         if (info.getBmp() != null) {
             imgCertificates.setVisibility(View.VISIBLE);
             imgCertificates.setImageBitmap(info.getBmp());
         }
-        request = new ClientInfoAddRequest();
-        request.name = info.getName();
-        request.sex = info.getSex();
-        request.nationlity = info.getNationlity();
-        request.birthdate = info.getBirthdate();
-        request.idNo = info.getIdNo();
-        request.address = info.getAddress();
-        disconnect();
 
     }
 
     @Override
     public void onSuccess() {
+        ToastUtil.showHookToast(this,"登记成功!");
+        finish();
+    }
+
+    @Override
+    public void onConnect(boolean isConnect) {
+        this.isConnect=isConnect;
+        if(isConnect){
+            ToastUtil.showHookToast(this,"设备连接成功!");
+        }
+        else {
+            ToastUtil.showHookToast(this,"设备连接失败!");
+        }
 
     }
 
-    public String saveBitmap(Bitmap photo, String spath) {
+    public String saveBitmap(Bitmap photo) {
         String path = "";
         try {
-            path = FileUtil.getSDPath(this) + File.separator + "IDCardReader" + File.separator + "IDCR" + System.currentTimeMillis() + ".png";
+            path = FileUtil.getSDPath(this) + File.separator + "IDCardReader" + File.separator + "idCard"  + ".png";
             BufferedOutputStream bos = new BufferedOutputStream(
-                    new FileOutputStream(spath, false));
+                    new FileOutputStream(path, false));
             photo.compress(Bitmap.CompressFormat.JPEG, 100, bos);
             bos.flush();
             bos.close();
@@ -284,27 +360,58 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
 
     @Override
     public void showError(String msg, int requestCode) {
-        ToastUtil.showErrorToast(this, "读卡失败，请再试一次!");
-        disconnect();
-        resetData();
+         if(requestCode==RegisterContract.REQUST_CODE_CONNECT_BLE){
+             ToastUtil.showHookToast(this,"设备连接失败!");
+        }
+        else if(requestCode==RegisterContract.REQUST_CODE_READCARD){
+            ToastUtil.showErrorToast(this, "读卡失败，请再试一次!");
+            resetData();
+        }
+        else if(requestCode==RegisterContract.REQUST_CODE_SUBMIT){
+            ToastUtil.showErrorToast(this, "登记失败，请再试一次");
+        }
     }
     private void resetData() {
         btnConfirmUpload.setClickable(true);
-        txtName.setText("");
+        editName.setText("");
         txtSex.setText("");
-        txtNation.setText("");
-        txtBirthday.setText("");
-        txtCertificatesCode.setText("");
-        txtCertificatesType.setText("");
-        txtAddress.setText("");
+        editNation.setText("");
+        editBirthday.setText("");
+        editCertificatesCode.setText("");
+        editCertificatesType.setText("");
+        editAddress.setText("");
         imgCertificates.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.img_readcard)
     public void onReadcard() {
-        mPresenter.readCarder(ble);
+        if(isConnect){
+            mPresenter.readCarder(ble);
+        }
+        else{
+            ToastUtil.showNoticeToast(this,"设备未连接，请先连接设备！");
+        }
     }
 
+    @OnClick(R.id.txt_sex)
+    public void onSelectSex() {
+        popWindow= new SexSelectPopWindow(this, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popWindow.dismiss();
+                switch (view.getId()){
+                    case R.id.btn_sex_male:
+                        request.custom_sex="男";
+                        break;
+                    case R.id.btn_sex_female:
+                        request.custom_sex="女";
+                        break;
+                }
+                txtSex.setText(request.custom_sex);
+            }
+        });
+        popWindow.showAtLocation(findViewById(R.id.layout_register_bg), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+    }
     @Override
     public boolean checkNetwork() {
         boolean isNetworkAvailable = super.checkNetwork();
@@ -321,6 +428,18 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         }
         else if(requestCode==RegisterContract.REQUST_CODE_SUBMIT){
             super.showLoading("正在提交...");
+        }
+        else if(requestCode==RegisterContract.REQUST_CODE_CONNECT_BLE){
+            super.showLoading("正在连接...");
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1&&resultCode== Activity.RESULT_OK){
+            Room room= (Room)data.getSerializableExtra("Room");
+            request.room_code=room.room_code;
+            txtRoomNo.setText(room.room_code);
         }
     }
 }

@@ -12,7 +12,6 @@
         android:layout_width="0dp"
         android:text="A20170503"
         android:layout_weight="1"
-        android:gravity="center"
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/room_address"

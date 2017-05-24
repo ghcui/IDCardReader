@@ -4,6 +4,7 @@ package com.yunqi.cardreader.presenter;
 import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.RxPresenter;
 import com.yunqi.cardreader.model.bean.User;
+import com.yunqi.cardreader.model.db.RealmHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
 import com.yunqi.cardreader.model.response.CommonHttpRsp;
 import com.yunqi.cardreader.presenter.contract.LoginContract;
@@ -23,10 +24,12 @@ import rx.Subscription;
 public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract.Presenter {
 
     private RetrofitHelper mRetrofitHelper;
+    private RealmHelper mRealmHelper;
 
     @Inject
-    public LoginPresenter(RetrofitHelper retrofitHelper) {
-        this.mRetrofitHelper = retrofitHelper;
+    public LoginPresenter(RetrofitHelper retrofitHelper,RealmHelper realmHelper) {
+        mRetrofitHelper = retrofitHelper;
+        mRealmHelper=realmHelper;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                     @Override
                     protected void onSuccess(User user) {
                         App.getInstance().saveUserInfo(user);
-//                        greenDaoHelper.addUser(user);
+                        mRealmHelper.addUser(user);
                         mView.jump2Main(user);
                     }
                 });

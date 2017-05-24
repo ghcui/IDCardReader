@@ -10,6 +10,7 @@ import com.yunqi.cardreader.di.module.AppModule;
 import com.yunqi.cardreader.model.bean.User;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.Bugly;
+import com.yunqi.cardreader.model.db.RealmHelper;
 
 
 /**
@@ -61,6 +62,7 @@ public class App extends BaseApplication {
     public User getUserInfo() {
         //为防止系统回收导致对象为null,需从持久化数据库获取对象
         if (user == null) {
+            user = new RealmHelper(this).getLastUser();
         }
         return user;
     }

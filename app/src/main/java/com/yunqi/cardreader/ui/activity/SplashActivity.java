@@ -67,6 +67,11 @@ public class SplashActivity extends NetActivity<SplashPresenter> implements Spla
             }
         },1000);
     }
+
+    @Override
+    public void showLoading(int requestCode) {
+    }
+
     @Override
     public void jump2Main(User user) {
         Intent intent = new Intent();

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_login_bg"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_register_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
-    <include layout="@layout/view_toolbar" />
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/view_toolbar" />
 
     <ScrollView
+        android:layout_below="@+id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_above="@+id/btn_confirm_upload"
         android:layout_marginRight="10dp"
         android:background="@drawable/common_corners_bg"
         android:padding="12dp">
@@ -22,9 +26,41 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_room_no"
+                        android:textColor="@color/txt_color1"
+                        android:textSize="@dimen/text_size_xl"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="*"
+                        android:textColor="@color/red" />
+
+                    <TextView
+                        android:id="@+id/txt_room_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/hint_select"
+                        android:textColor="@color/txt_color2"
+                        android:textSize="@dimen/text_size_l" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -47,12 +83,49 @@
                         android:text="*"
                         android:textColor="@color/red" />
 
-                    <TextView
-                        android:id="@+id/txt_room_number"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edit_room_number"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="@string/hint_select"
+                        android:inputType="number"
+                        android:textColor="@color/txt_color2"
+                        android:textSize="@dimen/text_size_l" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_name"
+                        android:textColor="@color/txt_color1"
+                        android:textSize="@dimen/text_size_xl"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="*"
+                        android:textColor="@color/red" />
+
+                    <EditText
+                        android:id="@+id/edit_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:textColor="@color/txt_color2"
                         android:textSize="@dimen/text_size_l" />
                 </LinearLayout>
@@ -66,7 +139,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_bed_number"
+                        android:text="@string/title_person_number"
                         android:textColor="@color/txt_color1"
                         android:textSize="@dimen/text_size_xl"
                         android:textStyle="bold" />
@@ -78,51 +151,23 @@
                         android:text="*"
                         android:textColor="@color/red" />
 
-                    <TextView
-                        android:id="@+id/txt_bed_number"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edit_person_number"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="@string/hint_select"
+                        android:inputType="number"
                         android:textColor="@color/txt_color2"
                         android:textSize="@dimen/text_size_l" />
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_name"
-                    android:textColor="@color/txt_color1"
-                    android:textSize="@dimen/text_size_xl"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="*"
-                    android:textColor="@color/red" />
-
-                <TextView
-                    android:id="@+id/txt_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/txt_color2"
-                    android:textSize="@dimen/text_size_l" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -145,14 +190,14 @@
                         android:gravity="center"
                         android:text="*"
                         android:textColor="@color/red" />
-
                     <TextView
                         android:id="@+id/txt_sex"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:textColor="@color/txt_color2"
                         android:textSize="@dimen/text_size_l" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -176,9 +221,9 @@
                         android:text="*"
                         android:textColor="@color/red" />
 
-                    <TextView
-                        android:id="@+id/txt_nation"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edit_nation"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:textColor="@color/txt_color2"
@@ -189,7 +234,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -199,17 +243,9 @@
                     android:textColor="@color/txt_color1"
                     android:textSize="@dimen/text_size_xl"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="*"
-                    android:textColor="@color/red" />
-
-                <TextView
-                    android:id="@+id/txt_birthday"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/edit_birthday"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/txt_color2"
@@ -219,7 +255,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -231,29 +266,24 @@
                     android:textSize="@dimen/text_size_xl"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="*"
-                    android:textColor="@color/red" />
-
-                <TextView
-                    android:id="@+id/txt_certificates_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/txt_color2"
-                    android:textSize="@dimen/text_size_l" />
-
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
+                    android:layout_height="wrap_content"
+                   >
+                    <EditText
+                        android:id="@+id/edit_certificates_type"
+                        android:layout_toLeftOf="@+id/img_readcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/txt_color2"
+                        android:textSize="@dimen/text_size_l" />
                     <ImageView
                         android:id="@+id/img_readcard"
                         android:layout_width="50dp"
                         android:layout_height="22dp"
+                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/icon_readcard" />
@@ -264,7 +294,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -282,9 +311,9 @@
                     android:text="*"
                     android:textColor="@color/red" />
 
-                <TextView
-                    android:id="@+id/txt_certificates_code"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/edit_certificates_code"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/txt_color2"
@@ -294,7 +323,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -312,20 +340,40 @@
                     android:text="*"
                     android:textColor="@color/red" />
 
-                <TextView
-                    android:id="@+id/txt_address"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/edit_address"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/txt_color2"
                     android:textSize="@dimen/text_size_l" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llayout_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_from"
+                    android:textColor="@color/txt_color1"
+                    android:textSize="@dimen/text_size_xl"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/edit_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/txt_color2"
+                    android:textSize="@dimen/text_size_l" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/llayout_check_time"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -335,17 +383,9 @@
                     android:textColor="@color/txt_color1"
                     android:textSize="@dimen/text_size_xl"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="*"
-                    android:textColor="@color/red" />
-
                 <TextView
                     android:id="@+id/txt_check_time"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/txt_color2"
@@ -355,7 +395,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:paddingTop="10dp">
 
@@ -454,8 +493,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/common_btn_selector"
         android:text="@string/txt_confirm_upload"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_size_xxxxl" />
-</LinearLayout>
+</RelativeLayout>

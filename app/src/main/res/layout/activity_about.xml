@@ -110,6 +110,37 @@
                 android:layout_marginRight="5dp"
                 android:background="@color/border_line" />
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlayout_userinfo"
+            android:layout_width="match_parent"
+            android:clickable="true"
+            android:background="@drawable/common_bar_selector"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/img_userinfo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/icon_update" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/img_userinfo"
+                android:text="@string/txt_userinfo"
+                android:textSize="@dimen/text_size_xxl" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/border_line" />
+        </RelativeLayout>
     </LinearLayout>
 
     <Button

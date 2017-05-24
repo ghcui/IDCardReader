@@ -78,29 +78,29 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
             ToastUtil.showNoticeToast(this,getString(R.string.warming_empty_account));
             return;
         }
-        String oldPwd=editOldPassword.getText().toString();
-        if(TextUtils.isEmpty(oldPwd)){
-            ToastUtil.showNoticeToast(this,getString(R.string.warming_empty_old_pwd));
-            return;
-        }
+//        String oldPwd=editOldPassword.getText().toString();
+//        if(TextUtils.isEmpty(oldPwd)){
+//            ToastUtil.showNoticeToast(this,getString(R.string.warming_empty_old_pwd));
+//            return;
+//        }
         String newPdw=editPassword.getText().toString();
         if(TextUtils.isEmpty(newPdw)){
             ToastUtil.showNoticeToast(this,getString(R.string.warming_empty_new_pwd));
             return;
         }
         String confirmPwd=editConfirmPassword.getText().toString();
-        if(newPdw.equals(oldPwd)){
-            ToastUtil.showNoticeToast(this,getString(R.string.warming_old_same_with_new));
-            return;
-        }
+//        if(newPdw.equals(oldPwd)){
+//            ToastUtil.showNoticeToast(this,getString(R.string.warming_old_same_with_new));
+//            return;
+//        }
         if(!newPdw.equals(confirmPwd)){
             ToastUtil.showNoticeToast(this,getString(R.string.warming_twice_no_same));
             return;
         }
         ChangePwdRequest request=new ChangePwdRequest();
         request.account=account;
-        request.old_password=oldPwd;
-        request.new_password=newPdw;
+//        request.old_password=oldPwd;
+        request.password=newPdw;
         mPresenter.changePwd(request);
     }
     @OnClick(R.id.layout_change_pwd_bg)
@@ -192,6 +192,11 @@ public class ChangePwdActivity extends NetActivity<ChangePwdPresenter> implement
                 }
             }
         });
+    }
+
+    @Override
+    public void showError(String msg, int requestCode) {
+        super.showError(msg, requestCode);
     }
 
     private void hideSoftInput() {

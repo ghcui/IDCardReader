@@ -18,7 +18,18 @@ public class RoomAdapter extends BaseQuickAdapter<Room,BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, Room item) {
         TextView roomNo=helper.getView(R.id.room_no);
+        roomNo.setText(item.room_code);
         TextView roomAddress=helper.getView(R.id.room_address);
+        roomAddress.setText(item.room_address);
         TextView roomStatus=helper.getView(R.id.room_status);
+        if(item.sum>0){
+            roomStatus.setText("有人");
+            roomStatus.setBackgroundResource(R.drawable.room_status2);
+        }
+        else{
+            roomStatus.setText("空闲");
+            roomStatus.setBackgroundResource(R.drawable.room_status1);
+        }
+
     }
 }

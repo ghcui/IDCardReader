@@ -11,6 +11,7 @@ import com.yunqi.cardreader.di.module.ActivityModule;
 import com.yunqi.cardreader.ui.activity.MainActivity;
 import com.yunqi.cardreader.ui.activity.RegisterActivity;
 import com.yunqi.cardreader.ui.activity.RoomListActivity;
+import com.yunqi.cardreader.ui.activity.SendedActivity;
 import com.yunqi.cardreader.ui.activity.SplashActivity;
 import com.yunqi.cardreader.ui.activity.WillSendActivity;
 
@@ -43,4 +44,6 @@ public interface ActivityComponent {
     void inject(WillSendActivity activity);
 
     void inject(RoomListActivity activity);
+
+    void inject(SendedActivity activity);
 }

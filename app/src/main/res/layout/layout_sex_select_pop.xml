@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/sex_select_pop_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_sex_male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sex_select_pop_btn_bg"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="6dp"
+            android:text="男"
+            android:textColor="@color/color_selector1"
+            android:textSize="@dimen/text_size_xl" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/border_line" />
+
+        <Button
+            android:id="@+id/btn_sex_female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sex_select_pop_btn_bg"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="6dp"
+            android:text="女"
+            android:textColor="@color/color_selector1"
+            android:textSize="@dimen/text_size_xl" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/border_line" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

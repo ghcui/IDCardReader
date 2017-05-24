@@ -41,10 +41,11 @@
     <string name="warming_twice_no_same">两次密码输入不一致</string>
     <string name="password_successfully_modified">修改密码成功！</string>
     <!--入住登记和退房模块-->
-    <string name="action_submit">发送</string>
+    <string name="action_editor">编辑</string>
     <string name="hint_select">请选择</string>
-    <string name="title_room_number">客房号：</string>
-    <string name="title_bed_number">床位号：</string>
+    <string name="title_room_no">客房号：</string>
+    <string name="title_room_number">房间数：</string>
+    <string name="title_person_number">随行人数：</string>
     <string name="title_name">姓名：</string>
     <string name="title_sex">性别：</string>
     <string name="title_nation">民族：</string>
@@ -54,17 +55,23 @@
     <string name="title_certificates_code">证件号：</string>
     <string name="title_address">住址：</string>
     <string name="title_check_time">入住时间：</string>
+    <string name="title_from">来自：</string>
     <string name="title_check_out_time">退房时间：</string>
     <string name="title_certificates_img">证件照片</string>
     <string name="title_personal_img">人员照片</string>
     <string name="txt_confirm_upload">确认上传</string>
     <string name="txt_check_out">确认退房</string>
     <string name="warming_no_info">没有读取到用户信息</string>
-    <string name="warming_no_room">没有选择客房</string>
-    <string name="warming_no_bed">没有选择床位</string>
-    <string name="warming_no_time">没有选择入住时间</string>
+    <string name="warming_no_custom_name">请输入用户名</string>
+    <string name="warming_no_custom_sex">请输入用户性别</string>
+    <string name="warming_no_custom_nation">请输入用户民族</string>
+    <string name="warming_no_certificates_code">请输入证件号</string>
+    <string name="warming_no_room_code">请选择客房</string>
+    <string name="warming_no_room_num">请输入有效的预定房间数</string>
+    <string name="warming_no_person_num">请输入有效的随行人数</string>
     <!--关于模块-->
     <string name="txt_version">版本信息</string>
     <string name="txt_updata">检测升级</string>
+    <string name="txt_userinfo">用户信息</string>
     <string name="txt_logout">注销登录</string>
 </resources>

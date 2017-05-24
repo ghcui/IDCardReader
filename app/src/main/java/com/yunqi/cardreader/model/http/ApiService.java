@@ -46,7 +46,7 @@ public interface ApiService {
      * @param request
      * @return
      */
-    @POST("action/add")
+    @POST("app_user/resetPassword")
     Observable<BaseHttpRsp> changePwd(@Body ChangePwdRequest request);
     /**
      * 退房
@@ -54,7 +54,7 @@ public interface ApiService {
      * @param request
      * @return
      */
-    @POST("action/add")
+    @POST("room_orders/updateOrder")
     Observable<BaseHttpRsp> checkOut(@Body CheckOutRequest request);
 
     /**

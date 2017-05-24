@@ -185,6 +185,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:text="@string/txt_forget_pdw"
+                android:visibility="gone"
                 android:textColor="@color/txt_color3"
                 android:textSize="@dimen/text_size_m" />
 

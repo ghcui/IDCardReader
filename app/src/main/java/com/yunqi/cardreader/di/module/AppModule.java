@@ -2,6 +2,7 @@ package com.yunqi.cardreader.di.module;
 
 import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.di.ContextLife;
+import com.yunqi.cardreader.model.db.RealmHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
 
 import javax.inject.Singleton;
@@ -31,5 +32,10 @@ public class AppModule {
     @Singleton
     public RetrofitHelper provideRetrofitHelper(){
         return new RetrofitHelper(application);
+    }
+    @Provides
+    @Singleton
+    public RealmHelper provideRealmHelper(){
+        return new RealmHelper(application);
     }
 }
