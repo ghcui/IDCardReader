@@ -8,6 +8,7 @@ import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
+import com.yunqi.cardreader.model.request.ChangeRoomRequest;
 import com.yunqi.cardreader.model.request.CheckOutRequest;
 import com.yunqi.cardreader.model.response.*;
 import com.yunqi.cardreader.util.NetworkUtil;
@@ -15,6 +16,7 @@ import com.yunqi.cardreader.util.NetworkUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
@@ -151,7 +153,20 @@ public class RetrofitHelper {
         return apiService.checkOut(request);
     }
 
-    public Observable<CommonHttpRsp<List<Room>>> getRoomList(String uid, String police_station_id, int page) {
-        return apiService.getRoomList(uid, police_station_id,page, PAGE_SIZE);
+    public Observable<BaseHttpRsp> changeRoom(ChangeRoomRequest request) {
+        return apiService.changeRoom(request);
     }
+
+    public Observable<CommonHttpRsp<List<Room>>> getRoomList(String uid, String police_station_id,String keyword,int type, int page) {
+        return apiService.getRoomList(uid, police_station_id,keyword,type,page, PAGE_SIZE);
+    }
+
+    public Observable<CommonHttpRsp<List<ClientInfo>>> getCustomByRoomCode(String room_code) {
+        return apiService.getCustomByRoomCode(room_code);
+    }
+
+    public Observable<CommonHttpRsp<String>> getSendedCount(String user_id) {
+        return apiService.getSendedCount(user_id);
+    }
+
 }

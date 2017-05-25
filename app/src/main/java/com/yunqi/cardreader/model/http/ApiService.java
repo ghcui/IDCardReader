@@ -3,12 +3,14 @@ import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
+import com.yunqi.cardreader.model.request.ChangeRoomRequest;
 import com.yunqi.cardreader.model.request.CheckOutRequest;
 import com.yunqi.cardreader.model.response.BaseHttpRsp;
 import com.yunqi.cardreader.model.response.CommonHttpRsp;
 
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -16,6 +18,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -56,11 +59,31 @@ public interface ApiService {
      */
     @POST("room_orders/updateOrder")
     Observable<BaseHttpRsp> checkOut(@Body CheckOutRequest request);
+    /**
+     * 退房
+     *
+     * @param request
+     * @return
+     */
+    @POST("room_orders/updateOrder")
+    Observable<BaseHttpRsp> changeRoom(@Body ChangeRoomRequest request);
 
     /**
      * 房间列表查询
      */
     @GET("room/query")
-    Observable<CommonHttpRsp<List<Room>>> getRoomList(@Query("uid") String uid,@Query("police_station_id") String police_station_id,@Query("page") int page, @Query("size") int size);
+    Observable<CommonHttpRsp<List<Room>>> getRoomList(@Query("uid") String uid,@Query("police_station_id") String police_station_id,@Query("keyword") String keyword,@Query("type")int type,@Query("page") int page, @Query("size") int size);
+
+    /**
+     * 查询在住客户
+     */
+    @GET("room/get_custom")
+    Observable<CommonHttpRsp<List<ClientInfo>>> getCustomByRoomCode(@Query("room_code") String room_code);
+    /**
+     * 查询已发数据的数目
+     */
+    @GET("room_orders/getOrderCount")
+    Observable<CommonHttpRsp<String>> getSendedCount(@Query("uid") String user_id);
+
 
 }

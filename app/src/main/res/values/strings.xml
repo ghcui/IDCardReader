@@ -22,6 +22,7 @@
     <string name="module_about">关于</string>
     <string name="module_register">入住登记</string>
     <string name="module_check_out">退房</string>
+    <string name="module_change_room">换房</string>
     <string name="module_room_list">房间列表</string>
     <!--login和修改密码模块-->
     <string name="tip_appname">日租房流动人口信息采集APP</string>
@@ -61,17 +62,26 @@
     <string name="title_personal_img">人员照片</string>
     <string name="txt_confirm_upload">确认上传</string>
     <string name="txt_check_out">确认退房</string>
+    <string name="txt_change">确认换房</string>
     <string name="warming_no_info">没有读取到用户信息</string>
     <string name="warming_no_custom_name">请输入用户名</string>
     <string name="warming_no_custom_sex">请输入用户性别</string>
     <string name="warming_no_custom_nation">请输入用户民族</string>
     <string name="warming_no_certificates_code">请输入证件号</string>
-    <string name="warming_no_room_code">请选择客房</string>
+    <string name="warming_no_room_code">请选择房间</string>
+    <string name="warming_no_same_room">请选择新的房间</string>
     <string name="warming_no_room_num">请输入有效的预定房间数</string>
+    <string name="warming_room_num_limit">房间数超过上限</string>
     <string name="warming_no_person_num">请输入有效的随行人数</string>
+    <string name="title_new_room_no">选择新房间号：</string>
+    <string name="title_old_room_no">原房间号：</string>
     <!--关于模块-->
     <string name="txt_version">版本信息</string>
     <string name="txt_updata">检测升级</string>
     <string name="txt_userinfo">用户信息</string>
     <string name="txt_logout">注销登录</string>
+    <!--用户信息模块-->
+    <string name="title_nickname">用户昵称:</string>
+    <string name="title_phone">手机号:</string>
+    <string name="title_type">人员类型:</string>
 </resources>

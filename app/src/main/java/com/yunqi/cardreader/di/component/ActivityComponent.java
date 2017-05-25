@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.yunqi.cardreader.ui.activity.AboutActivity;
 import com.yunqi.cardreader.ui.activity.ChangePwdActivity;
+import com.yunqi.cardreader.ui.activity.ChangeRoomActivity;
 import com.yunqi.cardreader.ui.activity.CheckOutActivity;
 import com.yunqi.cardreader.ui.activity.LoginActivity;
 import com.yunqi.cardreader.di.ActivityScope;
@@ -13,6 +14,7 @@ import com.yunqi.cardreader.ui.activity.RegisterActivity;
 import com.yunqi.cardreader.ui.activity.RoomListActivity;
 import com.yunqi.cardreader.ui.activity.SendedActivity;
 import com.yunqi.cardreader.ui.activity.SplashActivity;
+import com.yunqi.cardreader.ui.activity.UserInfoActivity;
 import com.yunqi.cardreader.ui.activity.WillSendActivity;
 
 
@@ -46,4 +48,8 @@ public interface ActivityComponent {
     void inject(RoomListActivity activity);
 
     void inject(SendedActivity activity);
+
+    void inject(ChangeRoomActivity activity);
+
+    void inject(UserInfoActivity activity);
 }

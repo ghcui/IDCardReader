@@ -20,7 +20,7 @@ public interface WillSendContract {
 
         void submitInfo(ClientInfo request);
 
-        void getWillSendData(long userid);
+        void getWillSendData(String userid);
 
         void deleteData(long id);
     }

@@ -28,7 +28,7 @@ public interface RegisterContract {
 
         void submitInfo(ClientInfo request);
 
-        void saveLocal(ClientInfo request,long userid);
+        void saveLocal(ClientInfo request,String userid);
     }
 
 }

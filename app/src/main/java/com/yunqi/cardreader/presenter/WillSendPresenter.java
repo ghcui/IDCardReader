@@ -57,24 +57,13 @@ public class WillSendPresenter extends RxPresenter<WillSendContract.View> implem
     }
 
     @Override
-    public void getWillSendData(long userid) {
-        Subscription subscription =
-                mRealmHelper.getClientInfos(userid)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程
-                        .subscribe(new Action1<RealmResults<ClientInfo>>() {
-                            @Override
-                            public void call(RealmResults<ClientInfo> clientInfos) {
-                                List<ClientInfo> clientInfoList = mRealmHelper.getRealm().copyFromRealm(clientInfos);
-                                mView.showContent(clientInfoList);
-                            }
-                        });
-        addSubscrebe(subscription);
+    public void getWillSendData(String userid) {
+        List<ClientInfo> data=mRealmHelper.getClientInfos(userid);
+        mView.showContent(data);
     }
 
     @Override
     public void deleteData(long id) {
         mRealmHelper.deleteClientInfo(id);
     }
-
 }

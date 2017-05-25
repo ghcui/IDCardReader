@@ -87,6 +87,32 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
+        <activity
+            android:name="com.yunqi.cardreader.ui.activity.CheckOutRoomListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+        <activity
+            android:name="com.yunqi.cardreader.ui.activity.ChangeRoomListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+        <activity
+            android:name="com.yunqi.cardreader.ui.activity.ChangeRoomActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+        <activity
+            android:name="com.yunqi.cardreader.ui.activity.WillSendActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+        <activity
+            android:name="com.yunqi.cardreader.ui.activity.UserInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"

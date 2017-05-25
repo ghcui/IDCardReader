@@ -1,74 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_login_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical">
+
     <include
         android:id="@+id/tool_bar"
         layout="@layout/view_toolbar" />
 
     <RelativeLayout
-       android:layout_below="@+id/tool_bar"
-        android:layout_above="@+id/llayout_about"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tool_bar">
+
         <ImageView
             android:id="@+id/img_logo"
             android:layout_width="160dp"
             android:layout_height="160dp"
+            android:layout_centerInParent="true"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="30dp"
-            android:layout_centerInParent="true"
             android:scaleType="fitXY"
             android:src="@drawable/logo_about" />
     </RelativeLayout>
 
-
     <LinearLayout
-        android:id="@+id/llayout_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:paddingBottom="40dp"
-        android:layout_marginBottom="40dp"
-        android:paddingTop="10dp"
-        android:layout_above="@+id/btn_logout"
         android:background="@drawable/common_bg"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="40dp"
+        android:paddingTop="10dp">
 
         <RelativeLayout
-            android:id="@+id/rlayout_version"
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
-            <ImageView
-                android:id="@+id/img_version"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
-                android:src="@drawable/icon_version" />
+                android:text="@string/title_nickname"
+                android:textSize="@dimen/text_size_xxl" />
 
             <TextView
+                android:id="@+id/txt_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@+id/img_version"
-                android:text="@string/txt_version"
-                android:textSize="@dimen/text_size_xxl" />
-            <TextView
-                android:id="@+id/txt_version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:text="V1.0"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="15dp"
+                android:text="独行天下"
                 android:textSize="@dimen/text_size_xxl" />
 
             <View
@@ -79,29 +68,62 @@
                 android:layout_marginRight="5dp"
                 android:background="@color/border_line" />
         </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/rlayout_updata"
-            android:layout_width="match_parent"
-            android:clickable="true"
-            android:background="@drawable/common_bar_selector"
-            android:layout_height="50dp">
 
-            <ImageView
-                android:id="@+id/img_updata"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:src="@drawable/icon_update" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@+id/img_updata"
-                android:text="@string/txt_updata"
+                android:text="@string/title_phone"
                 android:textSize="@dimen/text_size_xxl" />
+
+            <TextView
+                android:id="@+id/txt_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="15dp"
+                android:text="15656557226"
+                android:textSize="@dimen/text_size_xxl" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/border_line" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:text="@string/title_type"
+                android:textSize="@dimen/text_size_xxl" />
+
+            <TextView
+                android:id="@+id/txt_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="15dp"
+                android:text="公安管理人员"
+                android:textSize="@dimen/text_size_xxl" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
@@ -112,17 +134,5 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="10dp"
-        android:text="@string/txt_logout"
-        android:background="@drawable/common_btn_selector"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/text_size_xxxl"
-        android:layout_marginRight="10dp"/>
 
 </RelativeLayout>

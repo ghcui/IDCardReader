@@ -159,7 +159,7 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
     }
 
     @Override
-    public void saveLocal(ClientInfo request,long userid) {
+    public void saveLocal(ClientInfo request,String userid) {
         mRealmHelper.addClientInfo(request,userid);
     }
 

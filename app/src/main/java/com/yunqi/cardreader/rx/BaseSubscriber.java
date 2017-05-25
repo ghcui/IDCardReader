@@ -25,7 +25,7 @@ public abstract class BaseSubscriber extends ExSubscriber<BaseHttpRsp> {
             onSuccess();
         } else {
             int errorCode = httpRsp.getCode();
-            String errorMsg = httpRsp.getMessage();
+            String errorMsg = httpRsp.getMsg();
             if(TextUtils.isEmpty(errorMsg)){
                 errorMsg="请求失败";
             }

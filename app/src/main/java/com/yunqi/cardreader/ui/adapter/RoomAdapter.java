@@ -21,15 +21,9 @@ public class RoomAdapter extends BaseQuickAdapter<Room,BaseViewHolder> {
         roomNo.setText(item.room_code);
         TextView roomAddress=helper.getView(R.id.room_address);
         roomAddress.setText(item.room_address);
-        TextView roomStatus=helper.getView(R.id.room_status);
-        if(item.sum>0){
-            roomStatus.setText("有人");
-            roomStatus.setBackgroundResource(R.drawable.room_status2);
-        }
-        else{
-            roomStatus.setText("空闲");
-            roomStatus.setBackgroundResource(R.drawable.room_status1);
-        }
-
+        TextView roomTotalNum=helper.getView(R.id.room_total_num);
+        roomTotalNum.setText(item.room_num+"");
+        TextView roomLeftNum=helper.getView(R.id.room_left_num);
+        roomLeftNum.setText((item.room_num-item.sum)+"");
     }
 }

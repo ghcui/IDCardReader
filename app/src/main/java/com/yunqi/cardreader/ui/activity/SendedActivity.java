@@ -70,7 +70,12 @@ public class SendedActivity extends NetActivity<WillSendPresenter> implements Wi
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(ClientInfo request) {
+
+    }
+
+    @Override
+    public void showContent(List<ClientInfo> infoList) {
 
     }
 }

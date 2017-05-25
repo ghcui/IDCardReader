@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -18,7 +19,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="房间编号:" />
+                android:text="房间编号:"
+                android:textStyle="bold"
+                android:textColor="@color/txt_color1"
+                android:textSize="@dimen/text_size_l" />
 
             <TextView
                 android:id="@+id/txt_room_no"
@@ -35,7 +39,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="客户姓名:" />
+                android:text="客户姓名:"
+                android:textStyle="bold"
+                android:textColor="@color/txt_color1"
+                android:textSize="@dimen/text_size_l" />
 
             <TextView
                 android:id="@+id/txt_custom_name"
@@ -47,12 +54,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="证件号:" />
+            android:text="证件号:"
+            android:textStyle="bold"
+            android:textColor="@color/txt_color1"
+            android:textSize="@dimen/text_size_l" />
 
         <TextView
             android:id="@+id/txt_id_card_code"

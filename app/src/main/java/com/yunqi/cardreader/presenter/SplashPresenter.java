@@ -3,6 +3,7 @@ package com.yunqi.cardreader.presenter;
 
 import android.content.Context;
 
+import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.RxPresenter;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
@@ -73,6 +74,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                 .subscribe(new ExSubscriber<User>(mView) {
                     @Override
                     protected void onSuccess(User user) {
+                        App.getInstance().saveUserInfo(user);
                         mView.jump2Main(user);
                     }
                 });

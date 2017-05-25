@@ -13,11 +13,16 @@ import android.widget.AdapterView;
 import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.RxPresenter;
 import com.yunqi.cardreader.model.bean.Module;
+import com.yunqi.cardreader.model.bean.Room;
+import com.yunqi.cardreader.model.db.RealmHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
+import com.yunqi.cardreader.model.response.CommonHttpRsp;
 import com.yunqi.cardreader.parser.IModuleParse;
 import com.yunqi.cardreader.parser.ModuleParse;
 import com.yunqi.cardreader.presenter.contract.MainContract;
+import com.yunqi.cardreader.rx.ExSubscriber;
 import com.yunqi.cardreader.ui.activity.MainActivity;
+import com.yunqi.cardreader.util.RxUtil;
 import com.yunqi.cardreader.util.ToastUtil;
 
 import java.io.File;
@@ -29,6 +34,7 @@ import javax.inject.Inject;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -37,12 +43,13 @@ import rx.schedulers.Schedulers;
  * @time 2017/1/11
  */
 public class MainPresenter extends RxPresenter<MainContract.View> implements MainContract.Presenter {
-
+    private RetrofitHelper mRetrofitHelper;
+    private RealmHelper mRealmHelper;
     @Inject
-    public MainPresenter() {
+    public MainPresenter(RetrofitHelper retrofitHelper ,RealmHelper realmHelper) {
+        this.mRetrofitHelper = retrofitHelper;
+        this.mRealmHelper = realmHelper;
     }
-
-
     @Override
     public void applist(final InputStream is) {
         Observable.create(new Observable.OnSubscribe<List<Module>>() {
@@ -79,5 +86,25 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
 
                     }
                 });
+    }
+
+    @Override
+    public void getSendedCount(String user_id) {
+        Subscription rxSubscription = mRetrofitHelper.getSendedCount(user_id)
+                .compose(RxUtil.<CommonHttpRsp<String>>rxSchedulerHelper())
+                .compose(RxUtil.<String>handleResult())
+                .subscribe(new ExSubscriber<String>(mView) {
+                    @Override
+                    protected void onSuccess(String count) {
+                        mView.showSendedCount(count);
+                    }
+                });
+        addSubscrebe(rxSubscription);
+    }
+
+    @Override
+    public void getWillSendCount(String user_id) {
+       int count= mRealmHelper.getClientInfoCount(user_id);
+        mView.showWillSendCount(count+"");
     }
 }

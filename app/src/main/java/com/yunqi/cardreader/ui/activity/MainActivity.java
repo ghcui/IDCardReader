@@ -10,12 +10,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.yunqi.cardreader.R;
 import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.BaseActivity;
+import com.yunqi.cardreader.base.NetActivity;
 import com.yunqi.cardreader.model.bean.Module;
 import com.yunqi.cardreader.presenter.MainPresenter;
 import com.yunqi.cardreader.presenter.contract.MainContract;
@@ -33,12 +35,17 @@ import butterknife.ButterKnife;
 import rx.functions.Action1;
 
 
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
+public class MainActivity extends NetActivity<MainPresenter> implements MainContract.View {
 
     @BindView(R.id.grid_module)
     GridView gridModule;
+    @BindView(R.id.txt_sended_count)
+    TextView txtSendedCount;
+    @BindView(R.id.txt_will_send_count)
+    TextView txtWillSendCount;
 
     private List<Module> moduleList = new ArrayList<>();
+    private String user_id;
 
     /**
      * 定义一个变量，来标识是否退出
@@ -73,12 +80,22 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             e.printStackTrace();
         }
         initGridData();
+        initData();
+    }
+
+    private void initData() {
+        user_id=App.getInstance().getUserInfo().id;
+        mPresenter.getSendedCount(user_id);
+        mPresenter.getWillSendCount(user_id);
     }
 
     private void setWigetListener() {
 
     }
 
+    @Override
+    public void showLoading(int requestCode) {
+    }
 
     private void exit() {
         if (!isExit) {
@@ -98,8 +115,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent = new Intent();
                 String className = moduleList.get(position).className;
-                if (TextUtils.isEmpty(className)) {
-                    return;
+                int type = App.getInstance().getUserInfo().type;
+                if (type == 2) {
+                    if (className.equals("com.yunqi.cardreader.ui.activity.WillSendActivity")
+                            || className.equals("com.yunqi.cardreader.ui.activity.RegisterActivity")
+                            || className.equals("com.yunqi.cardreader.ui.activity.CheckOutRoomListActivity")
+                            || className.equals("com.yunqi.cardreader.ui.activity.ChangeRoomListActivity")
+                            || className.equals("com.yunqi.cardreader.ui.activity.CheckOutRoomListActivity")) {
+                        ToastUtil.showNoticeToast(MainActivity.this, "该用户无此权限!");
+                        return;
+                    }
                 }
                 try {
                     ComponentName cn = new ComponentName(getPackageName(), className);
@@ -122,6 +147,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         this.moduleList = moduleList;
         ModuleAdapter adapter = new ModuleAdapter(this, moduleList);
         gridModule.setAdapter(adapter);
+    }
+
+    @Override
+    public void showSendedCount(String count) {
+        txtSendedCount.setText(count);
+    }
+
+    @Override
+    public void showWillSendCount(String count) {
+        txtWillSendCount.setText(count);
     }
 }
 

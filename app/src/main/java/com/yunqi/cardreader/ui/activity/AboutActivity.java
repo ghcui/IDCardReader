@@ -55,10 +55,6 @@ public class AboutActivity extends BaseActivity<AboutPresenter> implements About
     public void onUpdate() {
         Beta.checkUpgrade();
     }
-    @OnClick(R.id.rlayout_userinfo)
-    public void onUserInfo() {
-
-    }
 
 
     @Override

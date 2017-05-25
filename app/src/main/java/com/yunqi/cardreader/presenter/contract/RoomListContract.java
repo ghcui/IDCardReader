@@ -21,6 +21,6 @@ public interface RoomListContract {
     }
 
     interface Presenter extends BasePresenter<View> {
-        void getRoomList(String uid,String police_station_id,int page);
+        void getRoomList(String uid, String police_station_id,String keyword,int type, int page);
     }
 }

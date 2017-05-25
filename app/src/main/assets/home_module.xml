@@ -31,12 +31,23 @@
     <Module>
         <id>5</id>
         <name>退房</name>
-        <className>com.yunqi.cardreader.ui.activity.CheckOutActivity</className>
+        <className>com.yunqi.cardreader.ui.activity.CheckOutRoomListActivity</className>
         <icon>home_check_out</icon>
     </Module>
-
     <Module>
         <id>6</id>
+        <name>换房</name>
+        <className>com.yunqi.cardreader.ui.activity.ChangeRoomListActivity</className>
+        <icon>home_check_out</icon>
+    </Module>
+    <Module>
+        <id>7</id>
+        <name>用户信息</name>
+        <className>com.yunqi.cardreader.ui.activity.UserInfoActivity</className>
+        <icon>home_check_out</icon>
+    </Module>
+    <Module>
+        <id>8</id>
         <name>关于</name>
         <className>com.yunqi.cardreader.ui.activity.AboutActivity</className>
         <icon>home_about</icon>

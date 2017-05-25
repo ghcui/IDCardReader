@@ -29,8 +29,8 @@ public class RoomListPresenter extends RxPresenter<RoomListContract.View> implem
         this.mRetrofitHelper=retrofitHelper;
     }
     @Override
-    public void getRoomList(String uid, String police_station_id, final int page) {
-        Subscription rxSubscription = mRetrofitHelper.getRoomList(uid,police_station_id,page)
+    public void getRoomList(String uid, String police_station_id,String keyword,int type, final int page) {
+        Subscription rxSubscription = mRetrofitHelper.getRoomList(uid,police_station_id,keyword,type,page)
                 .compose(RxUtil.<CommonHttpRsp<List<Room>>>rxSchedulerHelper())
                 .compose(RxUtil.<List<Room>>handleResult())
                 .subscribe(new ExSubscriber<List<Room>>(mView) {

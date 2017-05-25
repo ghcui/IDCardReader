@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:background="@color/border_line"
             android:horizontalSpacing="1px"
-            android:numColumns="3"
+            android:numColumns="4"
             android:scrollbars="none"
             android:verticalSpacing="1px" />
     </LinearLayout>
@@ -97,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="1250"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="36sp" />
 
@@ -126,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="1250"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="36sp" />
 

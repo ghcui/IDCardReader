@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical">
-
     <include
         android:id="@+id/tool_bar"
-        layout="@layout/view_toolbar" />
+        layout="@layout/searchview_toolbar" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="18dp"
-            android:layout_marginRight="18dp">
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -34,16 +33,16 @@
                 android:gravity="center"
                 android:text="房间编号"
                 android:textColor="@color/txt_color1"
-                android:textSize="@dimen/text_size_xl"
+                android:textSize="@dimen/text_size_l"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="房间具体地址"
+                android:text="具体地址"
                 android:textColor="@color/txt_color1"
-                android:textSize="@dimen/text_size_xl"
+                android:textSize="@dimen/text_size_l"
                 android:textStyle="bold" />
 
             <TextView
@@ -51,11 +50,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="房间状态"
+                android:text="总容纳数"
                 android:textColor="@color/txt_color1"
-                android:textSize="@dimen/text_size_xl"
+                android:textSize="@dimen/text_size_l"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="剩余容纳数"
+                android:textColor="@color/txt_color1"
+                android:textSize="@dimen/text_size_l"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipeLayout"
             android:layout_width="match_parent"
@@ -67,7 +76,7 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                 />
+                />
         </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 

@@ -11,7 +11,7 @@ import io.realm.annotations.PrimaryKey;
  */
 public class User extends RealmObject implements Serializable {
     @PrimaryKey
-    public Long id;
+    public String id;
     public String account;
     public String password;
     public String phone;

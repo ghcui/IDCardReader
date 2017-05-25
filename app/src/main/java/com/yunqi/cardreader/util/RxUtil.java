@@ -45,7 +45,7 @@ public class RxUtil {
                         if(t.getCode()==200) {
                             return createData(t.getData());
                         } else {
-                            return Observable.error(new Exception(t.getMessage()));
+                            return Observable.error(new Exception(t.getMsg()));
                         }
                     }
                 });
