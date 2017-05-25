@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'org.greenrobot.greendao'
-
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
@@ -35,13 +34,6 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
         }
-    }
-
-    /*针对greenDao的一些配置*/
-    greendao {
-        schemaVersion 1 //数据库版本号
-        daoPackage 'com.yunqi.cardreader.greendao.gen' //自动生成的工具类的包名
-        targetGenDir 'src/main/java' //路径
     }
 }
 
