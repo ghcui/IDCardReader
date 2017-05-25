@@ -183,10 +183,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         request.sign_time = time;
         request.card_photo_url = cardUrl;
         request.user_photo_url = personUrl;
-
-
-        mPresenter.saveLocal(request, App.getInstance().getUserInfo().id);
-//        mPresenter.submitInfo(request);
+        mPresenter.submitInfo(request);
     }
 
     @Override
