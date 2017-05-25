@@ -10,6 +10,8 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
+import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -28,6 +30,10 @@ public class RealmHelper {
                 .deleteRealmIfMigrationNeeded()
                 .name(DB_NAME)
                 .build());
+    }
+
+    public Realm getRealm(){
+        return mRealm;
     }
 
     /**
@@ -54,7 +60,8 @@ public class RealmHelper {
         return mRealm.copyFromRealm(user);
     }
 
-    public void addClientInfo(ClientInfo info) {
+    public void addClientInfo(ClientInfo info,long userid) {
+        info.id=System.currentTimeMillis();
         mRealm.beginTransaction();
         mRealm.copyToRealm(info);
         if (mRealm.isInTransaction()) {
@@ -62,17 +69,15 @@ public class RealmHelper {
         }
     }
 
-    public void getClientInfos() {
-        mRealm.where(ClientInfo.class).findAll()
-                .asObservable()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程
-                .subscribe(new Action1<RealmResults<ClientInfo>>() {
-                    @Override
-                    public void call(RealmResults<ClientInfo> clientInfos) {
-                        List<ClientInfo> clientInfoList = mRealm.copyFromRealm(clientInfos);
-                    }
-                });
+    public Observable getClientInfos(long userid) {
+        Observable observable=mRealm.where(ClientInfo.class).findAll()
+                .asObservable();
+        return observable;
+    }
 
+    public void deleteClientInfo(long id) {
+        ClientInfo clientInfo = mRealm.where(ClientInfo.class).equalTo("id", id).findFirst();
+        if (clientInfo != null)
+            clientInfo.deleteFromRealm();
     }
 }

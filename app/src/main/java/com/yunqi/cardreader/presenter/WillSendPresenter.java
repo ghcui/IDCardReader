@@ -2,16 +2,23 @@ package com.yunqi.cardreader.presenter;
 
 
 import com.yunqi.cardreader.base.RxPresenter;
+import com.yunqi.cardreader.model.bean.ClientInfo;
+import com.yunqi.cardreader.model.db.RealmHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
-import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.model.response.BaseHttpRsp;
 import com.yunqi.cardreader.presenter.contract.WillSendContract;
 import com.yunqi.cardreader.rx.BaseSubscriber;
 import com.yunqi.cardreader.util.RxUtil;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import io.realm.RealmResults;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 
 /**
@@ -21,30 +28,53 @@ import rx.Subscription;
 public class WillSendPresenter extends RxPresenter<WillSendContract.View> implements WillSendContract.Presenter {
 
     private RetrofitHelper mRetrofitHelper;
+    private RealmHelper mRealmHelper;
+
     @Inject
-    public WillSendPresenter(RetrofitHelper retrofitHelper) {
+    public WillSendPresenter(RetrofitHelper retrofitHelper, RealmHelper realmHelper) {
         this.mRetrofitHelper = retrofitHelper;
+        this.mRealmHelper = realmHelper;
     }
 
 
-
     @Override
-    public void submitInfo(ClientInfoAddRequest request) {
+    public void submitInfo(final ClientInfo request) {
         Subscription rxSubscription = mRetrofitHelper.submitInfo(request)
                 .compose(RxUtil.<BaseHttpRsp>rxSchedulerHelper())
                 .subscribe(new BaseSubscriber(mView) {
                     @Override
                     protected void onSuccess() {
-                        mView.onSuccess();
+                        mView.onSuccess(request);
                     }
 
                     @Override
                     protected void onFailure(int errorCode, String msg) {
                         mView.cancelLoading(0);
-                        mView.showError(msg,0);
+                        mView.showError(msg, 0);
                     }
                 });
         addSubscrebe(rxSubscription);
+    }
+
+    @Override
+    public void getWillSendData(long userid) {
+        Subscription subscription =
+                mRealmHelper.getClientInfos(userid)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程
+                        .subscribe(new Action1<RealmResults<ClientInfo>>() {
+                            @Override
+                            public void call(RealmResults<ClientInfo> clientInfos) {
+                                List<ClientInfo> clientInfoList = mRealmHelper.getRealm().copyFromRealm(clientInfos);
+                                mView.showContent(clientInfoList);
+                            }
+                        });
+        addSubscrebe(subscription);
+    }
+
+    @Override
+    public void deleteData(long id) {
+        mRealmHelper.deleteClientInfo(id);
     }
 
 }

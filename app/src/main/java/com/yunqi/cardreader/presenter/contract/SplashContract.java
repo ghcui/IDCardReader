@@ -2,12 +2,9 @@ package com.yunqi.cardreader.presenter.contract;
 
 import android.content.Context;
 
-import com.idcard.hs.Lua.BlueTool;
-import com.idcard.hs.Lua.Info;
 import com.yunqi.cardreader.base.BasePresenter;
 import com.yunqi.cardreader.base.NetView;
 import com.yunqi.cardreader.model.bean.User;
-import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 
 /**
  * @author ghcui

@@ -1,9 +1,9 @@
 package com.yunqi.cardreader.model.http;
+import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
 import com.yunqi.cardreader.model.request.CheckOutRequest;
-import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.model.response.BaseHttpRsp;
 import com.yunqi.cardreader.model.response.CommonHttpRsp;
 
@@ -39,7 +39,7 @@ public interface ApiService {
      * @return
      */
     @POST("room_orders/addOrder")
-    Observable<BaseHttpRsp> submitInfo(@Body ClientInfoAddRequest request);
+    Observable<BaseHttpRsp> submitInfo(@Body ClientInfo request);
     /**
      * 修改密码
      *

@@ -12,11 +12,16 @@ import java.util.List;
 
 public class WillSendAdapter extends BaseQuickAdapter<ClientInfo,BaseViewHolder> {
     public WillSendAdapter(List<ClientInfo> data) {
-        super(R.layout.item_playment,data);
+        super(R.layout.item_data,data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, ClientInfo item) {
-        TextView txtName=helper.getView(R.id.name);
+        TextView txtRoomNo=helper.getView(R.id.txt_room_no);
+        TextView txtCustomName=helper.getView(R.id.txt_custom_name);
+        TextView txtIDCardCode=helper.getView(R.id.txt_id_card_code);
+        txtRoomNo.setText(item.room_code);
+        txtCustomName.setText(item.custom_name);
+        txtIDCardCode.setText(item.custom_id_card);
     }
 }

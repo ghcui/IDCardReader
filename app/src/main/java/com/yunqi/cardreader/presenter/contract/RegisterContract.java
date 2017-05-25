@@ -3,9 +3,8 @@ package com.yunqi.cardreader.presenter.contract;
 import com.idcard.hs.Lua.BlueTool;
 import com.idcard.hs.Lua.Info;
 import com.yunqi.cardreader.base.BasePresenter;
-import com.yunqi.cardreader.base.BaseView;
 import com.yunqi.cardreader.base.NetView;
-import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
+import com.yunqi.cardreader.model.bean.ClientInfo;
 
 /**
  * @author ghcui
@@ -27,9 +26,9 @@ public interface RegisterContract {
 
         void readCarder(BlueTool ble);
 
-        void submitInfo(ClientInfoAddRequest request);
+        void submitInfo(ClientInfo request);
 
-        void saveLocal(ClientInfoAddRequest request);
+        void saveLocal(ClientInfo request,long userid);
     }
 
 }

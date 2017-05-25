@@ -1,10 +1,10 @@
 package com.yunqi.cardreader.presenter.contract;
 
-import com.idcard.hs.Lua.BlueTool;
-import com.idcard.hs.Lua.Info;
 import com.yunqi.cardreader.base.BasePresenter;
 import com.yunqi.cardreader.base.NetView;
-import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
+import com.yunqi.cardreader.model.bean.ClientInfo;
+
+import java.util.List;
 
 /**
  * @author ghcui
@@ -12,13 +12,17 @@ import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
  */
 public interface WillSendContract {
     interface View extends NetView {
-        void onSuccess();
+        void onSuccess(ClientInfo request);
+        void showContent(List<ClientInfo> infoList);
     }
 
     interface Presenter extends BasePresenter<View> {
 
-        void submitInfo(ClientInfoAddRequest request);
+        void submitInfo(ClientInfo request);
 
+        void getWillSendData(long userid);
+
+        void deleteData(long id);
     }
 
 }

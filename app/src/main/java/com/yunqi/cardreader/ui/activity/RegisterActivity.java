@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -23,9 +22,10 @@ import com.luck.picture.lib.model.FunctionConfig;
 import com.luck.picture.lib.model.PictureConfig;
 import com.yalantis.ucrop.entity.LocalMedia;
 import com.yunqi.cardreader.R;
+import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.NetActivity;
+import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.model.bean.Room;
-import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.presenter.RegisterPresenter;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
 import com.yunqi.cardreader.ui.view.SexSelectPopWindow;
@@ -91,7 +91,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     ImageView imgPersonalDefault;
     private BlueTool ble;
     private String selectImg;
-    private ClientInfoAddRequest request;
+    private ClientInfo request;
     private String time;
     private String cardUrl;
     private String personUrl;
@@ -191,7 +191,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         disconnect();
     }
     private void initData() {
-        request = new ClientInfoAddRequest();
+        request = new ClientInfo();
         ble = new BlueTool(RegisterActivity.this, BluetoothAdapter.getDefaultAdapter());
     }
 
@@ -415,8 +415,9 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     @Override
     public boolean checkNetwork() {
         boolean isNetworkAvailable = super.checkNetwork();
+        //没有网络时，暂存提交的信息
         if (!isNetworkAvailable) {
-            mPresenter.saveLocal(request);
+            mPresenter.saveLocal(request, App.getInstance().getUserInfo().id);
         }
         return isNetworkAvailable;
     }

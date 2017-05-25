@@ -4,11 +4,11 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 
 import com.yunqi.cardreader.constants.Constants;
+import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
 import com.yunqi.cardreader.model.request.CheckOutRequest;
-import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.model.response.*;
 import com.yunqi.cardreader.util.NetworkUtil;
 
@@ -141,7 +141,7 @@ public class RetrofitHelper {
     public Observable<CommonHttpRsp<User>> doLogin(String username, String password) {
         return apiService.doLogin(username, password);
     }
-    public Observable<BaseHttpRsp> submitInfo(ClientInfoAddRequest request) {
+    public Observable<BaseHttpRsp> submitInfo(ClientInfo request) {
         return apiService.submitInfo(request);
     }
     public Observable<BaseHttpRsp> changePwd(ChangePwdRequest request) {

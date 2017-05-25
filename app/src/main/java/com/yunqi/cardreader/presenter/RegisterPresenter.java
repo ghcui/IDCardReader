@@ -8,8 +8,9 @@ import com.idcard.hs.Lua.BlueTool;
 import com.idcard.hs.Lua.BlueToolListenr;
 import com.idcard.hs.Lua.Info;
 import com.yunqi.cardreader.base.RxPresenter;
+import com.yunqi.cardreader.model.bean.ClientInfo;
+import com.yunqi.cardreader.model.db.RealmHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
-import com.yunqi.cardreader.model.request.ClientInfoAddRequest;
 import com.yunqi.cardreader.model.response.BaseHttpRsp;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
 import com.yunqi.cardreader.rx.BaseSubscriber;
@@ -31,10 +32,11 @@ import rx.schedulers.Schedulers;
 public class RegisterPresenter extends RxPresenter<RegisterContract.View> implements RegisterContract.Presenter {
 
     private RetrofitHelper mRetrofitHelper;
-
+    private RealmHelper mRealmHelper;
     @Inject
-    public RegisterPresenter(RetrofitHelper retrofitHelper) {
+    public RegisterPresenter(RetrofitHelper retrofitHelper,RealmHelper realmHelper) {
         this.mRetrofitHelper = retrofitHelper;
+        this.mRealmHelper = realmHelper;
     }
 
 
@@ -138,7 +140,7 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
     }
 
     @Override
-    public void submitInfo(ClientInfoAddRequest request) {
+    public void submitInfo(ClientInfo request) {
         Subscription rxSubscription = mRetrofitHelper.submitInfo(request)
                 .compose(RxUtil.<BaseHttpRsp>rxSchedulerHelper())
                 .subscribe(new BaseSubscriber(mView, RegisterContract.REQUST_CODE_SUBMIT) {
@@ -157,8 +159,8 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
     }
 
     @Override
-    public void saveLocal(ClientInfoAddRequest request) {
-
+    public void saveLocal(ClientInfo request,long userid) {
+        mRealmHelper.addClientInfo(request,userid);
     }
 
 

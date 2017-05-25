@@ -9,6 +9,7 @@ import io.realm.RealmObject;
  * @time 2017/5/4
  */
 public class ClientInfo extends RealmObject implements Serializable {
+    public long id;
     public String custom_name;
     public String custom_id_card;
     public String custom_sex;

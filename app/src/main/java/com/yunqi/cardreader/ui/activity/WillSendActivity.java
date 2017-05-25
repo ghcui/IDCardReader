@@ -4,11 +4,13 @@ package com.yunqi.cardreader.ui.activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.yunqi.cardreader.R;
+import com.yunqi.cardreader.app.App;
 import com.yunqi.cardreader.base.NetActivity;
 import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.presenter.WillSendPresenter;
@@ -57,22 +59,33 @@ public class WillSendActivity extends NetActivity<WillSendPresenter> implements 
 
             }
         });
-        for (int i=0;i<20;i++){
-            ClientInfo info=new ClientInfo();
-
-        }
         mAdapter=new WillSendAdapter(clientInfoList);
         recyclerView.setAdapter(mAdapter);
+        mPresenter.getWillSendData(App.getInstance().getUserInfo().id);
     }
 
     @OnClick(R.id.btn_upload)
     public void onUpload() {
-
+        for (ClientInfo info:clientInfoList){
+            mPresenter.submitInfo(info);
+        }
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(ClientInfo request) {
+        clientInfoList.remove(request);
+        mPresenter.deleteData(request.id);
+    }
 
+    @Override
+    public void showContent(List<ClientInfo> infoList) {
+        if (infoList.isEmpty()) {
+            Log.w(TAG, "No more data!");
+            return;
+        }
+        this.clientInfoList.clear();
+        this.clientInfoList.addAll(infoList);
+        mAdapter.notifyDataSetChanged();
     }
 }
 
