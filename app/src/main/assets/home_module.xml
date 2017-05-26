@@ -4,7 +4,7 @@
         <id>1</id>
         <name>房间列表</name>
         <className>com.yunqi.cardreader.ui.activity.RoomListActivity</className>
-        <icon>home_user_info</icon>
+        <icon>home_room_list</icon>
     </Module>
 
     <Module>
@@ -38,13 +38,13 @@
         <id>6</id>
         <name>换房</name>
         <className>com.yunqi.cardreader.ui.activity.ChangeRoomListActivity</className>
-        <icon>home_check_out</icon>
+        <icon>home_change_room</icon>
     </Module>
     <Module>
         <id>7</id>
         <name>用户信息</name>
         <className>com.yunqi.cardreader.ui.activity.UserInfoActivity</className>
-        <icon>home_check_out</icon>
+        <icon>home_user_info</icon>
     </Module>
     <Module>
         <id>8</id>

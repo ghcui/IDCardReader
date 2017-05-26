@@ -60,12 +60,12 @@ public interface ApiService {
     @POST("room_orders/updateOrder")
     Observable<BaseHttpRsp> checkOut(@Body CheckOutRequest request);
     /**
-     * 退房
+     * 换房
      *
      * @param request
      * @return
      */
-    @POST("room_orders/updateOrder")
+    @POST("room_orders/changeRoom")
     Observable<BaseHttpRsp> changeRoom(@Body ChangeRoomRequest request);
 
     /**
