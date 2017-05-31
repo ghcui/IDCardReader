@@ -84,4 +84,12 @@
     <string name="title_nickname">用户昵称:</string>
     <string name="title_phone">手机号:</string>
     <string name="title_type">人员类型:</string>
+    <string name="title_area">所在区域:</string>
+    <string name="title_police">辖区派出所:</string>
+    <string-array name="idcard_type_array">
+        <item>身份证</item>
+        <item>军官证</item>
+        <item>驾驶证</item>
+        <item>其他</item>
+    </string-array>
 </resources>

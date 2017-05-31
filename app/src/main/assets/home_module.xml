@@ -4,7 +4,7 @@
         <id>1</id>
         <name>房间列表</name>
         <className>com.yunqi.cardreader.ui.activity.RoomListActivity</className>
-        <icon>home_user_info</icon>
+        <icon>home_room_list</icon>
     </Module>
 
     <Module>
@@ -13,44 +13,30 @@
         <className>com.yunqi.cardreader.ui.activity.ChangePwdActivity</className>
         <icon>home_change_pwd</icon>
     </Module>
-
     <Module>
         <id>3</id>
-        <name>待发数据</name>
-        <className>com.yunqi.cardreader.ui.activity.WillSendActivity</className>
-        <icon>home_will_send</icon>
+        <name>换房</name>
+        <className>com.yunqi.cardreader.ui.activity.ChangeRoomListActivity</className>
+        <icon>home_change_room</icon>
     </Module>
-
     <Module>
         <id>4</id>
-        <name>入住登记</name>
-        <className>com.yunqi.cardreader.ui.activity.RegisterActivity</className>
-        <icon>home_register</icon>
+        <name>最新通知</name>
+        <className>com.yunqi.cardreader.ui.activity.AboutActivity</className>
+        <icon>home_about</icon>
     </Module>
-
     <Module>
         <id>5</id>
-        <name>退房</name>
-        <className>com.yunqi.cardreader.ui.activity.CheckOutRoomListActivity</className>
-        <icon>home_check_out</icon>
+        <name>用户信息</name>
+        <className>com.yunqi.cardreader.ui.activity.UserInfoActivity</className>
+        <icon>home_user_info</icon>
     </Module>
     <Module>
         <id>6</id>
-        <name>换房</name>
-        <className>com.yunqi.cardreader.ui.activity.ChangeRoomListActivity</className>
-        <icon>home_check_out</icon>
-    </Module>
-    <Module>
-        <id>7</id>
-        <name>用户信息</name>
-        <className>com.yunqi.cardreader.ui.activity.UserInfoActivity</className>
-        <icon>home_check_out</icon>
-    </Module>
-    <Module>
-        <id>8</id>
         <name>关于</name>
         <className>com.yunqi.cardreader.ui.activity.AboutActivity</className>
         <icon>home_about</icon>
     </Module>
+
 
 </Modules>

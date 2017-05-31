@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
@@ -43,6 +44,8 @@ public class RoomListActivity extends NetActivity<RoomListPresenter> implements 
     Toolbar toolBar;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.btn_search)
+    ImageView btnSearch;
     @BindView(R.id.swipeLayout)
     SwipeRefreshLayout swipeLayout;
     EditText searchView;
@@ -91,6 +94,14 @@ public class RoomListActivity extends NetActivity<RoomListPresenter> implements 
                     loadData();
                 }
                 return false;
+            }
+        });
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                keyword = searchView.getText().toString().trim();
+                page=1;
+                loadData();
             }
         });
     }

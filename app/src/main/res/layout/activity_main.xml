@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:background="@color/border_line"
             android:horizontalSpacing="1px"
-            android:numColumns="4"
+            android:numColumns="3"
             android:scrollbars="none"
             android:verticalSpacing="1px" />
     </LinearLayout>
@@ -83,6 +83,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/layout_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="9dp"
@@ -93,25 +94,17 @@
                 android:paddingTop="15dp">
 
                 <TextView
-                    android:id="@+id/txt_sended_count"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/white"
-                    android:textSize="36sp" />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_sended_count"
                     android:gravity="center"
-                    android:text="@string/module_sended"
+                    android:text="@string/module_register"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_xxl" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_check_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="9dp"
@@ -122,20 +115,11 @@
                 android:paddingTop="15dp">
 
                 <TextView
-                    android:id="@+id/txt_will_send_count"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/white"
-                    android:textSize="36sp" />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_will_send_count"
                     android:gravity="center"
-                    android:text="@string/module_will_send"
+                    android:text="@string/module_check_out"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_xxl" />
             </LinearLayout>

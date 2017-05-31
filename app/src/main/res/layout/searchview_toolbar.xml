@@ -13,7 +13,7 @@
         <EditText
             android:id="@+id/edit_search_view"
             android:layout_marginRight="10dp"
-            android:layout_width="185dp"
+            android:layout_width="240dp"
             android:layout_centerVertical="true"
             android:layout_height="24dp"
             android:textColor="@color/white"
@@ -23,7 +23,14 @@
             android:maxLines="1"
             android:imeOptions="actionSearch"
             android:layout_alignParentRight="true"
-            android:background="@drawable/search"/>
+            android:background="@drawable/search_bg1"/>
+         <ImageView
+             android:id="@+id/btn_search"
+             android:layout_width="24dp"
+             android:layout_height="24dp"
+             android:layout_centerVertical="true"
+             android:layout_alignRight="@+id/edit_search_view"
+             android:src="@drawable/btn_search"/>
     </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>

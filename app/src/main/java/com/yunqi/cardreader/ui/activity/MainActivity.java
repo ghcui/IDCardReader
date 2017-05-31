@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.functions.Action1;
 
 
@@ -39,10 +40,6 @@ public class MainActivity extends NetActivity<MainPresenter> implements MainCont
 
     @BindView(R.id.grid_module)
     GridView gridModule;
-    @BindView(R.id.txt_sended_count)
-    TextView txtSendedCount;
-    @BindView(R.id.txt_will_send_count)
-    TextView txtWillSendCount;
 
     private List<Module> moduleList = new ArrayList<>();
     private String user_id;
@@ -85,8 +82,6 @@ public class MainActivity extends NetActivity<MainPresenter> implements MainCont
 
     private void initData() {
         user_id=App.getInstance().getUserInfo().id;
-        mPresenter.getSendedCount(user_id);
-        mPresenter.getWillSendCount(user_id);
     }
 
     private void setWigetListener() {
@@ -148,15 +143,16 @@ public class MainActivity extends NetActivity<MainPresenter> implements MainCont
         ModuleAdapter adapter = new ModuleAdapter(this, moduleList);
         gridModule.setAdapter(adapter);
     }
-
-    @Override
-    public void showSendedCount(String count) {
-        txtSendedCount.setText(count);
+    @OnClick(R.id.layout_register)
+    public void onJump2Register() {
+        Intent intent=new Intent(this,RegisterActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.layout_check_out)
+    public void onJump2CheckOut() {
+        Intent intent=new Intent(this,CheckOutRoomListActivity.class);
+        startActivity(intent);
     }
 
-    @Override
-    public void showWillSendCount(String count) {
-        txtWillSendCount.setText(count);
-    }
 }
 

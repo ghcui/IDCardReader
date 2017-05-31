@@ -87,24 +87,4 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
                     }
                 });
     }
-
-    @Override
-    public void getSendedCount(String user_id) {
-        Subscription rxSubscription = mRetrofitHelper.getSendedCount(user_id)
-                .compose(RxUtil.<CommonHttpRsp<String>>rxSchedulerHelper())
-                .compose(RxUtil.<String>handleResult())
-                .subscribe(new ExSubscriber<String>(mView) {
-                    @Override
-                    protected void onSuccess(String count) {
-                        mView.showSendedCount(count);
-                    }
-                });
-        addSubscrebe(rxSubscription);
-    }
-
-    @Override
-    public void getWillSendCount(String user_id) {
-       int count= mRealmHelper.getClientInfoCount(user_id);
-        mView.showWillSendCount(count+"");
-    }
 }

@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,8 +28,10 @@ import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.presenter.RegisterPresenter;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
+import com.yunqi.cardreader.ui.view.ListDialog;
 import com.yunqi.cardreader.ui.view.SexSelectPopWindow;
 import com.yunqi.cardreader.util.FileUtil;
+import com.yunqi.cardreader.util.NationUtil;
 import com.yunqi.cardreader.util.TimeUtil;
 import com.yunqi.cardreader.util.ToastUtil;
 
@@ -55,20 +57,20 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     Toolbar toolBar;
     @BindView(R.id.txt_room_no)
     TextView txtRoomNo;
-    @BindView(R.id.edit_room_number)
-    EditText editRoomNumber;
     @BindView(R.id.edit_name)
     EditText editName;
     @BindView(R.id.edit_person_number)
     EditText editPersonNumber;
-    @BindView(R.id.txt_sex)
-    TextView txtSex;
-    @BindView(R.id.edit_nation)
-    EditText editNation;
-    @BindView(R.id.edit_birthday)
-    EditText editBirthday;
-    @BindView(R.id.edit_certificates_type)
-    EditText editCertificatesType;
+    @BindView(R.id.checkbox_male)
+    ImageView checkMale;
+    @BindView(R.id.checkbox_female)
+    ImageView checkFemale;
+    @BindView(R.id.txt_nation)
+    TextView txtNation;
+    @BindView(R.id.txt_birthday)
+    TextView txtBirthday;
+    @BindView(R.id.txt_certificates_type)
+    TextView txtCertificatesType;
     @BindView(R.id.edit_certificates_code)
     EditText editCertificatesCode;
     @BindView(R.id.edit_address)
@@ -99,6 +101,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     private Bitmap bitmapCard;
     private SexSelectPopWindow popWindow;
     private Room selectRoom;
+    private String sex="男";
 
     @Override
     protected void initInject() {
@@ -130,21 +133,6 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room_code));
             return;
         }
-        try {
-            request.room_number = Integer.parseInt(editRoomNumber.getText().toString());
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room_num));
-            return;
-        }
-        if (request.room_number <= 0) {
-            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room_num));
-            return;
-        }
-        if (request.room_number >(selectRoom.room_num-selectRoom.sum)) {
-            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_room_num_limit));
-            return;
-        }
         request.custom_name = editName.getText().toString();
         if (TextUtils.isEmpty(request.custom_name)) {
             ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_room_code));
@@ -162,12 +150,12 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             return;
         }
 
-        request.custom_sex = txtSex.getText().toString();
+        request.custom_sex = sex;
         if (TextUtils.isEmpty(request.custom_sex)) {
             ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_custom_sex));
             return;
         }
-        request.custom_nation = editNation.getText().toString();
+        request.custom_nation = txtNation.getText().toString();
         if (TextUtils.isEmpty(request.custom_nation)) {
             ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_custom_nation));
             return;
@@ -177,7 +165,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_certificates_code));
             return;
         }
-        request.custom_birth_date = editBirthday.getText().toString();
+        request.custom_birth_date = txtBirthday.getText().toString();
         request.custom_residence = editAddress.getText().toString();
         request.user_from = editFrom.getText().toString();
         request.sign_time = time;
@@ -241,23 +229,23 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             String sex = info.getIdNo().substring(16, 17);
             if (Integer.parseInt(sex) % 2 == 0) {
                 sex = "0";
-                txtSex.setText("女");
+                chooseFemale();
             } else {
-                txtSex.setText("男");
                 sex = "1";
+                chooseMale();
             }
             info.setSex(sex);
         }
         if (!TextUtils.isEmpty(info.getName())) {
-            editNation.setText(info.getNationlity());
+            txtNation.setText(info.getNationlity());
         }
         if (!TextUtils.isEmpty(info.getBirthdate())) {
-            editBirthday.setText(info.getBirthdate());
+            txtBirthday.setText(info.getBirthdate());
         }
         if (!TextUtils.isEmpty(info.getIdNo())) {
             editCertificatesCode.setText(info.getIdNo());
         }
-        editCertificatesType.setText(getText(R.string.txt_certificates_type));
+        txtCertificatesType.setText(getText(R.string.txt_certificates_type));
         if (!TextUtils.isEmpty(info.getIdNo())) {
             editAddress.setText(info.getAddress());
         }
@@ -265,12 +253,22 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             imgCertificates.setVisibility(View.VISIBLE);
             imgCertificates.setImageBitmap(info.getBmp());
         }
+    }
 
+    private void chooseMale(){
+        sex="男";
+        checkFemale.setImageResource(R.drawable.check_unselect);
+        checkMale.setImageResource(R.drawable.check_selected);
+    }
+    private void chooseFemale(){
+        sex="女";
+        checkFemale.setImageResource(R.drawable.check_selected);
+        checkMale.setImageResource(R.drawable.check_unselect);
     }
 
     @Override
     public void onSuccess() {
-        ToastUtil.showHookToast(this, "登记成功!");
+        ToastUtil.showHookToast(this, "上传成功!");
         finish();
     }
 
@@ -374,11 +372,11 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     private void resetData() {
         btnConfirmUpload.setClickable(true);
         editName.setText("");
-        txtSex.setText("");
-        editNation.setText("");
-        editBirthday.setText("");
+        chooseMale();
+        txtNation.setText("");
+        txtBirthday.setText("");
         editCertificatesCode.setText("");
-        editCertificatesType.setText("");
+        txtCertificatesType.setText(getText(R.string.txt_certificates_type));
         editAddress.setText("");
         imgCertificates.setVisibility(View.GONE);
     }
@@ -391,43 +389,57 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
             ToastUtil.showNoticeToast(this, "设备未连接，请先连接设备！");
         }
     }
-
-    @OnClick(R.id.txt_sex)
-    public void onSelectSex() {
-        popWindow = new SexSelectPopWindow(this, new View.OnClickListener() {
+    @OnClick(R.id.txt_certificates_type)
+    public void onSelectIDCardType() {
+        String[] arrayStr=getResources().getStringArray(R.array.idcard_type_array);
+        ListDialog dialog=new ListDialog(this, "请选择证件类型", arrayStr, R.layout.dialog_list, new ListDialog.OnSelectedListener() {
             @Override
-            public void onClick(View view) {
-                popWindow.dismiss();
-                switch (view.getId()) {
-                    case R.id.btn_sex_male:
-                        request.custom_sex = "男";
-                        break;
-                    case R.id.btn_sex_female:
-                        request.custom_sex = "女";
-                        break;
-                }
-                txtSex.setText(request.custom_sex);
+            public void onItemSelected(int position, String str) {
+                txtCertificatesType.setText(str);
             }
         });
-        popWindow.showAtLocation(findViewById(R.id.layout_register_bg), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        dialog.show();
+    }
+    @OnClick(R.id.txt_nation)
+    public void onSelectNation() {
+        String[] arrayStr= NationUtil.getAllNations();
+        ListDialog dialog=new ListDialog(this, "请选择民族", arrayStr, R.layout.dialog_list_nation,new ListDialog.OnSelectedListener() {
+            @Override
+            public void onItemSelected(int position, String str) {
+                txtNation.setText(str);
+            }
+        });
+        dialog.show();
+    }
+    @OnClick(R.id.txt_birthday)
+    public void onSelectBirthday() {
+        TimeSelector timeSelector = new TimeSelector(this, new TimeSelector.ResultHandler() {
+            @Override
+            public void handle(String time) {
+               String formatTime= TimeUtil.converTime("yyyy-MM-dd HH:mm","yyyy-MM-dd",time);
+                txtBirthday.setText(formatTime);
+            }
+        },"1900-01-01 00:00" , TimeUtil.getCurrentTime("yyyy-MM-dd HH:mm"));
+//        timeSelector.disScrollUnit(TimeSelector.SCROLLTYPE.HOUR, TimeSelector.SCROLLTYPE.MINUTE);
+        timeSelector.setMode(TimeSelector.MODE.YMD);
+        timeSelector.show();
+    }
+    @OnClick(R.id.checkbox_male)
+    public void onSelectMale() {
+       chooseMale();
+    }
+    @OnClick(R.id.checkbox_female)
+    public void onSelectFemale() {
+        chooseFemale();
     }
 
-    @Override
-    public boolean checkNetwork() {
-        boolean isNetworkAvailable = super.checkNetwork();
-        //没有网络时，暂存提交的信息
-        if (!isNetworkAvailable) {
-            mPresenter.saveLocal(request, App.getInstance().getUserInfo().id);
-        }
-        return isNetworkAvailable;
-    }
 
     @Override
     public void showLoading(int requestCode) {
         if (requestCode == RegisterContract.REQUST_CODE_READCARD) {
             super.showLoading("正在读卡...");
         } else if (requestCode == RegisterContract.REQUST_CODE_SUBMIT) {
-            super.showLoading("正在提交...");
+            super.showLoading("正在上传...");
         } else if (requestCode == RegisterContract.REQUST_CODE_CONNECT_BLE) {
             super.showLoading("正在连接...");
         }

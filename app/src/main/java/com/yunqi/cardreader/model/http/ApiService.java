@@ -60,19 +60,19 @@ public interface ApiService {
     @POST("room_orders/updateOrder")
     Observable<BaseHttpRsp> checkOut(@Body CheckOutRequest request);
     /**
-     * 退房
+     * 换房
      *
      * @param request
      * @return
      */
-    @POST("room_orders/updateOrder")
+    @POST("room_orders/changeRoom")
     Observable<BaseHttpRsp> changeRoom(@Body ChangeRoomRequest request);
 
     /**
      * 房间列表查询
      */
     @GET("room/query")
-    Observable<CommonHttpRsp<List<Room>>> getRoomList(@Query("uid") String uid,@Query("police_station_id") String police_station_id,@Query("keyword") String keyword,@Query("type")int type,@Query("page") int page, @Query("size") int size);
+    Observable<CommonHttpRsp<List<Room>>> getRoomList(@Query("uid") String uid, @Query("police_station_id") String police_station_id, @Query("keyword") String keyword, @Query("type") int type, @Query("page") int page, @Query("size") int size);
 
     /**
      * 查询在住客户

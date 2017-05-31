@@ -28,11 +28,11 @@
             <LinearLayout
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
@@ -55,40 +55,9 @@
                     <TextView
                         android:id="@+id/txt_room_no"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
                         android:text="@string/hint_select"
-                        android:textColor="@color/txt_color2"
-                        android:textSize="@dimen/text_size_l" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/title_room_number"
-                        android:textColor="@color/txt_color1"
-                        android:textSize="@dimen/text_size_xl"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="*"
-                        android:textColor="@color/red" />
-
-                    <EditText
-                        android:id="@+id/edit_room_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:inputType="number"
                         android:textColor="@color/txt_color2"
                         android:textSize="@dimen/text_size_l" />
                 </LinearLayout>
@@ -123,6 +92,7 @@
 
                     <EditText
                         android:id="@+id/edit_name"
+                        android:gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -157,6 +127,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:inputType="number"
+                        android:text="0"
+                        android:gravity="center_vertical"
                         android:textColor="@color/txt_color2"
                         android:textSize="@dimen/text_size_l" />
                 </LinearLayout>
@@ -166,7 +138,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -190,20 +162,42 @@
                         android:gravity="center"
                         android:text="*"
                         android:textColor="@color/red" />
-                    <TextView
-                        android:id="@+id/txt_sex"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/checkbox_male"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="5dp"
-                        android:textColor="@color/txt_color2"
-                        android:textSize="@dimen/text_size_l" />
+                        android:src="@drawable/check_selected" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="男"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/text_color" />
+                    <ImageView
+                        android:id="@+id/checkbox_female"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/check_unselect" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="女"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/text_color" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -221,10 +215,11 @@
                         android:text="*"
                         android:textColor="@color/red" />
 
-                    <EditText
-                        android:id="@+id/edit_nation"
+                    <TextView
+                        android:id="@+id/txt_nation"
+                        android:gravity="center_vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
                         android:textColor="@color/txt_color2"
                         android:textSize="@dimen/text_size_l" />
@@ -233,7 +228,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -243,18 +239,19 @@
                     android:textColor="@color/txt_color1"
                     android:textSize="@dimen/text_size_xl"
                     android:textStyle="bold" />
-                <EditText
-                    android:id="@+id/edit_birthday"
+                <TextView
+                    android:id="@+id/txt_birthday"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
                     android:textColor="@color/txt_color2"
                     android:textSize="@dimen/text_size_l" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -268,14 +265,16 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                    >
-                    <EditText
-                        android:id="@+id/edit_certificates_type"
+                    <TextView
+                        android:id="@+id/txt_certificates_type"
                         android:layout_toLeftOf="@+id/img_readcard"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
                         android:layout_marginLeft="5dp"
+                        android:text="@string/txt_certificates_type"
                         android:layout_centerVertical="true"
                         android:textColor="@color/txt_color2"
                         android:textSize="@dimen/text_size_l" />
@@ -293,7 +292,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -316,13 +316,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
                     android:textColor="@color/txt_color2"
                     android:textSize="@dimen/text_size_l" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -345,13 +348,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
                     android:textColor="@color/txt_color2"
                     android:textSize="@dimen/text_size_l" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/llayout_from"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -366,6 +372,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
                     android:textColor="@color/txt_color2"
                     android:textSize="@dimen/text_size_l" />
             </LinearLayout>
@@ -386,8 +393,9 @@
                 <TextView
                     android:id="@+id/txt_check_time"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
                     android:textColor="@color/txt_color2"
                     android:textSize="@dimen/text_size_l" />
             </LinearLayout>
