@@ -37,6 +37,4 @@
         <className>com.yunqi.cardreader.ui.activity.AboutActivity</className>
         <icon>home_about</icon>
     </Module>
-
-
 </Modules>
