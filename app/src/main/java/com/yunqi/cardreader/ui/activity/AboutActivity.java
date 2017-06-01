@@ -55,6 +55,11 @@ public class AboutActivity extends BaseActivity<AboutPresenter> implements About
     public void onUpdate() {
         Beta.checkUpgrade();
     }
+    @OnClick(R.id.rlayout_about_us)
+    public void onAboutUs() {
+        Intent intent = new Intent(this, AboutUsActivity.class);
+        startActivity(intent);
+    }
 
 
     @Override

@@ -22,19 +22,7 @@
     <Module>
         <id>4</id>
         <name>最新通知</name>
-        <className>com.yunqi.cardreader.ui.activity.AboutActivity</className>
-        <icon>home_about</icon>
-    </Module>
-    <Module>
-        <id>5</id>
-        <name>用户信息</name>
-        <className>com.yunqi.cardreader.ui.activity.UserInfoActivity</className>
-        <icon>home_user_info</icon>
-    </Module>
-    <Module>
-        <id>6</id>
-        <name>关于</name>
-        <className>com.yunqi.cardreader.ui.activity.AboutActivity</className>
-        <icon>home_about</icon>
+        <className>com.yunqi.cardreader.ui.activity.NewNoticeActivity</className>
+        <icon>home_new_notice</icon>
     </Module>
 </Modules>

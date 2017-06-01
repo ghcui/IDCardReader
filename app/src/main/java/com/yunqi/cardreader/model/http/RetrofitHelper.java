@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 
 import com.yunqi.cardreader.constants.Constants;
 import com.yunqi.cardreader.model.bean.ClientInfo;
+import com.yunqi.cardreader.model.bean.Notice;
 import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
@@ -167,6 +168,10 @@ public class RetrofitHelper {
 
     public Observable<CommonHttpRsp<String>> getSendedCount(String user_id) {
         return apiService.getSendedCount(user_id);
+    }
+
+    public Observable<CommonHttpRsp<List<Notice>>> getNotices(int page) {
+        return apiService.getNotices(page, PAGE_SIZE);
     }
 
 }

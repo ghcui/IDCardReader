@@ -1,5 +1,6 @@
 package com.yunqi.cardreader.model.http;
 import com.yunqi.cardreader.model.bean.ClientInfo;
+import com.yunqi.cardreader.model.bean.Notice;
 import com.yunqi.cardreader.model.bean.Room;
 import com.yunqi.cardreader.model.bean.User;
 import com.yunqi.cardreader.model.request.ChangePwdRequest;
@@ -84,6 +85,12 @@ public interface ApiService {
      */
     @GET("room_orders/getOrderCount")
     Observable<CommonHttpRsp<String>> getSendedCount(@Query("uid") String user_id);
+
+    /**
+     * 最新通知列表查询
+     */
+    @GET("message/query")
+    Observable<CommonHttpRsp<List<Notice>>> getNotices(@Query("page") int page, @Query("size") int size);
 
 
 }

@@ -20,10 +20,12 @@
     <string name="module_sended">已发数据</string>
     <string name="module_will_send">待发数据</string>
     <string name="module_about">关于</string>
+    <string name="module_about_us">关于我们</string>
     <string name="module_register">入住登记</string>
     <string name="module_check_out">退房</string>
     <string name="module_change_room">换房</string>
     <string name="module_room_list">房间列表</string>
+    <string name="module_new_notice">最新通知</string>
     <!--login和修改密码模块-->
     <string name="tip_appname">日租房流动人口信息采集APP</string>
     <string name="hint_username">账号</string>
@@ -68,6 +70,7 @@
     <string name="warming_no_custom_sex">请输入用户性别</string>
     <string name="warming_no_custom_nation">请输入用户民族</string>
     <string name="warming_no_certificates_code">请输入证件号</string>
+    <string name="warming_id_card_validated">输入的身份证号不合法</string>
     <string name="warming_no_room_code">请选择房间</string>
     <string name="warming_no_same_room">请选择新的房间</string>
     <string name="warming_no_room_num">请输入有效的预定房间数</string>
@@ -79,6 +82,7 @@
     <string name="txt_version">版本信息</string>
     <string name="txt_updata">检测升级</string>
     <string name="txt_userinfo">用户信息</string>
+    <string name="txt_about_us">关于我们</string>
     <string name="txt_logout">注销登录</string>
     <!--用户信息模块-->
     <string name="title_nickname">用户昵称:</string>
@@ -88,8 +92,23 @@
     <string name="title_police">辖区派出所:</string>
     <string-array name="idcard_type_array">
         <item>身份证</item>
-        <item>军官证</item>
-        <item>驾驶证</item>
+        <item>居住证</item>
+        <item>签证</item>
+        <item>护照</item>
+        <item>户口本</item>
+        <item>军人证</item>
+        <item>团员证</item>
+        <item>党员证</item>
+        <item>港澳通行证</item>
         <item>其他</item>
     </string-array>
+    <!--用户信息模块-->
+    <string name="about_us_tip1">您可以通过以下方式联系我们</string>
+    <string name="about_us_contact1">微信公众号</string>
+    <string name="about_us_gongzhonghao">安徽乐蛙科技公众号</string>
+    <string name="about_us_contact2">客服电话</string>
+    <string name="about_us_service_contact">客服电话：0551-16888888</string>
+    <string name="about_us_service_time">周一至周五：9:30-18:00</string>
+    <string name="about_us">安徽乐蛙科技</string>
+    <string name="about_us_intro">安徽乐蛙信息科技有限公司位于合肥市瑶海区长江东路743号中翔.新东城大厦1-1016交通便利。安徽乐蛙信息科技有限公司本着“客户第一，诚信至上”的原则，欢迎国内外企业/公司/机构与本单位建立长期的合作关系。热诚欢迎各界朋友前来参观、考察、洽谈业务。施浩代表安徽乐蛙信息科技有限公司欢迎新老客户来电咨询。</string>
 </resources>

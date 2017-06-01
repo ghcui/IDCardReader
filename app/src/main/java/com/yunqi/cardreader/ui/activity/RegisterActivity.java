@@ -31,6 +31,7 @@ import com.yunqi.cardreader.presenter.contract.RegisterContract;
 import com.yunqi.cardreader.ui.view.ListDialog;
 import com.yunqi.cardreader.ui.view.SexSelectPopWindow;
 import com.yunqi.cardreader.util.FileUtil;
+import com.yunqi.cardreader.util.IdcardValidator;
 import com.yunqi.cardreader.util.NationUtil;
 import com.yunqi.cardreader.util.TimeUtil;
 import com.yunqi.cardreader.util.ToastUtil;
@@ -102,6 +103,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     private SexSelectPopWindow popWindow;
     private Room selectRoom;
     private String sex="男";
+    private String IDCardType="";
 
     @Override
     protected void initInject() {
@@ -163,6 +165,10 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         request.custom_id_card = editCertificatesCode.getText().toString();
         if (TextUtils.isEmpty(request.custom_id_card)) {
             ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_no_certificates_code));
+            return;
+        }
+        if(IDCardType.equals(getString(R.string.txt_certificates_type))&&!IdcardValidator.isValidatedAllIdcard(request.custom_id_card)){
+            ToastUtil.showNoticeToast(RegisterActivity.this, getString(R.string.warming_id_card_validated));
             return;
         }
         request.custom_birth_date = txtBirthday.getText().toString();
@@ -395,6 +401,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         ListDialog dialog=new ListDialog(this, "请选择证件类型", arrayStr, R.layout.dialog_list, new ListDialog.OnSelectedListener() {
             @Override
             public void onItemSelected(int position, String str) {
+                IDCardType=str;
                 txtCertificatesType.setText(str);
             }
         });

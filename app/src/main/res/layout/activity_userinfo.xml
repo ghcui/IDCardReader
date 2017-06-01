@@ -34,7 +34,7 @@
         android:layout_marginRight="10dp"
         android:background="@drawable/common_bg"
         android:orientation="vertical"
-        android:paddingBottom="40dp"
+        android:paddingBottom="10dp"
         android:paddingTop="10dp">
 
         <RelativeLayout
@@ -47,7 +47,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:text="@string/title_nickname"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <TextView
                 android:id="@+id/txt_nickname"
@@ -58,7 +58,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="15dp"
                 android:text="独行天下"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <View
                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:text="@string/title_phone"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <TextView
                 android:id="@+id/txt_phone"
@@ -90,7 +90,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="15dp"
                 android:text="15656557226"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <View
                 android:layout_width="match_parent"
@@ -111,7 +111,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:text="@string/title_type"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <TextView
                 android:id="@+id/txt_type"
@@ -122,7 +122,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="15dp"
                 android:text="公安管理人员"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <View
                 android:layout_width="match_parent"
@@ -142,7 +142,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:text="@string/title_area"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <TextView
                 android:id="@+id/txt_area"
@@ -153,7 +153,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="15dp"
                 android:text="蜀山区"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <View
                 android:layout_width="match_parent"
@@ -173,7 +173,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:text="@string/title_police"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <TextView
                 android:id="@+id/txt_police"
@@ -184,7 +184,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="15dp"
                 android:text="三里庵派出所"
-                android:textSize="@dimen/text_size_xxl" />
+                android:textSize="@dimen/text_size_xl" />
 
             <View
                 android:layout_width="match_parent"

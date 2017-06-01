@@ -153,6 +153,16 @@ public class MainActivity extends NetActivity<MainPresenter> implements MainCont
         Intent intent=new Intent(this,CheckOutRoomListActivity.class);
         startActivity(intent);
     }
+    @OnClick(R.id.txt_user_info)
+    public void onJump2UserInfo() {
+        Intent intent=new Intent(this,UserInfoActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.txt_about)
+    public void onJump2About() {
+        Intent intent=new Intent(this,AboutActivity.class);
+        startActivity(intent);
+    }
 
 }
 
