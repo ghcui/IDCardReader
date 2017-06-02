@@ -12,9 +12,14 @@ import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.model.db.RealmHelper;
 import com.yunqi.cardreader.model.http.RetrofitHelper;
 import com.yunqi.cardreader.model.response.BaseHttpRsp;
+import com.yunqi.cardreader.model.response.CommonHttpRsp;
 import com.yunqi.cardreader.presenter.contract.RegisterContract;
 import com.yunqi.cardreader.rx.BaseSubscriber;
+import com.yunqi.cardreader.util.ImageUploaderUtils;
 import com.yunqi.cardreader.util.RxUtil;
+
+import java.io.File;
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -22,7 +27,10 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+
+import static android.R.id.list;
 
 
 /**
@@ -33,8 +41,9 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
 
     private RetrofitHelper mRetrofitHelper;
     private RealmHelper mRealmHelper;
+
     @Inject
-    public RegisterPresenter(RetrofitHelper retrofitHelper,RealmHelper realmHelper) {
+    public RegisterPresenter(RetrofitHelper retrofitHelper, RealmHelper realmHelper) {
         this.mRetrofitHelper = retrofitHelper;
         this.mRealmHelper = realmHelper;
     }
@@ -140,27 +149,72 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
     }
 
     @Override
-    public void submitInfo(ClientInfo request) {
-        Subscription rxSubscription = mRetrofitHelper.submitInfo(request)
-                .compose(RxUtil.<BaseHttpRsp>rxSchedulerHelper())
-                .subscribe(new BaseSubscriber(mView, RegisterContract.REQUST_CODE_SUBMIT) {
-                    @Override
-                    protected void onSuccess() {
-                        mView.onSuccess();
-                    }
+    public void submitInfo(final ClientInfo request) {
+        Subscription rxSubscription;
+        if (TextUtils.isEmpty(request.card_photo_url) && TextUtils.isEmpty(request.user_photo_url)) {
+            rxSubscription = mRetrofitHelper.submitInfo(request)
+                    .compose(RxUtil.<BaseHttpRsp>rxSchedulerHelper())
+                    .subscribe(new BaseSubscriber(mView, RegisterContract.REQUST_CODE_SUBMIT) {
+                        @Override
+                        protected void onSuccess() {
+                            mView.onSuccess();
+                        }
 
-                    @Override
-                    protected void onFailure(int errorCode, String msg) {
-                        mView.cancelLoading(RegisterContract.REQUST_CODE_SUBMIT);
-                        mView.showError(msg, RegisterContract.REQUST_CODE_SUBMIT);
-                    }
-                });
+                        @Override
+                        protected void onFailure(int errorCode, String msg) {
+                            mView.cancelLoading(RegisterContract.REQUST_CODE_SUBMIT);
+                            mView.showError(msg, RegisterContract.REQUST_CODE_SUBMIT);
+                        }
+                    });
+        } else {
+            ArrayList listUrl = new ArrayList();
+            if (!TextUtils.isEmpty(request.card_photo_url)) {
+                listUrl.add(request.card_photo_url);
+            }
+            if (!TextUtils.isEmpty(request.user_photo_url)) {
+                listUrl.add(request.user_photo_url);
+            }
+            rxSubscription = mRetrofitHelper.uploader(ImageUploaderUtils.getRequestBody(listUrl))
+                    .flatMap(new Func1<CommonHttpRsp<String[]>, Observable<BaseHttpRsp>>() {
+                        @Override
+                        public Observable<BaseHttpRsp> call(CommonHttpRsp<String[]> httpRsp) {
+                            String[] imgUrl = httpRsp.getData();
+                            if (imgUrl == null) {
+                                mView.showError("上传失败", RegisterContract.REQUST_CODE_SUBMIT);
+                                new Throwable("上传失败");
+                            }
+                            if (!TextUtils.isEmpty(request.card_photo_url) && !TextUtils.isEmpty(request.user_photo_url) && imgUrl.length == 2) {
+                                request.card_photo_url = httpRsp.getData()[0];
+                                request.user_photo_url = httpRsp.getData()[1];
+                            } else if (!TextUtils.isEmpty(request.card_photo_url) && imgUrl.length == 1) {
+                                request.card_photo_url = httpRsp.getData()[0];
+                            } else if (!TextUtils.isEmpty(request.user_photo_url) && imgUrl.length == 1) {
+                                request.user_photo_url = httpRsp.getData()[0];
+                            } else {
+                                new Throwable("上传失败");
+                            }
+                            return mRetrofitHelper.submitInfo(request);
+                        }
+                    }).compose(RxUtil.<BaseHttpRsp>rxSchedulerHelper())
+                    .subscribe(new BaseSubscriber(mView, RegisterContract.REQUST_CODE_SUBMIT) {
+                        @Override
+                        protected void onSuccess() {
+                            mView.onSuccess();
+                        }
+
+                        @Override
+                        protected void onFailure(int errorCode, String msg) {
+                            mView.cancelLoading(RegisterContract.REQUST_CODE_SUBMIT);
+                            mView.showError(msg, RegisterContract.REQUST_CODE_SUBMIT);
+                        }
+                    });
+        }
         addSubscrebe(rxSubscription);
     }
 
     @Override
-    public void saveLocal(ClientInfo request,String userid) {
-        mRealmHelper.addClientInfo(request,userid);
+    public void saveLocal(ClientInfo request, String userid) {
+        mRealmHelper.addClientInfo(request, userid);
     }
 
 

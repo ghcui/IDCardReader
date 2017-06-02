@@ -13,11 +13,14 @@ import com.yunqi.cardreader.model.response.CommonHttpRsp;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import rx.Observable;
@@ -91,6 +94,12 @@ public interface ApiService {
      */
     @GET("message/query")
     Observable<CommonHttpRsp<List<Notice>>> getNotices(@Query("page") int page, @Query("size") int size);
-
-
+    /**
+     * 上传文件
+     *
+     * @return
+     */
+    @Multipart
+    @POST("upload")
+    Observable<CommonHttpRsp<BaseHttpRsp>> uploader(@PartMap Map<String, RequestBody> file);
 }

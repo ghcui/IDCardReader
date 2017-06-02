@@ -175,8 +175,14 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         request.custom_residence = editAddress.getText().toString();
         request.user_from = editFrom.getText().toString();
         request.sign_time = time;
-        request.card_photo_url = cardUrl;
-        request.user_photo_url = personUrl;
+        if(bitmapCard!=null){
+            cardUrl=saveBitmap(bitmapCard);
+            request.card_photo_url = cardUrl;
+        }
+        if(!TextUtils.isEmpty(selectImg)){
+            personUrl=selectImg;
+            request.user_photo_url = personUrl;
+        }
         mPresenter.submitInfo(request);
     }
 
@@ -257,6 +263,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         }
         if (info.getBmp() != null) {
             imgCertificates.setVisibility(View.VISIBLE);
+            bitmapCard=info.getBmp();
             imgCertificates.setImageBitmap(info.getBmp());
         }
     }

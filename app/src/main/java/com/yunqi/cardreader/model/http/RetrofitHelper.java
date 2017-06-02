@@ -25,6 +25,7 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -172,6 +173,10 @@ public class RetrofitHelper {
 
     public Observable<CommonHttpRsp<List<Notice>>> getNotices(int page) {
         return apiService.getNotices(page, PAGE_SIZE);
+    }
+
+    public Observable<CommonHttpRsp<BaseHttpRsp>> uploader(Map<String, RequestBody> params) {
+        return apiService.uploader(params);
     }
 
 }
