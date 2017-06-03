@@ -184,8 +184,8 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
                                 new Throwable("上传失败");
                             }
                             if (!TextUtils.isEmpty(request.card_photo_url) && !TextUtils.isEmpty(request.user_photo_url) && imgUrl.length == 2) {
-                                request.card_photo_url = httpRsp.getData()[0];
-                                request.user_photo_url = httpRsp.getData()[1];
+                                request.card_photo_url = httpRsp.getData()[1];
+                                request.user_photo_url = httpRsp.getData()[0];
                             } else if (!TextUtils.isEmpty(request.card_photo_url) && imgUrl.length == 1) {
                                 request.card_photo_url = httpRsp.getData()[0];
                             } else if (!TextUtils.isEmpty(request.user_photo_url) && imgUrl.length == 1) {
@@ -211,6 +211,71 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
         }
         addSubscrebe(rxSubscription);
     }
+
+//    @Override
+//    public void submitInfo(final ClientInfo request) {
+//        Subscription rxSubscription;
+//        if (TextUtils.isEmpty(request.card_photo_url) && TextUtils.isEmpty(request.user_photo_url)) {
+//            rxSubscription = mRetrofitHelper.submitInfo(request)
+//                    .compose(RxUtil.<BaseHttpRsp>rxSchedulerHelper())
+//                    .subscribe(new BaseSubscriber(mView, RegisterContract.REQUST_CODE_SUBMIT) {
+//                        @Override
+//                        protected void onSuccess() {
+//                            mView.onSuccess();
+//                        }
+//
+//                        @Override
+//                        protected void onFailure(int errorCode, String msg) {
+//                            mView.cancelLoading(RegisterContract.REQUST_CODE_SUBMIT);
+//                            mView.showError(msg, RegisterContract.REQUST_CODE_SUBMIT);
+//                        }
+//                    });
+//        } else {
+//            ArrayList listUrl = new ArrayList();
+//            if (!TextUtils.isEmpty(request.card_photo_url)) {
+//                listUrl.add(request.card_photo_url);
+//            }
+//            if (!TextUtils.isEmpty(request.user_photo_url)) {
+//                listUrl.add(request.user_photo_url);
+//            }
+//            File file=new File(request.user_photo_url);
+//            rxSubscription = mRetrofitHelper.upload(file)
+//                    .flatMap(new Func1<CommonHttpRsp<String>, Observable<BaseHttpRsp>>() {
+//                        @Override
+//                        public Observable<BaseHttpRsp> call(CommonHttpRsp<String> httpRsp) {
+//                            String imgUrl = httpRsp.getData();
+//                            if (imgUrl == null) {
+//                                mView.showError("上传失败", RegisterContract.REQUST_CODE_SUBMIT);
+//                                new Throwable("上传失败");
+//                            }
+//                            if (!TextUtils.isEmpty(request.card_photo_url) && !TextUtils.isEmpty(request.user_photo_url)) {
+//                                request.card_photo_url = httpRsp.getData();
+//                                request.user_photo_url = httpRsp.getData();
+//                            } else if (!TextUtils.isEmpty(request.card_photo_url) ) {
+//                                request.card_photo_url = httpRsp.getData();
+//                            } else if (!TextUtils.isEmpty(request.user_photo_url)) {
+//                                request.user_photo_url = httpRsp.getData();
+//                            } else {
+//                                new Throwable("上传失败");
+//                            }
+//                            return mRetrofitHelper.submitInfo(request);
+//                        }
+//                    }).compose(RxUtil.<BaseHttpRsp>rxSchedulerHelper())
+//                    .subscribe(new BaseSubscriber(mView, RegisterContract.REQUST_CODE_SUBMIT) {
+//                        @Override
+//                        protected void onSuccess() {
+//                            mView.onSuccess();
+//                        }
+//
+//                        @Override
+//                        protected void onFailure(int errorCode, String msg) {
+//                            mView.cancelLoading(RegisterContract.REQUST_CODE_SUBMIT);
+//                            mView.showError(msg, RegisterContract.REQUST_CODE_SUBMIT);
+//                        }
+//                    });
+//        }
+//        addSubscrebe(rxSubscription);
+//    }
 
     @Override
     public void saveLocal(ClientInfo request, String userid) {

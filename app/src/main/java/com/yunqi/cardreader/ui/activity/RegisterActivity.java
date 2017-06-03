@@ -96,7 +96,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     private String selectImg;
     private ClientInfo request;
     private String time;
-    private String cardUrl;
+    private String cardUrl="/storage/emulated/0/DCIM/Screenshots/Screenshot_2017-06-02-13-26-11-024_com.miui.home.png";
     private String personUrl;
     private boolean isConnect = false;
     private Bitmap bitmapCard;
@@ -177,12 +177,10 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         request.sign_time = time;
         if(bitmapCard!=null){
             cardUrl=saveBitmap(bitmapCard);
-            request.card_photo_url = cardUrl;
         }
-        if(!TextUtils.isEmpty(selectImg)){
-            personUrl=selectImg;
-            request.user_photo_url = personUrl;
-        }
+        request.card_photo_url = cardUrl;
+        personUrl=selectImg;
+        request.user_photo_url = personUrl;
         mPresenter.submitInfo(request);
     }
 
@@ -213,6 +211,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
                     @Override
                     public void call(Void aVoid) {
                         imgPersonal.setVisibility(View.INVISIBLE);
+                        selectImg="";
                         imgDel.setVisibility(View.GONE);
                     }
                 });
@@ -392,6 +391,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         txtCertificatesType.setText(getText(R.string.txt_certificates_type));
         editAddress.setText("");
         imgCertificates.setVisibility(View.GONE);
+        cardUrl="";
     }
 
     @OnClick(R.id.img_readcard)

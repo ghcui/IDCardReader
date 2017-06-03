@@ -36,7 +36,7 @@ public class ImageUploaderUtils {
         for (String bean : fileList) {
             File file = new File(bean);
             RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), file);
-            params.put("file\"; filename=\""+file.getName()+"\"", fileBody);
+            params.put("image[]\"; filename=\""+file.getName()+"\"", fileBody);
         }
         return params;
     }

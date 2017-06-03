@@ -23,6 +23,8 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -175,8 +177,20 @@ public class RetrofitHelper {
         return apiService.getNotices(page, PAGE_SIZE);
     }
 
-    public Observable<CommonHttpRsp<BaseHttpRsp>> uploader(Map<String, RequestBody> params) {
+    public Observable<CommonHttpRsp<String[]>> uploader(Map<String, RequestBody> params) {
         return apiService.uploader(params);
+    }
+    public Observable<CommonHttpRsp<String>> upload(File file) {
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+        // 添加描述
+        String descriptionString = "hello, 这是文件描述";
+        RequestBody description =
+                RequestBody.create(
+                        MediaType.parse("multipart/form-data"), descriptionString);
+        return apiService.upload(description, body);
     }
 
 }
