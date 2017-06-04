@@ -21,5 +21,6 @@ public class User extends RealmObject implements Serializable {
     public String create_time;
     public String update_time;
     public int type;
-
+    public String region;
+    public String police_station;
 }

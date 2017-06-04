@@ -55,6 +55,8 @@ public class UserInfoActivity extends BaseActivity<AboutPresenter> implements Ab
             strType = "房东";
         }
         txtType.setText(strType);
+        txtArea.setText(user.region);
+        txtPolice.setText(user.police_station);
     }
 
     @Override

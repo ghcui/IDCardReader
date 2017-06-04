@@ -96,7 +96,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     private String selectImg;
     private ClientInfo request;
     private String time;
-    private String cardUrl="/storage/emulated/0/DCIM/Screenshots/Screenshot_2017-06-02-13-26-11-024_com.miui.home.png";
+    private String cardUrl="";
     private String personUrl;
     private boolean isConnect = false;
     private Bitmap bitmapCard;
