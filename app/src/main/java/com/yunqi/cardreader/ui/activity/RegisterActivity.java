@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,8 +14,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.idcard.hs.Lua.BlueTool;
-import com.idcard.hs.Lua.Info;
+import com.ivsign.android.IDCReader.BlueTool;
+import com.ivsign.android.IDCReader.ExBlueTool;
+import com.ivsign.android.IDCReader.Info;
 import com.jakewharton.rxbinding.view.RxView;
 import com.luck.picture.lib.model.FunctionConfig;
 import com.luck.picture.lib.model.PictureConfig;
@@ -92,7 +92,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     ImageView imgCertificatesDefault;
     @BindView(R.id.img_personal_default)
     ImageView imgPersonalDefault;
-    private BlueTool ble;
+    private ExBlueTool ble;
     private String selectImg;
     private ClientInfo request;
     private String time;
@@ -121,9 +121,8 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
         setToolBar(toolBar, getString(R.string.module_register), "连接设备", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isConnect) {
-                    disconnect();
-                }
+                layoutRight.setClickable(false);
+                disconnect();
                 mPresenter.connectBle(ble);
             }
         });
@@ -192,7 +191,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
 
     private void initData() {
         request = new ClientInfo();
-        ble = new BlueTool(RegisterActivity.this, BluetoothAdapter.getDefaultAdapter());
+        ble = new ExBlueTool(RegisterActivity.this, BluetoothAdapter.getDefaultAdapter());
     }
 
     private void setWidgetListener() {
@@ -286,6 +285,7 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
 
     @Override
     public void onConnect(boolean isConnect) {
+        layoutRight.setClickable(true);
         this.isConnect = isConnect;
         if (isConnect) {
             ToastUtil.showHookToast(this, "设备连接成功!");
@@ -372,7 +372,8 @@ public class RegisterActivity extends NetActivity<RegisterPresenter> implements 
     @Override
     public void showError(String msg, int requestCode) {
         if (requestCode == RegisterContract.REQUST_CODE_CONNECT_BLE) {
-            ToastUtil.showHookToast(this, "设备连接失败!");
+            layoutRight.setClickable(true);
+            ToastUtil.showHookToast(this, msg);
         } else if (requestCode == RegisterContract.REQUST_CODE_READCARD) {
             ToastUtil.showErrorToast(this, "读卡失败，请再试一次!");
             resetData();

@@ -4,9 +4,10 @@ package com.yunqi.cardreader.presenter;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.idcard.hs.Lua.BlueTool;
-import com.idcard.hs.Lua.BlueToolListenr;
-import com.idcard.hs.Lua.Info;
+import com.ivsign.android.IDCReader.BlueTool;
+import com.ivsign.android.IDCReader.BlueToolListenr;
+import com.ivsign.android.IDCReader.Info;
+import com.ivsign.android.IDCReader.ExBlueTool;
 import com.yunqi.cardreader.base.RxPresenter;
 import com.yunqi.cardreader.model.bean.ClientInfo;
 import com.yunqi.cardreader.model.db.RealmHelper;
@@ -50,7 +51,7 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
 
 
     @Override
-    public void connectBle(final BlueTool ble) {
+    public void connectBle(final ExBlueTool ble) {
         Observable.create(new Observable.OnSubscribe<Boolean>() {
             @Override
             public void call(final Subscriber<? super Boolean> subscriber) {
@@ -61,7 +62,7 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
                         if (!TextUtils.isEmpty(device)) {
                             ble.connect(device);
                         } else {
-                            subscriber.onError(new Throwable("No Found device!"));
+                            subscriber.onError(new Throwable("NoFoundBluetooth"));
                         }
                     }
 
@@ -70,6 +71,16 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
                         Log.d(TAG, "BluetoothForState:isConnect" + isConnect);
                         subscriber.onNext(isConnect);
                         subscriber.onCompleted();
+                    }
+
+                    @Override
+                    public void findDeviceTimeOut() {
+                        subscriber.onError(new Throwable("NoFoundBluetooth"));
+                    }
+
+                    @Override
+                    public void connectTimeOut() {
+                        subscriber.onError(new Throwable("ConnectTimeOut"));
                     }
                 });
                 ble.scanf();
@@ -93,7 +104,16 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
                     public void onError(Throwable e) {
                         e.printStackTrace();
                         mView.cancelLoading(RegisterContract.REQUST_CODE_CONNECT_BLE);
-                        mView.showError("蓝牙连接失败，请重新连接!", RegisterContract.REQUST_CODE_CONNECT_BLE);
+                        if(e.getMessage().equals("NoFoundBluetooth")){
+                            mView.showError("未发现蓝牙设备,检查蓝牙是否开启!", RegisterContract.REQUST_CODE_CONNECT_BLE);
+                        }
+                        else if(e.getMessage().equals("ConnectTimeOut")){
+                            mView.showError("连接设备超时,请重新连接!", RegisterContract.REQUST_CODE_CONNECT_BLE);
+                        }
+                        else{
+                            mView.showError("蓝牙连接失败，请重新连接!", RegisterContract.REQUST_CODE_CONNECT_BLE);
+                        }
+
                     }
 
                     @Override

@@ -41,6 +41,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
             public void call(final Subscriber<? super Boolean> subscriber) {
                 try {
                     FileUtil.copyAssets(context,oldPath,newPath);
+                    subscriber.onNext(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                     subscriber.onError(e);

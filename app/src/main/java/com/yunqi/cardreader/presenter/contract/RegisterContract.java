@@ -1,7 +1,8 @@
 package com.yunqi.cardreader.presenter.contract;
 
-import com.idcard.hs.Lua.BlueTool;
-import com.idcard.hs.Lua.Info;
+import com.ivsign.android.IDCReader.BlueTool;
+import com.ivsign.android.IDCReader.Info;
+import com.ivsign.android.IDCReader.ExBlueTool;
 import com.yunqi.cardreader.base.BasePresenter;
 import com.yunqi.cardreader.base.NetView;
 import com.yunqi.cardreader.model.bean.ClientInfo;
@@ -22,7 +23,7 @@ public interface RegisterContract {
     }
 
     interface Presenter extends BasePresenter<View> {
-        void connectBle(BlueTool ble);
+        void connectBle(ExBlueTool ble);
 
         void readCarder(BlueTool ble);
 

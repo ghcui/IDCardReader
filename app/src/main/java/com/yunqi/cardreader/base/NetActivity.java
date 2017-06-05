@@ -37,6 +37,7 @@ public abstract class NetActivity<T extends BasePresenter> extends SupportActivi
     protected Activity mContext;
     private Unbinder mUnBinder;
     protected SweetAlertDialog loadingDialog;
+    protected ViewGroup layoutRight;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -121,14 +122,14 @@ public abstract class NetActivity<T extends BasePresenter> extends SupportActivi
         TextView titleCenter = (TextView) toolbar.findViewById(R.id.title_center);
         titleCenter.setText(title);
         if (rightImgRes > 0) {
-            ViewGroup layoutRight = (ViewGroup) toolbar.findViewById(R.id.layout_right);
+            layoutRight = (ViewGroup) toolbar.findViewById(R.id.layout_right);
             layoutRight.setVisibility(View.VISIBLE);
             layoutRight.setOnClickListener(listener);
             ImageView imgRight = (ImageView) toolbar.findViewById(R.id.img_right);
             imgRight.setImageResource(rightImgRes);
             imgRight.setVisibility(View.VISIBLE);
         } else if (!TextUtils.isEmpty(strRight)) {
-            ViewGroup layoutRight = (ViewGroup) toolbar.findViewById(R.id.layout_right);
+            layoutRight = (ViewGroup) toolbar.findViewById(R.id.layout_right);
             layoutRight.setOnClickListener(listener);
             layoutRight.setVisibility(View.VISIBLE);
             TextView txtRight = (TextView) toolbar.findViewById(R.id.txt_right);
